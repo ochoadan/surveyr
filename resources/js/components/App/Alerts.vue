@@ -60,10 +60,6 @@ export default {
         }
     },
 
-    created() {
-        this.form.team_id = this.currentTeam.id;
-    },
-
     mounted() {
         this.getEmailAlerts();
     },
