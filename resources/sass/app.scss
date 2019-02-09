@@ -1,0 +1,37 @@
+// @import "./spark/spark";
+@import "./../../vendor/laravel/spark-aurelius/resources/assets/sass/spark";
+
+.card-header {
+    line-height: 2rem;
+}
+
+.card-no-padding {
+    .card-body {
+        padding: 0;
+
+        .table { margin: 0; }
+
+        form {
+            padding: 1.25rem;
+            background: #e4eaec;
+        }
+
+        .pagination {
+            padding: 1rem 1.25rem;
+            margin: 0;
+            border-top: 1px solid #c7cdd1;
+            border-radius: 0;
+        }
+    }
+}
+
+.empty-state-jumbotron {
+    padding: 4rem;
+    text-align: center;
+
+    svg {
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 3rem;
+    }
+}
