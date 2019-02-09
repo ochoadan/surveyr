@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Team;
-use App\Http\Resources\EmailAlertResource;
 use App\Alert\EmailAlert;
 use App\App;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EmailAlertResource;
+use App\Team;
+use Illuminate\Http\Request;
 
 class EmailAlertController extends Controller
 {
@@ -34,7 +34,13 @@ class EmailAlertController extends Controller
             return EmailAlertResource::collection($app->emailAlerts()->paginate($request->input('perPage', 10)));
         }
 
-        return EmailAlertResource::collection($team->emailAlerts()->paginate($request->input('perPage', 10)));
+        $query = $team->emailAlerts();
+
+        if ($request->has('with_apps')) {
+            $query->with('apps');
+        }
+
+        return EmailAlertResource::collection($query->paginate($request->input('perPage', 10)));
     }
 
     /**

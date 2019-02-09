@@ -19,3 +19,4 @@ Vue.component('send-alerts-to', require('./Util/SendAlertsTo.vue'));
 Vue.component('dashboard', require('./Dashboard/Dashboard.vue'));
 Vue.component('app', require('./App/App.vue'));
 Vue.component('schedule-monitor', require('./ScheduleMonitor/ScheduleMonitor.vue'));
+Vue.component('alerts', require('./Alerts/Alerts.vue'));

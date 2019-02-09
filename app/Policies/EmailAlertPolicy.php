@@ -42,7 +42,7 @@ class EmailAlertPolicy
      */
     public function update(User $user, EmailAlert $emailAlert)
     {
-        $this->view($user, $emailAlert);
+        return $this->view($user, $emailAlert);
     }
 
     /**
@@ -54,6 +54,6 @@ class EmailAlertPolicy
      */
     public function delete(User $user, EmailAlert $emailAlert)
     {
-        $this->view($user, $emailAlert);
+        return $this->view($user, $emailAlert);
     }
 }
