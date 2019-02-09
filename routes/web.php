@@ -14,5 +14,10 @@
 Route::get('/', 'WelcomeController@show');
 
 Route::get('/home', 'HomeController@show');
-Route::get('/app/{app}', 'AppController@show');
-Route::get('/schedule-monitor/{schedule_monitor}', 'ScheduleMonitorController@show');
+
+Route::middleware('teamSubscribed')->group(function() {
+    Route::get('/app/{app}', 'AppController@show');
+    Route::get('/schedule-monitor/{schedule_monitor}', 'ScheduleMonitorController@show');
+
+    Route::get('/alerts', 'AlertController@show');
+});

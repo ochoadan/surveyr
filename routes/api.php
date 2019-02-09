@@ -13,7 +13,7 @@
 
 Route::group([
     'namespace' => 'Api',
-    'middleware' => 'auth:api'
+    'middleware' => ['auth:api', 'teamSubscribed']
 ], function () {
     Route::apiResource('apps', 'AppController');
     Route::apiResource('email-alerts', 'EmailAlertController');
