@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\App;
-use App\Team;
+use App\Exceptions\UpgradeRequiredException;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\AppResource;
+use App\Surveyr\Helpers\BillingHelper;
+use App\Team;
+use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
@@ -46,6 +48,9 @@ class AppController extends Controller
 
         $team = Team::findOrFail($data['team_id']);
         $this->authorize('view', $team);
+        if (!BillingHelper::canCreateApps($team)) {
+            throw new UpgradeRequiredException('Limit reached. Upgrade required.');
+        }
 
         $app = App::create([
             'team_id' => $data['team_id'],

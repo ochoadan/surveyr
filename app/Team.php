@@ -15,4 +15,9 @@ class Team extends SparkTeam
     {
         return $this->hasMany('App\Alert\EmailAlert');
     }
+
+    public function scheduleMonitors()
+    {
+        return $this->hasManyThrough('App\ScheduleMonitor', 'App\App');
+    }
 }

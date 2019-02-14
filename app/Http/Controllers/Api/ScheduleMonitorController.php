@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\ScheduleMonitor;
 use App\App;
+use App\Exceptions\UpgradeRequiredException;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\ScheduleMonitorResource;
+use App\ScheduleMonitor;
+use App\Surveyr\Helpers\BillingHelper;
+use Illuminate\Http\Request;
 
 class ScheduleMonitorController extends Controller
 {
@@ -49,6 +51,9 @@ class ScheduleMonitorController extends Controller
 
         $app = App::where('slug', $data['app_id'])->firstOrFail();
         $this->authorize('view', $app);
+        if (!BillingHelper::canCreateScheduleMonitors($app->team)) {
+            throw new UpgradeRequiredException('Limit reached. Upgrade required.');
+        }
 
         $data['app_id'] = $app->id;
 
