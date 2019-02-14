@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Laravel\Spark\Spark;
 use Laravel\Spark\Providers\AppServiceProvider as ServiceProvider;
+use Laravel\Spark\Spark;
 
 class SparkServiceProvider extends ServiceProvider
 {
@@ -13,11 +13,11 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor' => 'Your Company',
-        'product' => 'Your Product',
-        'street' => 'PO Box 111',
-        'location' => 'Your Town, NY 12345',
-        'phone' => '555-555-5555',
+        'vendor'   => 'Dev7studios Ltd',
+        'product'  => 'Surveyr',
+        'street'   => '4 Duffus Place',
+        'location' => 'Elgin, UK, IV30 5PB',
+        'phone'    => '',
     ];
 
     /**
@@ -25,7 +25,7 @@ class SparkServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $sendSupportEmailsTo = null;
+    protected $sendSupportEmailsTo = 'support@surveyr.io';
 
     /**
      * All of the application developer e-mail addresses.
@@ -50,17 +50,40 @@ class SparkServiceProvider extends ServiceProvider
      */
     public function booted()
     {
-        Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
+        Spark::collectBillingAddress();
 
+        Spark::useStripe()->noCardUpFront();
+
+        $freePlan = config('billing.plans.free');
         Spark::freeTeamPlan()
+            ->maxTeamMembers($freePlan['team_member_limit'])
             ->features([
-                'First', 'Second', 'Third'
-            ]);
+                    $freePlan['app_limit'] . ' Apps',
+                    $freePlan['schedule_monitor_limit'] . ' Schedule Monitors',
+                    $freePlan['team_member_limit'] . ' Team Members',
+                ]);
 
-        Spark::teamPlan('Basic', 'team-basic')
-            ->price(10)
-            ->features([
-                'First', 'Second', 'Third'
-            ]);
+        $plans = config('billing.plans');
+        foreach ($plans as $plan) {
+            if ($plan['id'] == 'free') {
+                continue;
+            }
+
+            $sparkPlan = Spark::teamPlan($plan['title'], $plan['id'])
+                ->price($plan['price'])
+                ->maxTeamMembers($plan['team_member_limit'])
+                ->features([
+                    $plan['app_limit'] . ' Apps',
+                    $plan['schedule_monitor_limit'] . ' Schedule Monitors',
+                    $plan['team_member_limit'] . ' Team Members',
+                ]);
+
+            if ($plan['interval'] == 'yearly') {
+                $sparkPlan->yearly();
+            }
+            if ($plan['archived']) {
+                $sparkPlan->archived();
+            }
+        }
     }
 }
