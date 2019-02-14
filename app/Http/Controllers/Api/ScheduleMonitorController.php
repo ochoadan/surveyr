@@ -52,7 +52,7 @@ class ScheduleMonitorController extends Controller
         $app = App::where('slug', $data['app_id'])->firstOrFail();
         $this->authorize('view', $app);
         if (!BillingHelper::canCreateScheduleMonitors($app->team)) {
-            throw new UpgradeRequiredException('Limit reached. Upgrade required.');
+            throw new UpgradeRequiredException('Schedule monitor limit reached.');
         }
 
         $data['app_id'] = $app->id;

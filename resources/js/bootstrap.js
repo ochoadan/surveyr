@@ -1,42 +1,98 @@
+// vendor/laravel/spark-aurelius/resources/assets/js/spark-bootstrap.js
 
+/*
+ * Load various JavaScript modules that assist Spark.
+ */
+window.URI = require('urijs');
+window.axios = require('axios');
 window._ = require('lodash');
+window.moment = require('moment');
+window.Promise = require('promise');
+window.Popper = require('popper.js').default;
+window.__ = (key, replace) => {
+    var translation = Spark.translations[key] ? Spark.translations[key] : key;
+
+    _.forEach(replace, (value, key) => {
+        translation = translation.replace(':'+key, value);
+    });
+
+    return translation;
+};
+
+/*
+ * Define Moment locales
+ */
+window.moment.defineLocale('en-short', {
+    parentLocale: 'en',
+    relativeTime : {
+        future: "in %s",
+        past:   "%s",
+        s:  "1s",
+        m:  "1m",
+        mm: "%dm",
+        h:  "1h",
+        hh: "%dh",
+        d:  "1d",
+        dd: "%dd",
+        M:  "1 month ago",
+        MM: "%d months ago",
+        y:  "1y",
+        yy: "%dy"
+    }
+});
+window.moment.locale('en');
+
+/*
+ * Load jQuery and Bootstrap jQuery, used for front-end interaction.
+ */
+if (window.$ === undefined || window.jQuery === undefined) {
+    window.$ = window.jQuery = require('jquery');
+}
+
+require('bootstrap');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * Load Vue if this application is using Vue as its framework.
  */
-
-try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
-} catch (e) {}
+if ($('#spark-app').length > 0) {
+    require('vue-bootstrap');
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
-window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': Spark.csrfToken
+};
 
 /**
- * Next we will register the CSRF Token as a common header with Axios so that
- * all outgoing HTTP requests automatically have it attached. This is just
- * a simple convenience so we don't have to attach every token manually.
+ * Intercept the incoming responses.
+ *
+ * Handle any unexpected HTTP errors and pop up modals, etc.
  */
+window.axios.interceptors.response.use(function (response) {
+    return response;
+}, function (error) {
+    switch (error.response.status) {
+        case 401:
+            window.axios.get('/logout');
+            $('#modal-session-expired').modal('show');
+            break;
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+        case 402:
+            console.log(error.response);
+            if (error.response.data.message) {
+                $('#upgrade-required-reason').text(error.response.data.message)
+            }
+            $('#modal-upgrade-required').modal('show');
+            break;
+    }
 
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+    return Promise.reject(error);
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

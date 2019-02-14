@@ -18,6 +18,6 @@ class UpgradeRequiredException extends HttpException
      */
     public function __construct($message = null, Exception $previous = null, array $headers = [], $code = 0)
     {
-        parent::__construct(400, $message, $previous, $headers, $code);
+        parent::__construct(402, $message, $previous, $headers, $code);
     }
 }

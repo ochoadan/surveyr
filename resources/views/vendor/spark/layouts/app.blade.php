@@ -45,6 +45,7 @@
             @include('spark::modals.notifications')
             @include('spark::modals.support')
             @include('spark::modals.session-expired')
+            @include('modals.upgrade-required')
         @endif
 
         <portal-target name="default"></portal-target>

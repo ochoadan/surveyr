@@ -49,7 +49,7 @@ class AppController extends Controller
         $team = Team::findOrFail($data['team_id']);
         $this->authorize('view', $team);
         if (!BillingHelper::canCreateApps($team)) {
-            throw new UpgradeRequiredException('Limit reached. Upgrade required.');
+            throw new UpgradeRequiredException('App limit reached.');
         }
 
         $app = App::create([

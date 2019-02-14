@@ -14,7 +14,7 @@
  |
  */
 
-require('spark-bootstrap');
+require('./bootstrap');
 
 import PortalVue from 'portal-vue';
 Vue.use(PortalVue);
