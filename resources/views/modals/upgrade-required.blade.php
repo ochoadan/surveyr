@@ -15,7 +15,7 @@
 
             <!-- Modal Actions -->
             <div class="modal-footer">
-                <a href="/settings#/subscription">
+                <a href="/settings/subscription">
                     <button type="button" class="btn btn-default">
                         {{__('Go To Billing')}}
                     </button>
