@@ -40,11 +40,14 @@ class RunAlertChecks extends Command
      */
     public function handle()
     {
+        $this->info('Finding schedule monitors...');
+
         ScheduleMonitor::chunk(100, function ($monitors) {
             foreach ($monitors as $monitor) {
                 try {
                     $cron = CronExpression::factory($monitor->schedule);
                     if ($cron->isDue('now', $monitor->timezone)) {
+                        $this->line("Queuing check for monitor {$monitor->id}...");
                         RunAlertCheck::dispatch($monitor, now())
                                  ->delay(now()->addMinutes($monitor->grace_period));
                     }
@@ -53,5 +56,7 @@ class RunAlertChecks extends Command
                 }
             }
         });
+
+        $this->info('Finshed');
     }
 }
