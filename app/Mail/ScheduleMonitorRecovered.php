@@ -43,7 +43,8 @@ class ScheduleMonitorRecovered extends Mailable
      */
     public function build()
     {
-        return $this->subject('[Recovered] Our schedule monitor has recieved a ping')
+        return $this->from('alerts@surveyr.io')
+                    ->subject('[Recovered] Our schedule monitor has recieved a ping')
                     ->markdown('emails.monitors.recovered');
     }
 }

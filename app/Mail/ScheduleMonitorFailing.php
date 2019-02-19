@@ -43,7 +43,8 @@ class ScheduleMonitorFailing extends Mailable
      */
     public function build()
     {
-        return $this->subject('[Failing] Our schedule monitor has not recieved a ping')
+        return $this->from('alerts@surveyr.io')
+                    ->subject('[Failing] Our schedule monitor has not recieved a ping')
                     ->markdown('emails.monitors.failing');
     }
 }
