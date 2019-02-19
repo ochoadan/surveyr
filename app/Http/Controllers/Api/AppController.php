@@ -117,7 +117,9 @@ class AppController extends Controller
         $app = App::findOrFail($id);
         $this->authorize('delete', $app);
 
-        $app->scheduleMonitors->each->events()->delete();
+        $app->scheduleMonitors->each(function ($monitor) {
+            $monitor->events()->delete();
+        });
         $app->scheduleMonitors()->delete();
         $app->emailAlerts()->detach();
         $app->delete();
