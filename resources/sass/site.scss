@@ -1,0 +1,15 @@
+@import "./../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #4e616c;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    @media (min-width: 1200px) {
+        max-width: 960px;
+    }
+}
