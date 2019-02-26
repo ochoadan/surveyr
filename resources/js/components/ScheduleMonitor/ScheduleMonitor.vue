@@ -41,6 +41,10 @@
             </span>
         </p>
 
+        <div class="alert alert-danger mb-4" role="alert" v-if="scheduleMonitor.status == 'failing' && scheduleMonitor.last_run_at">
+            This schedule monitor has not recieved a ping since {{ scheduleMonitor.last_run_at }} {{ scheduleMonitor.timezone }} ({{ fromNow(scheduleMonitor.last_run_at) }}).
+        </div>
+
         <events :schedule-monitor="scheduleMonitor" />
     </div>
 </template>
