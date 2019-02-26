@@ -1,6 +1,13 @@
 <template>
     <div>
-        <p class="mb-2"><a :href="`/app/${scheduleMonitor.app_id}`">{{ scheduleMonitor.app.name }}</a></p>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                <li class="breadcrumb-item"><a :href="`/app/${scheduleMonitor.app_id}`">{{ scheduleMonitor.app.name }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ scheduleMonitorName }}</li>
+            </ol>
+        </nav>
+
         <h1 class="h3 mb-3">
             <template v-if="scheduleMonitor.name">
                 {{ scheduleMonitor.name }}<br>
@@ -10,6 +17,7 @@
                 <span class="d-inline-block text-truncate" style="max-width: 100%;" :title="scheduleMonitor.command">{{ scheduleMonitor.command }}</span>
             </template>
         </h1>
+
         <p class="mb-4">
             <span>
                 <span class="text-muted">Status:</span>
@@ -38,6 +46,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import datetime from '../../mixins/datetime';
 import cron from '../../mixins/cron';
 
@@ -45,6 +54,12 @@ export default {
     mixins: [datetime, cron],
 
     props: ['scheduleMonitor'],
+
+    computed: {
+        scheduleMonitorName() {
+            return this.scheduleMonitor.name ? this.scheduleMonitor.name : _.truncate(this.scheduleMonitor.command);
+        }
+    },
 
     components: {
         'events': require('./Events.vue'),

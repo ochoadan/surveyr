@@ -1,5 +1,12 @@
 <template>
     <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ app.name }}</li>
+            </ol>
+        </nav>
+
         <h1 class="h3 mb-4">{{ app.name }}</h1>
 
         <schedule-monitors :app="app" />
