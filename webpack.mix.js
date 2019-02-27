@@ -17,7 +17,7 @@ const webpack = require('webpack');
 mix
     .sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/site.scss', 'public/css')
+    .sass('resources/sass/site/site.scss', 'public/css')
     .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
     .sass('resources/sass/app-rtl.scss', 'public/css')
     .then(() => {

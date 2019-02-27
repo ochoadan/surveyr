@@ -4,124 +4,326 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Surveyr - Cron schedule monitoring for Laravel')</title>
 
-    <title>@yield('title', config('app.name'))</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
     <link href="{{ mix('css/site.css') }}" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="/">{{ config('app.name') }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<body class="is-boxed">
+    <div class="body-wrap">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <a href="/">
+                            <svg width="1360px" height="351px" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
+                                        <tspan x="396" y="278">S</tspan>
+                                        <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
+                                        <tspan x="729.759375" y="278">r</tspan>
+                                        <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
+                                        <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
+                                        <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
+                                        <tspan x="1258.25586" y="278">r</tspan>
+                                    </text>
+                                    <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
+                                        <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
+                                        <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
+                                        <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
+                                        <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
+                                    </g>
+                                    <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
+                                        <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#features">{{__('Features')}}</a>
-                    </li>
-                    @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="/home">{{__('Dashboard')}}</a>
+        <main>
+            <section class="hero text-center">
+                <div class="container-sm">
+                    <div class="hero-inner">
+                        <h1 class="hero-title h2-mobile mt-0 is-revealing">Cron schedule monitoring for Laravel</h1>
+                        <p class="hero-paragraph is-revealing">Get an instant alert if your Laravel scheduled cron job fails to run.</p>
+                        <div class="hero-form newsletter-form field field-grouped is-revealing">
+                            <div class="control control-expanded">
+                                <input class="input" type="email" name="email" placeholder="Your email address&hellip;">
+                            </div>
+                            <div class="control">
+                                <a class="button button-primary button-block button-shadow" href="#">Get early access</a>
+                            </div>
+                        </div>
+                        <div class="hero-browser">
+                            <div class="bubble-3 is-revealing">
+                                <svg width="427" height="286" viewBox="0 0 427 286" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M213.5 286C331.413 286 427 190.413 427 72.5S304.221 16.45 186.309 16.45C68.396 16.45 0-45.414 0 72.5S95.587 286 213.5 286z" id="bubble-3-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-3-b" fill="#fff">
+                                            <use xlink:href="#bubble-3-a"/>
+                                        </mask>
+                                        <use fill="#4E8FF8" xlink:href="#bubble-3-a"/>
+                                        <path d="M64.5 129.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C-80.604-139.782-149-201.644-149-83.73c0 117.913 95.587 213.5 213.5 213.5z" fill="#1274ED" mask="url(#bubble-3-b)"/>
+                                        <path d="M381.5 501.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C236.396 232.218 168 170.356 168 288.27c0 117.913 95.587 213.5 213.5 213.5z" fill="#75ABF3" mask="url(#bubble-3-b)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="bubble-4 is-revealing">
+                                <svg width="230" height="235" viewBox="0 0 230 235" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M196.605 234.11C256.252 234.11 216 167.646 216 108 216 48.353 167.647 0 108 0S0 48.353 0 108s136.959 126.11 196.605 126.11z" id="bubble-4-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-4-b" fill="#fff">
+                                            <use xlink:href="#bubble-4-a"/>
+                                        </mask>
+                                        <use fill="#7CE8DD" xlink:href="#bubble-4-a"/>
+                                        <circle fill="#3BDDCC" mask="url(#bubble-4-b)" cx="30" cy="108" r="108"/>
+                                        <circle fill="#B1F1EA" opacity=".7" mask="url(#bubble-4-b)" cx="265" cy="88" r="108"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="hero-browser-inner is-revealing">
+                                <svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="browser-a">
+                                            <stop stop-color="#F6F8FA" stop-opacity=".48" offset="0%"/>
+                                            <stop stop-color="#F6F8FA" offset="100%"/>
+                                        </linearGradient>
+                                        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="browser-b">
+                                            <stop stop-color="#F6F8FA" stop-opacity=".48" offset="0%"/>
+                                            <stop stop-color="#F6F8FA" offset="100%"/>
+                                        </linearGradient>
+                                        <linearGradient x1="100%" y1="-12.816%" x2="0%" y2="-12.816%" id="browser-c">
+                                            <stop stop-color="#F6F8FA" stop-opacity="0" offset="0%"/>
+                                            <stop stop-color="#E3E7EB" offset="50.045%"/>
+                                            <stop stop-color="#F6F8FA" stop-opacity="0" offset="100%"/>
+                                        </linearGradient>
+                                        <filter x="-500%" y="-500%" width="1000%" height="1000%" filterUnits="objectBoundingBox" id="dropshadow-1">
+                                            <feOffset dy="16" in="SourceAlpha" result="shadowOffsetOuter"/>
+                                            <feGaussianBlur stdDeviation="24" in="shadowOffsetOuter" result="shadowBlurOuter"/>
+                                            <feColorMatrix values="0 0 0 0 0.12 0 0 0 0 0.17 0 0 0 0 0.21 0 0 0 0.2 0" in="shadowBlurOuter"/>
+                                        </filter>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <rect width="800" height="450" rx="4" fill="#FFF" style="mix-blend-mode:multiply;filter:url(#dropshadow-1)"/>
+                                        <rect width="800" height="450" rx="4" fill="#FFF"/>
+                                        <g fill="url(#browser-a)" transform="translate(47 67)">
+                                            <path d="M146 0h122v122H146zM0 0h122v122H0zM292 0h122v122H292zM438 0h122v122H438zM584 0h122v122H584z"/>
+                                        </g>
+                                        <g transform="translate(47 239)" fill="url(#browser-b)">
+                                            <path d="M146 0h122v122H146zM0 0h122v122H0zM292 0h122v122H292zM438 0h122v122H438zM584 0h122v122H584z"/>
+                                        </g>
+                                        <path fill="url(#browser-c)" d="M0 146h706v2H0z" transform="translate(47 67)"/>
+                                        <g transform="translate(0 12)">
+                                            <circle fill="#FF6D8B" cx="36" cy="4" r="4"/>
+                                            <circle fill="#FFCB4F" cx="52" cy="4" r="4"/>
+                                            <circle fill="#7CE8DD" cx="68" cy="4" r="4"/>
+                                            <path fill="url(#browser-c)" d="M0 20h800v2H0z"/>
+                                            <path fill="#E3E7EB" d="M742 2h24v4h-24z"/>
+                                        </g>
+                                        <g>
+                                            <path fill="#F6F8FA" d="M47 385h706v32H47z"/>
+                                            <path fill="#E3E7EB" d="M356 399h88v4h-88z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="bubble-1 is-revealing">
+                                <svg width="61" height="52" viewBox="0 0 61 52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M32 43.992c17.673 0 28.05 17.673 28.05 0S49.674 0 32 0C14.327 0 0 14.327 0 32c0 17.673 14.327 11.992 32 11.992z" id="bubble-1-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-1-b" fill="#fff">
+                                            <use xlink:href="#bubble-1-a"/>
+                                        </mask>
+                                        <use fill="#FF6D8B" xlink:href="#bubble-1-a"/>
+                                        <path d="M2 43.992c17.673 0 28.05 17.673 28.05 0S19.674 0 2 0c-17.673 0-32 14.327-32 32 0 17.673 14.327 11.992 32 11.992z" fill="#FF4F73" mask="url(#bubble-1-b)"/>
+                                        <path d="M74 30.992c17.673 0 28.05 17.673 28.05 0S91.674-13 74-13C56.327-13 42 1.327 42 19c0 17.673 14.327 11.992 32 11.992z" fill-opacity=".8" fill="#FFA3B5" mask="url(#bubble-1-b)"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="bubble-2 is-revealing">
+                                <svg width="179" height="126" viewBox="0 0 179 126" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M104.697 125.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S0-28.44 0 12.593c0 41.034 63.663 113.068 104.697 113.068z" id="bubble-2-a"/>
+                                    </defs>
+                                    <g fill="none" fill-rule="evenodd">
+                                        <mask id="bubble-2-b" fill="#fff">
+                                            <use xlink:href="#bubble-2-a"/>
+                                        </mask>
+                                        <use fill="#838DEA" xlink:href="#bubble-2-a"/>
+                                        <path d="M202.697 211.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S98 57.56 98 98.593c0 41.034 63.663 113.068 104.697 113.068z" fill="#626CD5" mask="url(#bubble-2-b)"/>
+                                        <path d="M43.697 56.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S-61-97.44-61-56.407C-61-15.373 2.663 56.661 43.697 56.661z" fill="#B1B6F1" opacity=".64" mask="url(#bubble-2-b)"/>
+                                    </g>
+                                </svg>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="intro section">
+                <div class="container-sm">
+                    <div class="section-inner">
+                        <p>Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even customers</strong>.</p>
+
+                        <p>Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you an alert if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and growing your business.</p>
+
+                        <p>Buffer managed to generate <a href="https://open.buffer.com/cronjob-generates-4-million-year/" target="_blank">$4 million per year from a single cron job</a>. Imagine the impact it would have on their business if it stopped working!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section text-center">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-wrap">
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M48.066 61.627c6.628 0 10.087-16.79 10.087-23.418 0-6.627-5.025-9.209-11.652-9.209C39.874 29 24 42.507 24 49.135c0 6.627 17.439 12.492 24.066 12.492z" fill-opacity=".24" fill="#A0A6EE"/>
+                                                <path d="M26 54l28-28" stroke="#838DEA" stroke-width="2" stroke-linecap="square"/>
+                                                <path d="M26 46l20-20M26 38l12-12M26 30l4-4M34 54l20-20M42 54l12-12" stroke="#767DE1" stroke-width="2" stroke-linecap="square"/>
+                                                <path d="M50 54l4-4" stroke="#838DEA" stroke-width="2" stroke-linecap="square"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-title">Quick Setup</h3>
+                                    <p class="text-sm">Use our Laravel package to quickly import your schedule monitors into Surveyr, instead of creating monitors manually.</p>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M48.066 61.627c6.628 0 10.087-16.79 10.087-23.418 0-6.627-5.025-9.209-11.652-9.209C39.874 29 24 42.507 24 49.135c0 6.627 17.439 12.492 24.066 12.492z" fill-opacity=".24" fill="#75ABF3"/>
+                                                <path d="M34 52V35M40 52V42M46 52V35M52 52V42M28 52V28" stroke="#4D8EF7" stroke-width="2" stroke-linecap="square"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-title">Flexible Alerts</h3>
+                                    <p class="text-sm">When something does go wrong, we make it easy to alert the right person in the right location.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="features-wrap">
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                                            <g fill="none" fill-rule="evenodd">
+                                                <path d="M48.066 61.627c6.628 0 10.087-16.79 10.087-23.418 0-6.627-5.025-9.209-11.652-9.209C39.874 29 24 42.507 24 49.135c0 6.627 17.439 12.492 24.066 12.492z" fill-opacity=".32" fill="#FF97AC"/>
+                                                <path stroke="#FF6D8B" stroke-width="2" stroke-linecap="square" d="M49 45h6V25H35v6M43 55h2v-2M25 53v2h2M27 35h-2v2"/>
+                                                <path stroke="#FF6D8B" stroke-width="2" stroke-linecap="square" d="M43 35h2v2M39 55h-2M33 55h-2M39 35h-2M33 35h-2M45 49v-2M25 49v-2M25 43v-2M45 43v-2"/>
+                                            </g>
+                                        </svg>
+
+                                    </div>
+                                    <h3 class="feature-title">Team Collaboration</h3>
+                                    <p class="text-sm">Invite your team to collaborate on schedule monitors and diagnose issues when they occur.</p>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+                                            <g transform="translate(24 25)" fill="none" fill-rule="evenodd">
+                                                <path d="M24.066 36.627c6.628 0 10.087-16.79 10.087-23.418C34.153 6.582 29.128 4 22.501 4 15.874 4 0 17.507 0 24.135c0 6.627 17.439 12.492 24.066 12.492z" fill-opacity=".32" fill="#A0EEE5"/>
+                                                <circle stroke="#39D8C8" stroke-width="2" stroke-linecap="square" cx="5" cy="4" r="4"/>
+                                                <path stroke="#39D8C8" stroke-width="2" stroke-linecap="square" d="M23 22h8v8h-8zM11 10l9 9"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="feature-title">Full Cron Schedules</h3>
+                                    <p class="text-sm">We support any cron schedule, including jobs that run up to every minute.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="newsletter section">
+                <div class="container-sm">
+                    <div class="newsletter-inner section-inner">
+                        <div class="newsletter-header text-center is-revealing">
+                            <h2 class="section-title mt-0">Coming soon...</h2>
+                            <p class="section-paragraph">We're not quite ready to release Surveyr to the world yet, but if you're interested in becoming a beta tester or being notified when we launch pop your email address in the form below to subscribe and be the first to know.</p>
+                        </div>
+                        <div class="footer-form newsletter-form field field-grouped is-revealing">
+                            <div class="control control-expanded">
+                                <input class="input" type="email" name="email" placeholder="Your email address&hellip;">
+                            </div>
+                            <div class="control">
+                                <a class="button button-primary button-block button-shadow" href="#">Get early access</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer text-light">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="/">
+                            <svg width="1360px" height="351px" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
+                                        <tspan x="396" y="278">S</tspan>
+                                        <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
+                                        <tspan x="729.759375" y="278">r</tspan>
+                                        <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
+                                        <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
+                                        <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
+                                        <tspan x="1258.25586" y="278">r</tspan>
+                                    </text>
+                                    <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
+                                        <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
+                                        <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
+                                        <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
+                                        <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
+                                    </g>
+                                    <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
+                                        <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="footer-links list-reset">
+                        <li>
+                            <a href="#">Pricing</a>
                         </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">{{__('Login')}}</a>
+                        <li>
+                            <a href="#">FAQ's</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">{{__('Sign Up')}}</a>
+                        <li>
+                            <a href="#">Docs</a>
                         </li>
-                    @endauth
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Cron schedule monitoring for Laravel</h1>
-            <p class="lead">Get an instant alert if your Laravel scheduled cron job fails to run.</p>
-        </div>
-    </div>
-
-    <div class="container py-5">
-        <p>Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even customers</strong>.</p>
-
-        <p>Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you an alert if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and growing your business.</p>
-
-        <p>Buffer managed to generate <a href="https://open.buffer.com/cronjob-generates-4-million-year/" target="_blank">$4 million per year from a single cron job</a>. Imagine the impact it would have on their business if it stopped working!</p>
-    </div>
-
-    <div id="setup">
-        <div class="container py-5 text-center">
-            <h2 class="h1 mb-5">Easy as 1, 2, 3</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>Step 1</h3>
-                    <p>Install our package and quickly set up schedule monitors in Surveyr.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Step 2</h3>
-                    <p>We continuously monitor your scheduled cron jobs after we receive the first ping.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Step 3</h3>
-                    <p>When a job fails to run on schedule we send alerts to the people you specify.</p>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                    </ul>
+                    <ul class="footer-social-links list-reset">
+                    </ul>
+                    <div class="footer-copyright">&copy; {{ date('Y') }} - Surveyr is a project by <a href="https://dev7studios.co">Dev7studios</div>
                 </div>
             </div>
-        </div>
+        </footer>
     </div>
-
-    <div id="features">
-        <div class="container py-5 text-center">
-            <h2 class="h1 mb-5">Features</h2>
-            <div class="row">
-                <div class="col-md-6 mb-5">
-                    <h3>Quick Setup</h3>
-                    <p>Use our Laravel package to quickly import your schedule monitors into Surveyr, instead of creating monitors manually.</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <h3>Flexible Alerts</h3>
-                    <p>When something does go wrong, we make it easy to alert the right person in the right location.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-5">
-                    <h3>Team Collaboration</h3>
-                    <p>Invite your team to collaborate on schedule monitors and diagnose issues when they occur.</p>
-                </div>
-                <div class="col-md-6 mb-5">
-                    <h3>Full Cron Schedules</h3>
-                    <p>We support any cron schedule, including jobs that run up to every minute.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="coming-soon">
-        <div class="container py-5">
-            <h2 class="h1 mb-5">Coming Soon...</h2>
-            <p>We're not quite ready to release Surveyr to the world yet, but if you're interested in becoming a beta tester or being notified when we launch pop your email address in the form below to subscribe and be the first to know.</p>
-            <form class="form-inline mb-3">
-                <div class="form-group">
-                    <input type="email" class="form-control mr-2" id="emailInput" placeholder="hi@example.com" style="min-width: 300px;">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <p><small class="form-text text-muted">We'll only ever send updates specifically about Surveyr to this email address.<br>No spam, we promise. Unsubscribe at any time.</small></p>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="container py-5">
-            <p>&copy; Surveyr is a project by <a href="https://dev7studios.co">Dev7studios</a></p>
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
