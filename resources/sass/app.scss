@@ -33,10 +33,14 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
+.dropdown-menu {
+    min-width: 13rem;
+}
 .dropdown-header {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #9aa2ac;
 }
 
 .navbar-brand {
@@ -47,26 +51,38 @@ h1, h2, h3, h4, h5, h6,
         height: 30px;
     }
 }
+.navbar-spark img {
+    margin-right: 0.3rem;
+}
+.navbar-spark .fa-fw {
+    width: 1.6rem;
+}
 
 .card {
     box-shadow: 0 2px 5px 0 rgba(51,51,79,.07);
+
+    .table-responsive thead th { border-top: 0; }
 }
 
 .card-header {
     color: #5B6F82;
     line-height: 2rem;
+    border-bottom: 1px solid #e7ecf3;
 }
 
 .card-no-padding {
     .card-body {
         padding: 0;
 
-        .table { margin: 0; }
+        .table {
+            margin: 0;
+
+            thead th { border-top: 0; }
+        }
 
         form {
             padding: 1.25rem;
             background: #FCFCFF;
-            border-top: 1px solid #e7ecf3;
         }
 
         .pagination {

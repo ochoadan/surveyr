@@ -13,7 +13,7 @@
         <alerts :app="app" />
 
         <div class="text-right mb-5">
-            <button class="btn btn-light" @click="deleteApp">Delete App</button>
+            <button class="btn btn-outline-danger" @click="deleteApp">Delete App</button>
         </div>
     </div>
 </template>
