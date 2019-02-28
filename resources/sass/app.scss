@@ -1,7 +1,59 @@
-// @import "./spark/spark";
+$brand-hue: 213;
+$blue: #1274ED;
+$card-bg: #fff;
+$nav-link-color: hsl($brand-hue, 10%, 48%);
+$btn-font-weight: 400;
+
 @import "./../../vendor/laravel/spark-aurelius/resources/assets/sass/spark";
 
+body {
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #5B6F82;
+    background: #F7F7FC;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+
+.table {
+    thead th {
+        font-size: 0.7rem;
+        background: #FCFCFF;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-top: 1px solid #e7ecf3;
+        border-bottom: 1px solid #e7ecf3;
+    }
+    td {
+        border-top: 1px solid #e7ecf3;
+    }
+}
+
+.dropdown-header {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-brand {
+    margin-right: 2rem;
+
+    svg {
+        width: 100px;
+        height: 30px;
+    }
+}
+
+.card {
+    box-shadow: 0 2px 5px 0 rgba(51,51,79,.07);
+}
+
 .card-header {
+    color: #5B6F82;
     line-height: 2rem;
 }
 
@@ -13,7 +65,8 @@
 
         form {
             padding: 1.25rem;
-            background: #e4eaec;
+            background: #FCFCFF;
+            border-top: 1px solid #e7ecf3;
         }
 
         .pagination {
@@ -23,6 +76,15 @@
             border-radius: 0;
         }
     }
+}
+
+.modal-content {
+    background: #FCFCFF;
+}
+
+.form-control,
+.StripeElement {
+    box-shadow: none;
 }
 
 .empty-state-jumbotron {
