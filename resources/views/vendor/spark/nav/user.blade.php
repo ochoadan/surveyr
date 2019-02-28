@@ -77,7 +77,11 @@
 
                             <!-- Your Settings -->
                             <a class="dropdown-item" href="/settings">
-                                <i class="fa fa-fw text-left fa-btn fa-cog"></i> {{__('Your Settings')}}
+                                <i class="fa fa-fw text-left fa-btn fa-cog"></i> {{__('Settings')}}
+                            </a>
+
+                            <a class="dropdown-item" :href="'/settings/{{ Spark::teamsPrefix() }}/'+ currentTeam.id +'#/subscription'" v-if="currentTeam">
+                                <i class="fa fa-fw text-left fa-btn fa-credit-card"></i> {{__('Billing')}}
                             </a>
 
                             <div class="dropdown-divider"></div>
