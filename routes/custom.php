@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/ping/{identifier}/start', 'PingController@start');
-Route::get('/ping/{identifier}/finish', 'PingController@finish');
+Route::get('/ping/{appId}/{monitorId}/start', 'PingController@start');
+Route::get('/ping/{appId}/{monitorId}/finish', 'PingController@finish');
