@@ -26,7 +26,7 @@ class IdentifierHelper
      */
     final public static function appIdentifier(App $app)
     {
-        return self::getIdentifier($app->team_id . microtime());
+        return self::getIdentifier();
     }
 
     /**
@@ -35,6 +35,6 @@ class IdentifierHelper
      */
     final public static function scheduleMonitorIdentifier(ScheduleMonitor $monitor)
     {
-        return self::getIdentifier($monitor->app_id . $monitor->command . $monitor->schedule . $monitor->timezone);
+        return self::getIdentifier($monitor->command . $monitor->schedule . $monitor->timezone);
     }
 }
