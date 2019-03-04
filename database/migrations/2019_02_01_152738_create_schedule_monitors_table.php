@@ -16,7 +16,7 @@ class CreateScheduleMonitorsTable extends Migration
         Schema::create('schedule_monitors', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('app_id')->index();
-            $table->string('slug')->unique();
+            $table->string('identifier')->index();
             $table->string('name')->nullable();
             $table->string('command');
             $table->string('status')->default('passing')->index(); // passing/failing/paused

@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Surveyr\Helpers\IdentifierHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class ScheduleMonitor extends Model
 {
     protected $fillable = [
         'app_id',
-        'slug',
+        'identifier',
         'name',
         'command',
         'status',
@@ -37,7 +38,7 @@ class ScheduleMonitor extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            $model->slug = uniqid();
+            $model->identifier = IdentifierHelper::scheduleMonitorIdentifier($model);
         });
     }
 }

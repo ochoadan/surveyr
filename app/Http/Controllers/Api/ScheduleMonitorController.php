@@ -21,10 +21,10 @@ class ScheduleMonitorController extends Controller
     public function index(Request $request)
     {
         $data = $this->validate($request, [
-            'app_id' => 'required|string',
+            'app_id' => 'required|integer',
         ]);
 
-        $app = App::where('slug', $data['app_id'])->firstOrFail();
+        $app = App::findOrFail($data['app_id']);
         $this->authorize('view', $app);
 
         return ScheduleMonitorResource::collection($app->scheduleMonitors()->paginate($request->input('perPage', 10)));
@@ -41,7 +41,7 @@ class ScheduleMonitorController extends Controller
         $this->authorize('create', ScheduleMonitor::class);
 
         $data = $this->validate($request, [
-            'app_id'       => 'required|string',
+            'app_id'       => 'required|integer',
             'name'         => 'nullable|string',
             'command'      => 'required|string',
             'schedule'     => 'required|string',
@@ -49,7 +49,7 @@ class ScheduleMonitorController extends Controller
             'grace_period' => 'required|integer|min:1',
         ]);
 
-        $app = App::where('slug', $data['app_id'])->firstOrFail();
+        $app = App::findOrFail($data['app_id']);
         $this->authorize('view', $app);
         if (!BillingHelper::canCreateScheduleMonitors($app->team)) {
             throw new UpgradeRequiredException('Schedule monitor limit reached.');

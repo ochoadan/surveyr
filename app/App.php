@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Surveyr\Helpers\IdentifierHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class App extends Model
 {
     protected $fillable = [
         'team_id',
-        'slug',
+        'identifier',
         'name',
     ];
 
@@ -32,7 +33,7 @@ class App extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            $model->slug = uniqid();
+            $model->identifier = IdentifierHelper::appIdentifier($model);
         });
     }
 }

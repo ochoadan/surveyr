@@ -21,14 +21,14 @@ class EmailAlertController extends Controller
     {
         $data = $this->validate($request, [
             'team_id' => 'required|integer',
-            'app_id'  => 'nullable|string',
+            'app_id'  => 'nullable|integer',
         ]);
 
         $team = Team::findOrFail($data['team_id']);
         $this->authorize('view', $team);
 
         if (!empty($data['app_id'])) {
-            $app = App::where('slug', $data['app_id'])->firstOrFail();
+            $app = App::findOrFail($data['app_id']);
             $this->authorize('view', $app);
 
             return EmailAlertResource::collection($app->emailAlerts()->paginate($request->input('perPage', 10)));

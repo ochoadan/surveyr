@@ -144,7 +144,7 @@ export default {
             monitors: [],
             showCreateForm: false,
             form: new SparkForm({
-                app_id: this.app.slug,
+                app_id: this.app.id,
                 name: '',
                 command: '',
                 schedule: '* * * * *',
@@ -172,7 +172,7 @@ export default {
             axios.get('/api/schedule-monitors', {
                 params: {
                     page: page,
-                    app_id: this.app.slug,
+                    app_id: this.app.id,
                 }
             })
                 .then(response => {

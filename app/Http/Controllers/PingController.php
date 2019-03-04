@@ -9,18 +9,18 @@ use Illuminate\Http\Request;
 
 class PingController extends Controller
 {
-    public function start($slug)
+    public function start($identifier)
     {
-        $monitor = $this->getMonitorBySlug($slug);
+        $monitor = $this->getMonitorByIdentifier($identifier);
 
         HandleStartPing::dispatch($monitor, now());
 
         return response('Ok');
     }
 
-    public function finish($slug)
+    public function finish($identifier)
     {
-        $monitor = $this->getMonitorBySlug($slug);
+        $monitor = $this->getMonitorByIdentifier($identifier);
 
         HandleFinishPing::dispatch($monitor, now());
 
@@ -28,12 +28,12 @@ class PingController extends Controller
     }
 
     /**
-     * @param String $slug
+     * @param String $identifier
      * @return ScheduleMonitor
      */
-    private function getMonitorBySlug($slug)
+    private function getMonitorByIdentifier($identifier)
     {
-        $monitor = ScheduleMonitor::where('slug', $slug)->first();
+        $monitor = ScheduleMonitor::where('identifier', $identifier)->first();
         abort_unless($monitor, 404);
 
         return $monitor;

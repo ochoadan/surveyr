@@ -70,7 +70,7 @@ export default {
                 params: {
                     page: page,
                     team_id: this.currentTeam.id,
-                    app_id: this.app.slug,
+                    app_id: this.app.id,
                 }
             })
                 .then(response => {

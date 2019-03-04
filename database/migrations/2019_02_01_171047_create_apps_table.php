@@ -16,7 +16,7 @@ class CreateAppsTable extends Migration
         Schema::create('apps', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('team_id')->index();
-            $table->string('slug')->unique();
+            $table->string('identifier')->index();
             $table->string('name');
             $table->timestamps();
         });
