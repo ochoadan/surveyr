@@ -12,8 +12,13 @@
         <schedule-monitors :app="app" />
         <alerts :app="app" />
 
-        <div class="text-right mb-5">
-            <button class="btn btn-outline-danger" @click="deleteApp">Delete App</button>
+        <div class="row mb-5">
+            <div class="col-md-6 text-muted">
+                App ID: {{ app.identifier }}
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-outline-danger" @click="deleteApp">Delete App</button>
+            </div>
         </div>
     </div>
 </template>
