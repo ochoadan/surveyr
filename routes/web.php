@@ -15,9 +15,7 @@ Route::get('/', 'WelcomeController@show');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/settings/subscription', 'RedirectController@toSubscription');
-});
 
-Route::middleware(['auth', 'teamSubscribed'])->group(function() {
     Route::get('/home', 'HomeController@show');
     Route::get('/app/{app}', 'AppController@show');
     Route::get('/schedule-monitor/{schedule_monitor}', 'ScheduleMonitorController@show');
