@@ -41,21 +41,43 @@ class ScheduleMonitorController extends Controller
         $this->authorize('create', ScheduleMonitor::class);
 
         $data = $this->validate($request, [
-            'app_id'       => 'required|integer',
+            'app_id'       => 'nullable|required_without:identifier|integer',
+            'identifier'   => 'nullable|required_without:app_id|string',
             'name'         => 'nullable|string',
             'command'      => 'required|string',
             'schedule'     => 'required|string',
             'timezone'     => 'nullable|string',
-            'grace_period' => 'required|integer|min:1',
+            'grace_period' => 'nullable|integer|min:1',
         ]);
 
-        $app = App::findOrFail($data['app_id']);
+        if (!empty($data['identifier'])) {
+            $app = App::where('identifier', $data['identifier'])->firstOrFail();
+        } else {
+            $app = App::findOrFail($data['app_id']);
+        }
+
         $this->authorize('view', $app);
         if (!BillingHelper::canCreateScheduleMonitors($app->team)) {
             throw new UpgradeRequiredException('Schedule monitor limit reached.');
         }
 
+        $monitorExists = $app->scheduleMonitors()
+                             ->where('command', $data['command'])
+                             ->where('schedule', $data['schedule'])
+                             ->where('timezone', $data['timezone'])
+                             ->exists();
+
+        if ($monitorExists) {
+            throw \Illuminate\Validation\ValidationException::withMessages([
+               'command' => ['A schedule monitor for this command already exists.'],
+            ]);
+        }
+
         $data['app_id'] = $app->id;
+
+        if (empty($data['grace_period'])) {
+            $data['grace_period'] = 3;
+        }
 
         $monitor = ScheduleMonitor::create($data);
 
