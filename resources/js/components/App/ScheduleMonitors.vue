@@ -6,74 +6,105 @@
         </div>
         <div class="card-body">
             <form @submit.prevent="create" v-if="showCreateForm">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="input_schedule">Cron Schedule</label>
-                        <input type="text" id="input_schedule" class="form-control" placeholder="* * * * *"
-                            v-model="form.schedule"
-                            :class="{'is-invalid': form.errors.has('schedule')}">
-                        <small class="form-text text-muted">
-                            This should be a valid <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">UNIX cron schedule</a>.
-                            Expected run: {{ formScheduleHuman }}
-                        </small>
-                        <span class="invalid-feedback" v-show="form.errors.has('schedule')">
-                            {{ form.errors.get('schedule') }}
-                        </span>
+                <ul class="nav nav-tabs mb-4" role="tablist">
+                    <li class="nav-item mr-2">
+                        <a class="nav-link active" id="laravel-tab" data-toggle="tab" href="#laravel" role="tab" aria-controls="laravel" aria-selected="true">Laravel</a>
+                    </li>
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" id="manual-tab" data-toggle="tab" href="#manual" role="tab" aria-controls="manual" aria-selected="false">Manual</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="laravel" role="tabpanel" aria-labelledby="laravel-tab">
+                        <p>To quickly get up and running when using Laravel, run the following commands in your Laravel app:</p>
+                        <pre><code>composer require dev7studios/surveyr-laravel
+composer require guzzlehttp/guzzle
+php artisan vendor:publish --provider="Dev7studios\Surveyr\SurveyrServiceProvider"</code></pre>
+                        <p>Next, add the following Surveyr credentials to your <code>.env</code> file:</p>
+                        <pre><code>SURVEYR_APP_ID={{ app.identifier }}
+SURVEYR_API_TOKEN={API_TOKEN}</code></pre>
+                        <p>If you don't already have one, you can create an API token via the <a href="/settings#/api" target="_blank">settings page</a>.</p>
+                        <p>To set up schedule cron job monitoring, you need to specify which jobs you want to monitor in <code>app/Console/Kernel.php</code>. To do this simply add the <code>monitor()</code> method to any jobs you want Surveyr to monitor:</p>
+                        <pre><code>$schedule-&gt;command('example')
+         -&gt;everyMinute()
+         -&gt;monitor();
+</code></pre>
+                        <p>Then, to automatically create the schedule monitors in your Surveyr app, run the following command:</p>
+                        <pre><code>php artisan surveyr:sync-schedule-monitors</code></pre>
+                        <p>This command will attempt to create schedule monitors in Surveyr if they don't already exist. You can safely run this command during your deploy process to make sure that new scheduled jobs are monitored by Surveyr.</p>
+                        <button type="button" class="btn btn-secondary" @click="showCreateForm = false">Cancel</button>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="input_timezone">Timezone</label>
-                        <select id="input_timezone" class="form-control"
-                            v-model="form.timezone"
-                            :class="{'is-invalid': form.errors.has('timezone')}">
-                            <option :value="timezone" v-for="timezone in timezones" :key="timezone">{{ timezone }}</option>
-                        </select>
-                        <span class="invalid-feedback" v-show="form.errors.has('timezone')">
-                            {{ form.errors.get('timezone') }}
-                        </span>
+                    <div class="tab-pane fade" id="manual" role="tabpanel" aria-labelledby="manual-tab">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="input_schedule">Cron Schedule</label>
+                                <input type="text" id="input_schedule" class="form-control" placeholder="* * * * *"
+                                    v-model="form.schedule"
+                                    :class="{'is-invalid': form.errors.has('schedule')}">
+                                <small class="form-text text-muted">
+                                    This should be a valid <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">UNIX cron schedule</a>.
+                                    Expected run: {{ formScheduleHuman }}
+                                </small>
+                                <span class="invalid-feedback" v-show="form.errors.has('schedule')">
+                                    {{ form.errors.get('schedule') }}
+                                </span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="input_timezone">Timezone</label>
+                                <select id="input_timezone" class="form-control"
+                                    v-model="form.timezone"
+                                    :class="{'is-invalid': form.errors.has('timezone')}">
+                                    <option :value="timezone" v-for="timezone in timezones" :key="timezone">{{ timezone }}</option>
+                                </select>
+                                <span class="invalid-feedback" v-show="form.errors.has('timezone')">
+                                    {{ form.errors.get('timezone') }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="input_grace_period">Send alerts after (mins)</label>
+                                <input type="text" id="input_grace_period" class="form-control" placeholder="3"
+                                    v-model="form.grace_period"
+                                    :class="{'is-invalid': form.errors.has('grace_period')}">
+                                <small class="form-text text-muted">
+                                    If a job doesn't run on schedule we'll send alerts after this many minutes.
+                                </small>
+                                <span class="invalid-feedback" v-show="form.errors.has('grace_period')">
+                                    {{ form.errors.get('grace_period') }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="input_command">Command</label>
+                                <input type="text" id="input_command" class="form-control" placeholder="php artisan run-command"
+                                    v-model="form.command"
+                                    :class="{'is-invalid': form.errors.has('command')}">
+                                <small class="form-text text-muted">
+                                    The command this schedule should run.
+                                </small>
+                                <span class="invalid-feedback" v-show="form.errors.has('command')">
+                                    {{ form.errors.get('command') }}
+                                </span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="input_name">Name (optional)</label>
+                                <input type="text" id="input_name" class="form-control" placeholder="My Schedule Monitor"
+                                    v-model="form.name"
+                                    :class="{'is-invalid': form.errors.has('name')}">
+                                <small class="form-text text-muted">
+                                    Identify this schedule monitor by this name in Surveyr.
+                                </small>
+                                <span class="invalid-feedback" v-show="form.errors.has('name')">
+                                    {{ form.errors.get('name') }}
+                                </span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary" @click="showCreateForm = false">Cancel</button>
+                        <button type="submit" class="btn btn-primary" :disabled="form.busy">Create Schedule Monitor</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="input_grace_period">Send alerts after (mins)</label>
-                        <input type="text" id="input_grace_period" class="form-control" placeholder="3"
-                            v-model="form.grace_period"
-                            :class="{'is-invalid': form.errors.has('grace_period')}">
-                        <small class="form-text text-muted">
-                            If a job doesn't run on schedule we'll send alerts after this many minutes.
-                        </small>
-                        <span class="invalid-feedback" v-show="form.errors.has('grace_period')">
-                            {{ form.errors.get('grace_period') }}
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="input_command">Command</label>
-                        <input type="text" id="input_command" class="form-control" placeholder="php artisan run-command"
-                            v-model="form.command"
-                            :class="{'is-invalid': form.errors.has('command')}">
-                        <small class="form-text text-muted">
-                            The command this schedule should run.
-                        </small>
-                        <span class="invalid-feedback" v-show="form.errors.has('command')">
-                            {{ form.errors.get('command') }}
-                        </span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="input_name">Name (optional)</label>
-                        <input type="text" id="input_name" class="form-control" placeholder="My Schedule Monitor"
-                            v-model="form.name"
-                            :class="{'is-invalid': form.errors.has('name')}">
-                        <small class="form-text text-muted">
-                            Identify this schedule monitor by this name in Surveyr.
-                        </small>
-                        <span class="invalid-feedback" v-show="form.errors.has('name')">
-                            {{ form.errors.get('name') }}
-                        </span>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-secondary" @click="showCreateForm = false">Cancel</button>
-                <button type="submit" class="btn btn-primary" :disabled="form.busy">Create Schedule Monitor</button>
             </form>
 
             <div v-if="monitors.data && monitors.data.length">
