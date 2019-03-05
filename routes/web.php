@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@show');
+Route::get('/register', 'RedirectController@toIndex');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/settings/subscription', 'RedirectController@toSubscription');
