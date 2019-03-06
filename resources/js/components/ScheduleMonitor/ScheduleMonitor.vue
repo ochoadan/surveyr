@@ -46,6 +46,12 @@
         </div>
 
         <events :schedule-monitor="scheduleMonitor" />
+
+        <div class="row mb-5">
+            <div class="col text-muted">
+                Schedule Monitor ID: {{ scheduleMonitor.identifier }}
+            </div>
+        </div>
     </div>
 </template>
 
