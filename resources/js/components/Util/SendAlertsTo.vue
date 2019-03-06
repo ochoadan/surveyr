@@ -1,13 +1,13 @@
 <template>
     <div>
         <label>Send alerts to</label><br>
-        <button type="button" class="btn btn-default btn-sm mr-3" @click="showModal">New Email</button>
         <div class="d-inline-block" v-if="emailAlerts.data && emailAlerts.data.length">
             <div class="form-check d-inline-block mr-3" v-for="emailAlert in emailAlerts.data" :key="emailAlert.id">
                 <input class="form-check-input" type="checkbox" :id="'emailAlert' + emailAlert.id" :value="emailAlert.id" v-model="selectedAlerts">
                 <label class="form-check-label" :for="'emailAlert' + emailAlert.id">{{ emailAlert.email }}</label>
             </div>
         </div>
+        <button type="button" class="btn btn-link btn-sm mr-3" @click="showModal">+ Add Email</button>
         <small class="d-block form-text text-muted mt-2">
             If a job doesn't run on schedule we'll send the alerts you specify here.
         </small>
