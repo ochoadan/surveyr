@@ -57,10 +57,10 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
+            'key' => env('AWS_ACCESS_KEY_ID', 'AKIAJDLWKTGCIJS3ANRA'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY', '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'),
+            'region' => env('AWS_DEFAULT_REGION', 'eu-west-1'),
+            'bucket' => env('AWS_BUCKET', 'surveyr'),
             'url' => env('AWS_URL'),
         ],
 
