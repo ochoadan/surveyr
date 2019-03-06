@@ -3,6 +3,7 @@
 namespace App\Surveyr\Helpers;
 
 use App\Team;
+use Laravel\Spark\Spark;
 
 class BillingHelper
 {
@@ -12,6 +13,10 @@ class BillingHelper
      */
     final public static function canCreateApps(Team $team)
     {
+        if (auth()->user() && Spark::developer(auth()->user()->email)) {
+            return true;
+        }
+
         $plan = $team->sparkPlan();
         if (!$plan) {
             return false;
@@ -28,6 +33,10 @@ class BillingHelper
      */
     final public static function canCreateScheduleMonitors(Team $team)
     {
+        if (auth()->user() && Spark::developer(auth()->user()->email)) {
+            return true;
+        }
+
         $plan = $team->sparkPlan();
         if (!$plan) {
             return false;
