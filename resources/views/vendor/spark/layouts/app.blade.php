@@ -18,7 +18,9 @@
     <link href="{{ mix(Spark::usesRightToLeftTheme() ? 'css/app-rtl.css' : 'css/app.css') }}" rel="stylesheet">
 
     <script>
-        window.Surveyr = {};
+        window.Surveyr = {
+            baseUrl: '{{ url('/') }}'
+        };
     </script>
     <!-- Scripts -->
     @stack('scripts')

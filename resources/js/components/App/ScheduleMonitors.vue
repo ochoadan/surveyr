@@ -158,6 +158,18 @@ SURVEYR_API_TOKEN={API_TOKEN}</code></pre>
                 <p>Get started by creating schedule monitors.<br>These should reflect the schedules or cron jobs in your app.</p>
             </div>
         </div>
+
+        <portal to="default">
+            <modal
+                :show="showPingUrlsModal"
+                title="Ping URLs"
+                ok-text="Ok"
+                @cancel="showPingUrlsModal = false"
+                @ok="showPingUrlsModal = false">
+                <p>Send a <code>GET</code> request to these URLs before and after your scheduled cron jobs runs to enable monitoring.</p>
+                <pre><code>{{ pingUrls }}</code></pre>
+            </modal>
+        </portal>
     </div>
 </template>
 
@@ -182,6 +194,8 @@ export default {
                 timezone: 'UTC',
                 grace_period: 3,
             }),
+            showPingUrlsModal: false,
+            monitorIdentifier: ''
         }
     },
 
@@ -191,6 +205,9 @@ export default {
         },
         timezones() {
             return Surveyr.timezones;
+        },
+        pingUrls() {
+            return `${Surveyr.baseUrl}/ping/${this.app.identifier}/${this.monitorIdentifier}/start\nhttps://surveyr.io/ping/${this.app.identifier}/${this.monitorIdentifier}/finish`;
         }
     },
 
@@ -219,8 +236,12 @@ export default {
                     this.form.schedule = '* * * * *';
                     this.form.timezone = 'UTC';
                     this.form.grace_period = 3;
+                    console.log(response.data);
 
                     this.getScheduleMonitors();
+
+                    this.monitorIdentifier = response.data.identifier;
+                    this.showPingUrlsModal = true;
                 });
         },
         deleteMonitor(monitor) {
