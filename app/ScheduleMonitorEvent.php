@@ -8,6 +8,7 @@ class ScheduleMonitorEvent extends Model
 {
     protected $fillable = [
         'schedule_monitor_id',
+        'identifier',
         'started_at',
         'finished_at',
         'duration',

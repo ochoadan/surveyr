@@ -1,5 +1,6 @@
 <?php
 
+use App\Surveyr\Helpers\IdentifierHelper;
 use Faker\Generator as Faker;
 
 /*
@@ -16,6 +17,7 @@ use Faker\Generator as Faker;
 $factory->define(App\ScheduleMonitorEvent::class, function (Faker $faker) {
     return [
         'schedule_monitor_id' => 1,
+        'identifier'          => IdentifierHelper::getIdentifier(),
         'started_at'          => null,
         'finished_at'         => null,
         'duration'            => 0,
