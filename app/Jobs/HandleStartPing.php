@@ -25,16 +25,23 @@ class HandleStartPing implements ShouldQueue
     protected $now;
 
     /**
+     * @var string|null
+     */
+    protected $eventId;
+
+    /**
      * Create a new job instance.
      *
      * @param ScheduleMonitor $monitor
      * @param \Illuminate\Support\Carbon $now
+     * @param string|null $eventId
      * @return void
      */
-    public function __construct(ScheduleMonitor $monitor, $now)
+    public function __construct(ScheduleMonitor $monitor, $now, $eventId = null)
     {
         $this->monitor = $monitor;
         $this->now     = $now;
+        $this->eventId = $eventId;
     }
 
     /**
@@ -46,6 +53,7 @@ class HandleStartPing implements ShouldQueue
     {
         ScheduleMonitorEvent::create([
             'schedule_monitor_id' => $this->monitor->id,
+            'identifier'          => $this->eventId,
             'started_at'          => $this->now,
         ]);
     }

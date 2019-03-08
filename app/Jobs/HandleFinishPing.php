@@ -24,16 +24,23 @@ class HandleFinishPing implements ShouldQueue
     protected $now;
 
     /**
+     * @var string|null
+     */
+    protected $eventId;
+
+    /**
      * Create a new job instance.
      *
      * @param ScheduleMonitor $monitor
      * @param \Illuminate\Support\Carbon $now
+     * @param string|null $eventId
      * @return void
      */
-    public function __construct(ScheduleMonitor $monitor, $now)
+    public function __construct(ScheduleMonitor $monitor, $now, $eventId = null)
     {
         $this->monitor = $monitor;
         $this->now     = $now;
+        $this->eventId = $eventId;
     }
 
     /**
@@ -43,10 +50,16 @@ class HandleFinishPing implements ShouldQueue
      */
     public function handle()
     {
-        $event = $this->monitor->events()
-                               ->whereNull('finished_at')
-                               ->orderBy('started_at', 'asc')
-                               ->first();
+        if ($this->eventId) {
+            $event = $this->monitor->events()
+                                   ->where('identifier', $this->eventId)
+                                   ->first();
+        } else {
+            $event = $this->monitor->events()
+                                   ->whereNull('finished_at')
+                                   ->orderBy('started_at', 'asc')
+                                   ->first();
+        }
 
         if (!$event) {
             return;

@@ -9,22 +9,24 @@ use Illuminate\Http\Request;
 
 class PingController extends Controller
 {
-    public function start($appId, $monitorId)
+    public function start($appId, $monitorId, Request $request)
     {
         $app     = App::where('identifier', $appId)->firstOrFail();
         $monitor = $app->scheduleMonitors()->where('identifier', $monitorId)->firstOrFail();
+        $eventId = $request->input('event');
 
-        HandleStartPing::dispatch($monitor, now());
+        HandleStartPing::dispatch($monitor, now(), $eventId);
 
         return response('Ok');
     }
 
-    public function finish($appId, $monitorId)
+    public function finish($appId, $monitorId, Request $request)
     {
         $app     = App::where('identifier', $appId)->firstOrFail();
         $monitor = $app->scheduleMonitors()->where('identifier', $monitorId)->firstOrFail();
+        $eventId = $request->input('event');
 
-        HandleFinishPing::dispatch($monitor, now());
+        HandleFinishPing::dispatch($monitor, now(), $eventId);
 
         return response('Ok');
     }
