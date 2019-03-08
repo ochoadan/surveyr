@@ -27,7 +27,8 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th class="text-center">Status</th>
+                            <th class="text-center">Schedule Monitors</th>
+                            <th class="text-right">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +36,8 @@
                             <td>
                                 <a :href="'/app/' + app.id">{{ app.name }}</a>
                             </td>
-                            <td class="text-center">
+                            <td class="text-center">{{ app.schedule_monitors.length }}</td>
+                            <td class="text-right">
                                 <span :class="{ 'text-success': app.is_passing, 'text-danger': !app.is_passing }">
                                     {{ app.status }}
                                 </span>

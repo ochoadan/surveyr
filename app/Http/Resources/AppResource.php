@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\MissingValue;
+use Illuminate\Support\Str;
 
 class AppResource extends JsonResource
 {
@@ -31,7 +32,7 @@ class AppResource extends JsonResource
                 $data['status']     = 'All monitors passing';
             } else {
                 $data['is_passing'] = false;
-                $data['status']     = number_format($failingMonitors->count()) . ' monitor(s) failing';
+                $data['status']     = number_format($failingMonitors->count()) . ' ' . Str::plural('monitor', $failingMonitors->count()) . ' failing';
             }
         }
 
