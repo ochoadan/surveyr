@@ -24,6 +24,8 @@ jobs:
       - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
 
+      - run: echo "{\"http-basic\":{\"spark-satis.laravel.com\":{\"username\":\"gilbert@dev7studios.com\",\"password\":\"8azunaTr\"}}}" > auth.json
+
       # Download and cache dependencies
       - restore_cache:
           keys:
