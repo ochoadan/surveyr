@@ -10,6 +10,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
     <link href="{{ mix('css/site.css') }}" rel="stylesheet">
+
+    @include('analytics.google')
 </head>
 <body class="is-boxed">
     <div class="body-wrap">

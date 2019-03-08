@@ -29,6 +29,8 @@
     <script>
         window.Spark = @json(array_merge(Spark::scriptVariables(), []));
     </script>
+
+    @include('analytics.google')
 </head>
 <body>
     <div id="spark-app" v-cloak>
