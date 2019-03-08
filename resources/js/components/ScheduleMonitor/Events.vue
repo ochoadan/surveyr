@@ -1,7 +1,7 @@
 <template>
     <div class="card card-default card-no-padding">
         <div class="card-header">
-            Pings
+            Recent Pings
         </div>
         <div class="card-body">
             <div v-if="events.data && events.data.length">

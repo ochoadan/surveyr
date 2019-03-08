@@ -29,7 +29,7 @@ class ScheduleMonitorEventController extends Controller
         $query = $monitor->events()->orderBy('started_at', 'desc');
 
         if ($request->has('recent')) {
-            return ScheduleMonitorEventResource::collection($query->limit(100)->get());
+            return ScheduleMonitorEventResource::collection($query->limit(30)->get());
         }
 
         return ScheduleMonitorEventResource::collection($query->paginate($request->input('perPage', 10)));
