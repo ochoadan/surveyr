@@ -53,6 +53,7 @@ class HandleFinishPing implements ShouldQueue
         if ($this->eventId) {
             $event = $this->monitor->events()
                                    ->where('identifier', $this->eventId)
+                                   ->orderBy('started_at', 'asc')
                                    ->first();
         } else {
             $event = $this->monitor->events()
