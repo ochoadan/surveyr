@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/ping/{appId}/{monitorId}/start', 'PingController@start');
-Route::post('/ping/{appId}/{monitorId}/start', 'PingController@start');
-Route::get('/ping/{appId}/{monitorId}/finish', 'PingController@finish');
-Route::post('/ping/{appId}/{monitorId}/finish', 'PingController@finish');
+Route::middleware(['cors'])->group(function() {
+    Route::get('/ping/{appId}/{monitorId}/start', 'PingController@start');
+    Route::post('/ping/{appId}/{monitorId}/start', 'PingController@start');
+    Route::get('/ping/{appId}/{monitorId}/finish', 'PingController@finish');
+    Route::post('/ping/{appId}/{monitorId}/finish', 'PingController@finish');
+});
