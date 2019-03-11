@@ -18,7 +18,6 @@
                     <div class="tab-pane fade show active" id="laravel" role="tabpanel" aria-labelledby="laravel-tab">
                         <p>To quickly get up and running when using Laravel, run the following commands in your Laravel app:</p>
                         <pre><code>composer require dev7studios/surveyr-laravel
-composer require guzzlehttp/guzzle
 php artisan vendor:publish --provider="Dev7studios\Surveyr\SurveyrServiceProvider"</code></pre>
                         <p>Next, add the following Surveyr credentials to your <code>.env</code> file:</p>
                         <pre><code>SURVEYR_APP_ID={{ app.identifier }}
