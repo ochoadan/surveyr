@@ -29,18 +29,25 @@ class HandleFinishPing implements ShouldQueue
     protected $eventId;
 
     /**
+     * @var string|null
+     */
+    protected $output;
+
+    /**
      * Create a new job instance.
      *
      * @param ScheduleMonitor $monitor
      * @param \Illuminate\Support\Carbon $now
      * @param string|null $eventId
+     * @param string|null $output
      * @return void
      */
-    public function __construct(ScheduleMonitor $monitor, $now, $eventId = null)
+    public function __construct(ScheduleMonitor $monitor, $now, $eventId = null, $output = null)
     {
         $this->monitor = $monitor;
         $this->now     = $now;
         $this->eventId = $eventId;
+        $this->output  = $output;
     }
 
     /**
@@ -64,6 +71,10 @@ class HandleFinishPing implements ShouldQueue
 
         if (!$event) {
             return;
+        }
+
+        if ($this->output) {
+            $event->output = $this->output;
         }
 
         $event->finished_at = $this->now;

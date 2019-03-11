@@ -25,8 +25,9 @@ class PingController extends Controller
         $app     = App::where('identifier', $appId)->firstOrFail();
         $monitor = $app->scheduleMonitors()->where('identifier', $monitorId)->firstOrFail();
         $eventId = $request->input('event');
+        $output  = $request->input('output');
 
-        HandleFinishPing::dispatch($monitor, now(), $eventId);
+        HandleFinishPing::dispatch($monitor, now(), $eventId, $output);
 
         return response('Ok');
     }
