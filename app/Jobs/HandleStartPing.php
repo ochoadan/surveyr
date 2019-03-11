@@ -51,6 +51,10 @@ class HandleStartPing implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->eventId && $this->monitor->events()->where('identifier', $this->eventId)->exists()) {
+            return;
+        }
+
         ScheduleMonitorEvent::create([
             'schedule_monitor_id' => $this->monitor->id,
             'identifier'          => $this->eventId,

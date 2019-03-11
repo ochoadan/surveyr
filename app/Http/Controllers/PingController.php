@@ -15,10 +15,6 @@ class PingController extends Controller
         $monitor = $app->scheduleMonitors()->where('identifier', $monitorId)->firstOrFail();
         $eventId = $request->input('event');
 
-        if ($eventId && $monitor->events()->where('identifier', $eventId)->exists()) {
-            return response('Ok');
-        }
-
         HandleStartPing::dispatch($monitor, now(), $eventId);
 
         return response('Ok');
