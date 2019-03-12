@@ -1,6 +1,6 @@
 <template>
     <div ref="modal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" :class="{ 'modal-sm': size == 'small', 'modal-lg': size == 'large' }" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" v-if="title">{{ title }}</h5>
@@ -42,6 +42,10 @@ export default {
         okText: {
             type: String,
             default: 'Ok'
+        },
+        size: {
+            type: String,
+            default: 'default'
         }
     },
 
@@ -66,4 +70,3 @@ export default {
     }
 }
 </script>
-
