@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EmailAlertResource;
 use App\Team;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EmailAlertController extends Controller
 {
@@ -55,7 +56,13 @@ class EmailAlertController extends Controller
 
         $data = $this->validate($request, [
             'team_id' => 'required|integer',
-            'email'   => 'required|email',
+            'email'   => [
+                'required',
+                'email',
+                Rule::unique('email_alerts')->where(function ($query) use ($request) {
+                    return $query->where('team_id', $request->input('team_id'));
+                }),
+            ],
         ]);
 
         $team = Team::findOrFail($data['team_id']);
@@ -93,7 +100,13 @@ class EmailAlertController extends Controller
         $this->authorize('update', $emailAlert);
 
         $data = $this->validate($request, [
-            'email' => 'required|email',
+            'email'   => [
+                'required',
+                'email',
+                Rule::unique('email_alerts')->ignore($emailAlert)->where(function ($query) use ($emailAlert) {
+                    return $query->where('team_id', $emailAlert->team_id);
+                }),
+            ],
         ]);
 
         $emailAlert->update($data);
