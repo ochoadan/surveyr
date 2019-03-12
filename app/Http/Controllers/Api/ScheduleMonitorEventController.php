@@ -46,6 +46,8 @@ class ScheduleMonitorEventController extends Controller
         $event = ScheduleMonitorEvent::findOrFail($id);
         $this->authorize('view', $event);
 
+        $event->makeVisible('output');
+
         return new ScheduleMonitorEventResource($event);
     }
 }

@@ -16,10 +16,23 @@ class ScheduleMonitorEvent extends Model
         'output',
     ];
 
+    protected $hidden = [
+        'output',
+    ];
+
+    protected $appends = [
+        'has_output',
+    ];
+
     protected $dates = [
         'started_at',
         'finished_at',
     ];
+
+    public function getHasOutputAttribute()
+    {
+        return !is_null($this->attributes['output']);
+    }
 
     public function scheduleMonitor()
     {
