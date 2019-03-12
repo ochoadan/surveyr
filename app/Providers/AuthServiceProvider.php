@@ -13,10 +13,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \App\Alert\EmailAlert::class => \App\Policies\EmailAlertPolicy::class,
-        \App\App::class              => \App\Policies\AppPolicy::class,
-        \App\ScheduleMonitor::class  => \App\Policies\ScheduleMonitorPolicy::class,
-        \App\Team::class             => \App\Policies\TeamPolicy::class,
+        \App\Alert\EmailAlert::class      => \App\Policies\EmailAlertPolicy::class,
+        \App\App::class                   => \App\Policies\AppPolicy::class,
+        \App\ScheduleMonitor::class       => \App\Policies\ScheduleMonitorPolicy::class,
+        \App\ScheduleMonitorEvent::class  => \App\Policies\ScheduleMonitorEventPolicy::class,
+        \App\Team::class                  => \App\Policies\TeamPolicy::class,
     ];
 
     /**
