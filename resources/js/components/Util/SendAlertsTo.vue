@@ -91,10 +91,11 @@ export default {
         },
         saveNewEmail() {
             Spark.post('/api/email-alerts', this.newEmailForm)
-                .then(() => {
+                .then(response => {
                     this.newEmailForm.email = '';
                     this.getEmailAlerts();
                     this.showNewEmailModal = false;
+                    this.selectedAlerts.push(response.data.id);
                 });
         }
     },
