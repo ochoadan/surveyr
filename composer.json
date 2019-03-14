@@ -16,6 +16,7 @@
     "require": {
         "php": "^7.1.3",
         "barryvdh/laravel-cors": "^0.11.3",
+        "dev7studios/surveyr-laravel": "^0.1.4",
         "fideloper/proxy": "^4.0",
         "laravel/cashier": "~8.0",
         "laravel/framework": "5.7.*",

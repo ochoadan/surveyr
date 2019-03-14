@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23bbb6771cb110beb8fa4c16c8f1a35c",
+    "content-hash": "d364370230effeecf03dbd6fca2e3b1a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -253,6 +253,40 @@
                 "stream_filter_register"
             ],
             "time": "2017-08-18T09:54:01+00:00"
+        },
+        {
+            "name": "dev7studios/surveyr-laravel",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dev7studios/surveyr-laravel.git",
+                "reference": "0eeb3a462d79dc3d3eefdcfb29941c8a7aca3b7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dev7studios/surveyr-laravel/zipball/0eeb3a462d79dc3d3eefdcfb29941c8a7aca3b7f",
+                "reference": "0eeb3a462d79dc3d3eefdcfb29941c8a7aca3b7f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "6.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dev7studios\\Surveyr\\SurveyrServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dev7studios\\Surveyr\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Laravel integration for Surveyr",
+            "time": "2019-03-11T17:18:57+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
