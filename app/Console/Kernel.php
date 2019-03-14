@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\CreateStripePlans::class,
+        \App\Console\Commands\DeleteOldEvents::class,
         \App\Console\Commands\RunAlertChecks::class,
     ];
 
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app:run-alert-checks')->everyMinute();
+        $schedule->command('app:delete-old-events')->daily()->at('00:00');
 
         $schedule->command('spark:kpi')->dailyAt('23:55');
 
