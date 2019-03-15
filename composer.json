@@ -23,7 +23,9 @@
         "laravel/spark-aurelius": "~7.0",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
+        "shipping-docker/vessel": "^4.0",
         "spatie/laravel-backup": "^6.0"
     },
     "require-dev": {

@@ -1,0 +1,58 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: surveyr/app
+    ports:
+     - "${APP_PORT}:80"
+    environment:
+      CONTAINER_ENV: "${APP_ENV}"
+      XDEBUG_HOST: "${XDEBUG_HOST}"
+      WWWUSER: "${WWWUSER}"
+    volumes:
+     - .:/var/www/html:delegated
+    networks:
+     - vessel-surveyr
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+      args:
+        uid: "${WWWUSER}"
+    image: surveyr/node
+    user: node
+    volumes:
+     - .:/var/www/html:delegated
+    networks:
+     - vessel-surveyr
+  mysql:
+    image: mysql:5.7
+    ports:
+     - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+     - surveyrmysql:/var/lib/mysql:delegated
+     # - ./docker/mysql/conf.d:/etc/mysql/conf.d
+     # - ./docker/mysql/logs:/var/log/mysql
+    networks:
+     - vessel-surveyr
+  redis:
+    image: redis:alpine
+    volumes:
+     - surveyrredis:/data:delegated
+    networks:
+     - vessel-surveyr
+networks:
+  vessel-surveyr:
+    driver: "bridge"
+volumes:
+  surveyrmysql:
+    driver: "local"
+  surveyrredis:
+    driver: "local"
