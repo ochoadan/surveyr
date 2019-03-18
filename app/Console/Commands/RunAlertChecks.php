@@ -49,7 +49,8 @@ class RunAlertChecks extends Command
                     if ($cron->isDue('now', $monitor->timezone)) {
                         $this->line("Queuing check for monitor {$monitor->id}...");
                         RunAlertCheck::dispatch($monitor, now())
-                                 ->delay(now()->addMinutes($monitor->grace_period));
+                                 ->delay(now()->addMinutes($monitor->grace_period))
+                                 ->onQueue('alert-checks');
                     }
                 } catch (\Exception $e) {
                     report($e);
