@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('app:run-alert-checks')->everyMinute()->monitor();
         $schedule->command('app:delete-old-events')->daily()->at('00:00')->monitor();
 
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command('spark:kpi')->dailyAt('23:55');
 
         $schedule->command('backup:clean')->daily()->at('01:00');
