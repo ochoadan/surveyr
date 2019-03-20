@@ -52,16 +52,7 @@ class SparkServiceProvider extends ServiceProvider
     {
         Spark::collectBillingAddress();
 
-        Spark::useStripe()->noCardUpFront();
-
-        $freePlan = config('billing.plans.free');
-        Spark::freeTeamPlan()
-            ->maxTeamMembers($freePlan['team_member_limit'])
-            ->features([
-                    $freePlan['app_limit'] . ' Apps',
-                    $freePlan['schedule_monitor_limit'] . ' Schedule Monitors',
-                    $freePlan['team_member_limit'] . ' Team Members',
-                ]);
+        Spark::useStripe();
 
         $plans = config('billing.plans');
         foreach ($plans as $plan) {
@@ -71,11 +62,9 @@ class SparkServiceProvider extends ServiceProvider
 
             $sparkPlan = Spark::teamPlan($plan['title'], $plan['id'])
                 ->price($plan['price'])
-                ->maxTeamMembers($plan['team_member_limit'])
+                ->trialDays($plan['trial'])
                 ->features([
-                    $plan['app_limit'] . ' Apps',
                     $plan['schedule_monitor_limit'] . ' Schedule Monitors',
-                    $plan['team_member_limit'] . ' Team Members',
                 ]);
 
             if ($plan['interval'] == 'yearly') {
