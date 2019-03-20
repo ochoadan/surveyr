@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Team;
 use App\Jobs\RunAlertCheck;
 use App\ScheduleMonitor;
 use Cron\CronExpression;
@@ -45,6 +46,11 @@ class RunAlertChecks extends Command
         ScheduleMonitor::chunk(100, function ($monitors) {
             foreach ($monitors as $monitor) {
                 try {
+                    $team = $monitor->app->team;
+                    if (!$team || !$this->teamIsOnTrialOrSubscribed($team)) {
+                        continue;
+                    }
+
                     $cron = CronExpression::factory($monitor->schedule);
                     if ($cron->isDue('now', $monitor->timezone)) {
                         $this->line("Queuing check for monitor {$monitor->id}...");
@@ -59,5 +65,14 @@ class RunAlertChecks extends Command
         });
 
         $this->info('Finshed');
+    }
+
+    /**
+     * @param Team $team
+     * @return boolean
+     */
+    protected function teamIsOnTrialOrSubscribed(Team $team)
+    {
+        return $team->onGenericTrial() || $team->subscribed();
     }
 }
