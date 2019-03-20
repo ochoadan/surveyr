@@ -206,7 +206,7 @@ export default {
             return Surveyr.timezones;
         },
         pingUrls() {
-            return `${Surveyr.baseUrl}/ping/${this.app.identifier}/${this.monitorIdentifier}/start\nhttps://surveyr.io/ping/${this.app.identifier}/${this.monitorIdentifier}/finish`;
+            return `${Surveyr.baseUrl}/ping/${this.app.identifier}/${this.monitorIdentifier}/start\n${Surveyr.baseUrl}/ping/${this.app.identifier}/${this.monitorIdentifier}/finish`;
         }
     },
 
