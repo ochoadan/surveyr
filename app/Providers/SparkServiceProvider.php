@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Laravel\Spark\Exceptions\IneligibleForPlan;
 use Laravel\Spark\Providers\AppServiceProvider as ServiceProvider;
 use Laravel\Spark\Spark;
 
@@ -74,5 +75,18 @@ class SparkServiceProvider extends ServiceProvider
                 $sparkPlan->archived();
             }
         }
+
+        Spark::checkTeamPlanEligibilityUsing(function ($team, $plan) {
+            $planData = config("billing.plans.{$plan->id}");
+            if (!$planData) {
+                return false;
+            }
+
+            if ($team->scheduleMonitors()->count() > $planData['schedule_monitor_limit']) {
+                throw IneligibleForPlan::because("You cannot switch to the {$plan->name} plan as you have too many schedule monitors.");
+            }
+
+            return true;
+        });
     }
 }
