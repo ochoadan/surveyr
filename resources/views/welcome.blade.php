@@ -377,6 +377,12 @@
                     </div>
                     <ul class="footer-links list-reset">
                         <li>
+                            <a href="{{ url('/terms') }}">Terms</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/privacy') }}">Privacy</a>
+                        </li>
+                        <li>
                             <a href="https://twitter.com/surveyrio">Twitter</a>
                         </li>
                         <li>

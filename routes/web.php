@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@show');
+Route::get('/', 'SiteController@index');
+Route::get('/privacy', 'SiteController@privacy');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/settings/subscription', 'RedirectController@toSubscription');
