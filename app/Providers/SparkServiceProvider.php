@@ -66,6 +66,10 @@ class SparkServiceProvider extends ServiceProvider
                 ->trialDays($plan['trial'])
                 ->features([
                     $plan['schedule_monitor_limit'] . ' Schedule Monitors',
+                    '30 day event log',
+                    'Unlimited apps',
+                    'Unlimited team members',
+                    'Email support',
                 ]);
 
             if ($plan['interval'] == 'yearly') {

@@ -46,8 +46,10 @@
                     </div>
                     <ul class="header-links mb-0">
                         <li>
+                            <a href="/#features">Features</a>
+                            <a href="/#pricing">Pricing</a>
                             <a href="/login">Login</a>
-                            {{--<a href="/register">Sign Up</a>--}}
+                            <a href="/register">Sign Up</a>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +154,7 @@
                 </div>
             </section>
 
-            <section class="features section">
+            <section id="features" class="features section">
                 <div class="container">
                     <div class="features-inner section-inner has-bottom-divider">
                         <div class="feature">
@@ -184,8 +186,8 @@
                                         </g>
                                     </svg>
                                 </div>
-                                <h3 class="feature-title">Powerful Dashboard</h3>
-                                <p class="text-sm">See how your schedule monitors are performing and quickly diagnose a problem when it does occur. Human-readble format&nbsp;ftw!</p>
+                                <h3 class="feature-title">Quick Alerts</h3>
+                                <p class="text-sm">Get alerted as soon as a problem occurs so you can diagnose and resolve it as quickly as&nbsp;possible.</p>
                             </div>
                             <div class="feature-image">
                                 <img src="{{ url('/img/feature-dashboard.png') }}" alt="Viewing a schedule monitor in Surveyr">
@@ -229,23 +231,116 @@
                 </div>
             </section>
 
-            <section class="newsletter section">
+            <section id="pricing" class="pricing section">
                 <div class="container-sm">
-                    <div class="newsletter-inner section-inner">
-                        <div class="newsletter-header text-center is-revealing">
-                            <h2 class="section-title mt-0">Coming soon...</h2>
-                            <p class="section-paragraph">We're not quite ready to release Surveyr to the world yet, but if you're interested in becoming a beta tester or being notified when we launch pop your email address in the form below to subscribe and be the first to know.</p>
+                    <div class="section-inner">
+                        <div class="text-center is-revealing">
+                            <h2 class="section-title mt-0">Simple Pricing</h2>
+                            <p class="section-paragraph">We like to make things stupidly simple, including our pricing.</p>
                         </div>
-                        <form action="https://surveyr.us16.list-manage.com/subscribe/post" method="get" class="footer-form newsletter-form field field-grouped is-revealing">
-                            <input type="hidden" name="u" value="eb58963377353c297654599fb">
-                            <input type="hidden" name="id" value="7cfc776e42">
-                            <div class="control control-expanded">
-                                <input class="input" type="email" name="EMAIL" placeholder="Your email address&hellip;" required>
+                        @php
+                        $plans = config('billing.plans');
+                        $plans = collect($plans)->reject(function($plan) {
+                            return $plan['archived'];
+                        });
+                        @endphp
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <th>{{ $plan['title'] }}</th>
+                                    @endforeach
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pricing-price">
+                                    @foreach ($plans as $plan)
+                                        <td><span>&dollar;{{ $plan['price'] }}</span>/month</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>30 day event log</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>Unlimited apps</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>Unlimited team members</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>Email support</td>
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>{{ $plan['trial'] }} day free trial</td>
+                                    @endforeach
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    @foreach ($plans as $plan)
+                                        <td>
+                                            <a href="{{ url('register?plan=' . $plan['id']) }}" class="button button-primary">Start Free Trial</a>
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div id="mbg" class="text-center">
+                            <h3>100% No-Risk 30-Day Money Back Guarantee</h3>
+                            <p>If for any reason you are not happy with our product or service, simply let us know within 30 days of your purchase and we'll refund 100% of your money. No questions asked.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="faq section">
+                <div class="container">
+                    <div class="section-inner">
+                        <div class="text-center is-revealing">
+                            <h2 class="section-title mt-0">FAQ</h2>
+                        </div>
+                        <div class="faq-row">
+                            <div class="faq-item">
+                                <h4>What is a schedule monitor?</h4>
+                                <p class="text-sm">A schedule monitor is a monitor for a single scheduled cron job. For example, in Laravel each <code>$schedule->command()</code> you have will require an individual schedule monitor.</p>
                             </div>
-                            <div class="control">
-                                <button type="submit" class="button button-primary button-block button-shadow">Get early access</button>
+                            <div class="faq-item">
+                                <h4>What happens when my 10 day free trial ends?</h4>
+                                <p class="text-sm">When your free trial ends your subscription will begin and your card will be charged the amount for your selected plan. Billing will continue until you cancel your subscription.</p>
                             </div>
-                        </form>
+                            <div class="faq-item">
+                                <h4>What happens if I go over my schedule monitor limit?</h4>
+                                <p class="text-sm">When you reach the limit of schedule monitors for your plan you will no longer be able to create new schedule monitors. To create new schedule monitors you will need to upgrade to a higher plan.</p>
+                            </div>
+                        </div>
+                        <div class="faq-row">
+                            <div class="faq-item">
+                                <h4>Will your package slow down or break my app?</h4>
+                                <p class="text-sm">Our Laravel package is designed to put minimal extra load on your scheduled jobs and will not affect your jobs even if pings to our service fail.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Can I upgrade my plan?</h4>
+                                <p class="text-sm">You can upgrade your plan at any time via the billing page. Upgrades will be prorated and you won't be charged until the beginning of the next billing cycle.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Can I cancel my subscription?</h4>
+                                <p class="text-sm">You can cancel your subscripiton at any time via the billing page. When the current billing cycle ends your schedule cron jobs will no longer be monitored and your card will stop being billed.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
