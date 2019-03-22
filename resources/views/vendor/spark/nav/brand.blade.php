@@ -1,4 +1,4 @@
-<a class="navbar-brand" href="/home">
+<a class="navbar-brand" href="/">
     <svg width="1360px" height="351px" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
