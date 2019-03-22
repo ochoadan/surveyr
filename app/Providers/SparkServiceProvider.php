@@ -55,6 +55,8 @@ class SparkServiceProvider extends ServiceProvider
 
         Spark::useStripe();
 
+        Spark::promotion('SURVEYR503MO');
+
         $plans = config('billing.plans');
         foreach ($plans as $plan) {
             if ($plan['id'] == 'free') {
