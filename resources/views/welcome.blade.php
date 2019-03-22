@@ -126,7 +126,6 @@
                                         <path d="M43.697 56.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S-61-97.44-61-56.407C-61-15.373 2.663 56.661 43.697 56.661z" fill="#B1B6F1" opacity=".64" mask="url(#bubble-2-b)"/>
                                     </g>
                                 </svg>
-
                             </div>
                         </div>
                     </div>
@@ -223,7 +222,7 @@
             </section>
 
             <section id="pricing" class="pricing section">
-                <div class="container-sm">
+                <div class="container">
                     <div class="section-inner">
                         <div class="text-center is-revealing">
                             <h2 class="section-title mt-0">Simple Pricing</h2>
@@ -235,6 +234,7 @@
                             return $plan['archived'];
                         });
                         @endphp
+                        <p class="beta-notice">While we're in beta, get 50% off your first three months of Surveyr! Limited time only.</p>
                         <table class="pricing-table">
                             <thead>
                                 <tr>
@@ -246,7 +246,10 @@
                             <tbody>
                                 <tr class="pricing-price">
                                     @foreach ($plans as $plan)
-                                        <td><span>&dollar;{{ $plan['price'] }}</span>/month</td>
+                                        <td>
+                                            <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ ($plan['price']/2) }}</span>/month
+                                            <span class="explainer">for first 3 months, full price after that</span>
+                                        </td>
                                     @endforeach
                                 </tr>
                                 <tr>
@@ -290,6 +293,10 @@
                                 </tr>
                             </tfoot>
                         </table>
+                    </div>
+                </di>
+                <div class="container-sm">
+                    <div class="section-inner" style="padding-top: 0;">
                         <div id="mbg" class="text-center">
                             <h3>100% No-Risk 30-Day Money Back Guarantee</h3>
                             <p>If for any reason you are not happy with our product or service, simply let us know within 30 days of your purchase and we'll refund 100% of your money. No questions asked.</p>
