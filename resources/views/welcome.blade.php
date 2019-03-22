@@ -42,6 +42,7 @@
                                     </g>
                                 </g>
                             </svg>
+                            <span class="beta">beta</span>
                         </a>
                     </div>
                     <ul class="header-links mb-0">
