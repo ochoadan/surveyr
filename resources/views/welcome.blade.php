@@ -62,18 +62,6 @@
                     <div class="hero-inner">
                         <h1 class="hero-title h2-mobile mt-0 is-revealing">Cron schedule monitoring for Laravel</h1>
                         <p class="hero-paragraph is-revealing">Get an instant alert if your Laravel scheduled cron job fails to run.</p>
-                        {{--
-                        <form action="https://surveyr.us16.list-manage.com/subscribe/post" method="get" class="hero-form newsletter-form field field-grouped is-revealing">
-                            <input type="hidden" name="u" value="eb58963377353c297654599fb">
-                            <input type="hidden" name="id" value="7cfc776e42">
-                            <div class="control control-expanded">
-                                <input class="input" type="email" name="EMAIL" placeholder="Your email address&hellip;" required>
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button button-primary button-block button-shadow">Get early access</button>
-                            </div>
-                        </form>
-                        --}}
                         <div class="hero-browser">
                             <div class="bubble-3 is-revealing">
                                 <svg width="427" height="286" viewBox="0 0 427 286" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
