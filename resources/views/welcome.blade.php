@@ -307,7 +307,7 @@
 
             <section id="faq" class="faq section">
                 <div class="container">
-                    <div class="section-inner">
+                    <div class="section-inner has-bottom-divider">
                         <div class="text-center is-revealing">
                             <h2 class="section-title mt-0">FAQ</h2>
                         </div>
@@ -339,6 +339,27 @@
                                 <p class="text-sm">You can cancel your subscripiton at any time via the billing page. When the current billing cycle ends your schedule cron jobs will no longer be monitored and your card will stop being billed.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="newsletter section">
+                <div class="container-sm">
+                    <div class="newsletter-inner section-inner">
+                        <div class="newsletter-header text-center is-revealing">
+                            <h2 class="section-title mt-0">Updates in your Inbox</h2>
+                            <p class="section-paragraph">Rather wait until we're out of beta?<br>Sign up to our newsletter for updates when we launch.</p>
+                        </div>
+                        <form action="https://surveyr.us16.list-manage.com/subscribe/post" method="get" class="footer-form newsletter-form field field-grouped is-revealing">
+                            <input type="hidden" name="u" value="eb58963377353c297654599fb">
+                            <input type="hidden" name="id" value="7cfc776e42">
+                            <div class="control control-expanded">
+                                <input class="input" type="email" name="EMAIL" placeholder="Your email address&hellip;" required>
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button button-primary button-block button-shadow">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>

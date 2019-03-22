@@ -1,9 +1,4 @@
 .faq {
-
-    .section-inner {
-        padding-bottom: 120px;
-    }
-
     .section-paragraph {
         margin-bottom: 32px;
     }
@@ -16,11 +11,6 @@
 @include media( '>medium' ) {
 
     .faq {
-
-        .section-inner {
-            padding-bottom: 180px;
-        }
-
         .section-paragraph {
             margin-bottom: 40px;
             padding-left: 72px;
