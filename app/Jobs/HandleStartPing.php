@@ -2,13 +2,15 @@
 
 namespace App\Jobs;
 
+use App\Mail\ScheduleMonitorSetUp;
 use App\ScheduleMonitor;
 use App\ScheduleMonitorEvent;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class HandleStartPing implements ShouldQueue
 {
@@ -53,6 +55,14 @@ class HandleStartPing implements ShouldQueue
     {
         if ($this->eventId && $this->monitor->events()->where('identifier', $this->eventId)->exists()) {
             return;
+        }
+
+        if (!$this->monitor->events()->count()) {
+            try {
+                Mail::to($this->monitor->app->team->owner->email)->send(new ScheduleMonitorSetUp($this->monitor));
+            } catch (\Exception $e) {
+                report($e);
+            }
         }
 
         ScheduleMonitorEvent::create([
