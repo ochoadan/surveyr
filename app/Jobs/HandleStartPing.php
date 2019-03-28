@@ -53,6 +53,9 @@ class HandleStartPing implements ShouldQueue
      */
     public function handle()
     {
+        if (!$this->shouldStorePing()) {
+            return;
+        }
         if ($this->eventId && $this->monitor->events()->where('identifier', $this->eventId)->exists()) {
             return;
         }
@@ -70,5 +73,22 @@ class HandleStartPing implements ShouldQueue
             'identifier'          => $this->eventId,
             'started_at'          => $this->now,
         ]);
+    }
+
+    /**
+     * @return boolean
+     */
+    protected function shouldStorePing()
+    {
+        $team = optional($this->monitor->app->team);
+        if (!$team) {
+            return false;
+        }
+
+        if ($team->subscribed() || $team->onGenericTrial()) {
+            return true;
+        }
+
+        return false;
     }
 }

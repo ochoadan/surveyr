@@ -57,6 +57,10 @@ class HandleFinishPing implements ShouldQueue
      */
     public function handle()
     {
+        if (!$this->shouldStorePing()) {
+            return;
+        }
+
         if ($this->eventId) {
             $event = $this->monitor->events()
                                    ->where('identifier', $this->eventId)
@@ -83,5 +87,22 @@ class HandleFinishPing implements ShouldQueue
 
         $this->monitor->last_run_at = $this->now;
         $this->monitor->save();
+    }
+
+    /**
+     * @return boolean
+     */
+    protected function shouldStorePing()
+    {
+        $team = optional($this->monitor->app->team);
+        if (!$team) {
+            return false;
+        }
+
+        if ($team->subscribed() || $team->onGenericTrial()) {
+            return true;
+        }
+
+        return false;
     }
 }
