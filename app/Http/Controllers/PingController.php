@@ -27,7 +27,8 @@ class PingController extends Controller
         $eventId = $request->input('event');
         $output  = $request->input('output');
 
-        HandleFinishPing::dispatch($monitor, now(), $eventId, $output);
+        // Use a delay here to avoid race condition where finish ping get's procesed first
+        HandleFinishPing::dispatch($monitor, now(), $eventId, $output)->delay(now()->addSeconds(5));
 
         return response('Ok');
     }
