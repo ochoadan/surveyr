@@ -247,7 +247,7 @@
                                 <tr class="pricing-price">
                                     @foreach ($plans as $plan)
                                         <td>
-                                            <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ ($plan['price']/2) }}</span>/month
+                                            <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ number_format($plan['price']/2, 2) }}</span>/month
                                             <span class="explainer">for first 3 months, full price after that</span>
                                         </td>
                                     @endforeach
