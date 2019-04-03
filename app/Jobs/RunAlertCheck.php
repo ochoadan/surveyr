@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Mail\ScheduleMonitorFailing;
-use App\Mail\ScheduleMonitorRecovered;
+use App\Mail\ScheduleMonitorFailing as ScheduleMonitorFailingMail;
+use App\Mail\ScheduleMonitorRecovered as ScheduleMonitorRecoveredMail;
 use App\ScheduleMonitor;
 use App\ScheduleMonitorEvent;
 use Carbon\Carbon;
@@ -86,7 +86,7 @@ class RunAlertCheck implements ShouldQueue
     {
         $emailAlerts = $this->monitor->app->emailAlerts()->get();
         $emailAlerts->each(function ($emailAlert) {
-            Mail::to($emailAlert->email)->send(new ScheduleMonitorFailing($this->monitor, $this->checkTime));
+            Mail::to($emailAlert->email)->send(new ScheduleMonitorFailingMail($this->monitor, $this->checkTime));
         });
     }
 
@@ -99,7 +99,7 @@ class RunAlertCheck implements ShouldQueue
     {
         $emailAlerts = $this->monitor->app->emailAlerts()->get();
         $emailAlerts->each(function ($emailAlert) {
-            Mail::to($emailAlert->email)->send(new ScheduleMonitorRecovered($this->monitor, $this->checkTime));
+            Mail::to($emailAlert->email)->send(new ScheduleMonitorRecoveredMail($this->monitor, $this->checkTime));
         });
     }
 }
