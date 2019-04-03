@@ -24,4 +24,6 @@ Route::middleware(['auth', 'teamSubscribed'])->group(function() {
     Route::get('/schedule-monitor/{schedule_monitor}', 'ScheduleMonitorController@show');
 
     Route::get('/alerts', 'AlertController@show');
+
+    Route::get('/alert/slack', 'Auth\SlackController@createSlackAlert');
 });
