@@ -6,12 +6,14 @@ use App\Mail\ScheduleMonitorFailing as ScheduleMonitorFailingMail;
 use App\Mail\ScheduleMonitorRecovered as ScheduleMonitorRecoveredMail;
 use App\ScheduleMonitor;
 use App\ScheduleMonitorEvent;
+use App\Slack\ScheduleMonitorFailing as ScheduleMonitorFailingSlack;
+use App\Slack\ScheduleMonitorRecovered as ScheduleMonitorRecoveredSlack;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
 class RunAlertCheck implements ShouldQueue
@@ -80,6 +82,7 @@ class RunAlertCheck implements ShouldQueue
     protected function sendFailingAlerts()
     {
         $this->sendFailingEmailAlerts();
+        $this->sendFailingSlackAlerts();
     }
 
     protected function sendFailingEmailAlerts()
@@ -90,9 +93,18 @@ class RunAlertCheck implements ShouldQueue
         });
     }
 
+    protected function sendFailingSlackAlerts()
+    {
+        $slackAlerts = $this->monitor->app->slackAlerts()->get();
+        $slackAlerts->each(function ($slackAlert) {
+            (new ScheduleMonitorFailingSlack($slackAlert, $this->monitor, $this->checkTime))->sendMessage();
+        });
+    }
+
     protected function sendRecoveredAlerts()
     {
         $this->sendRecoveredEmailAlerts();
+        $this->sendRecoveredSlackAlerts();
     }
 
     protected function sendRecoveredEmailAlerts()
@@ -100,6 +112,14 @@ class RunAlertCheck implements ShouldQueue
         $emailAlerts = $this->monitor->app->emailAlerts()->get();
         $emailAlerts->each(function ($emailAlert) {
             Mail::to($emailAlert->email)->send(new ScheduleMonitorRecoveredMail($this->monitor, $this->checkTime));
+        });
+    }
+
+    protected function sendRecoveredSlackAlerts()
+    {
+        $slackAlerts = $this->monitor->app->slackAlerts()->get();
+        $slackAlerts->each(function ($slackAlert) {
+            (new ScheduleMonitorRecoveredSlack($slackAlert, $this->monitor, $this->checkTime))->sendMessage();
         });
     }
 }
