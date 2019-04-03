@@ -29,6 +29,11 @@ return [
         'region' => 'us-east-1',
     ],
 
+    'slack' => [
+        'client_id'     => env('SLACK_CLIENT_ID', '48465569348.583420000161'),
+        'client_secret' => env('SLACK_CLIENT_SECRET', '0979cf52fbbc21f4ada4355c34dc23aa'),
+    ],
+
     'stripe' => [
         'model'  => App\User::class,
         'key'    => env('STRIPE_KEY', 'pk_test_eL1sQ3wNh3R6YhLytkwz1XvT'),
