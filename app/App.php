@@ -28,6 +28,11 @@ class App extends Model
         return $this->belongsToMany('App\Alert\EmailAlert');
     }
 
+    public function slackAlerts()
+    {
+        return $this->belongsToMany('App\Alert\SlackAlert');
+    }
+
     public static function boot()
     {
         parent::boot();
