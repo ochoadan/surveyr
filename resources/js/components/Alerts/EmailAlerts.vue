@@ -2,8 +2,7 @@
     <div>
         <div class="card card-default card-no-padding">
             <div class="card-header">
-                <button class="btn btn-primary float-right" @click="showForm = true" :disabled="showForm">Create Email Alert</button>
-                Email Alerts
+                <button class="btn btn-primary float-right" @click="showForm = true" :disabled="showForm">Add Email Address</button>
                 <fa-icon icon="envelope" class="mr-1" /> Email Alerts
             </div>
             <div class="card-body">
@@ -18,7 +17,7 @@
                         </span>
                     </div>
                     <button type="button" class="btn btn-secondary" @click="showForm = false">Cancel</button>
-                    <button type="submit" class="btn btn-primary" :disabled="form.busy">Create Email Alert</button>
+                    <button type="submit" class="btn btn-primary" :disabled="form.busy">Add Email Address</button>
                 </form>
 
                 <div v-if="emailAlerts.data && emailAlerts.data.length">
