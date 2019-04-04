@@ -16,7 +16,9 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <send-alerts-to v-model="form.email_alerts" />
+                    <send-alerts-to
+                        :selected-email-alerts.sync="form.email_alerts"
+                        :selected-slack-alerts.sync="form.slack_alerts" />
                 </div>
                 <button type="button" class="btn btn-secondary" @click="showForm = false">Cancel</button>
                 <button type="submit" class="btn btn-primary" :disabled="form.busy">Create App</button>
@@ -65,6 +67,7 @@ export default {
                 team_id: null,
                 name: '',
                 email_alerts: [],
+                slack_alerts: [],
             }),
         }
     },

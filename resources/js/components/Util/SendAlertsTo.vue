@@ -1,16 +1,29 @@
 <template>
     <div>
-        <label>Send alerts to</label><br>
-        <div class="d-inline-block" v-if="emailAlerts.data && emailAlerts.data.length">
-            <div class="form-check d-inline-block mr-3" v-for="emailAlert in emailAlerts.data" :key="emailAlert.id">
-                <input class="form-check-input" type="checkbox" :id="'emailAlert' + emailAlert.id" :value="emailAlert.id" v-model="selectedAlerts">
-                <label class="form-check-label" :for="'emailAlert' + emailAlert.id">{{ emailAlert.email }}</label>
-            </div>
-        </div>
-        <button type="button" class="btn btn-link btn-sm mr-3" @click="showModal">+ Add Email</button>
-        <small class="d-block form-text text-muted mt-2">
+        <label class="mb-0">Send alerts to</label><br>
+        <small class="d-block form-text text-muted mb-2">
             If a job doesn't run on schedule we'll send the alerts you specify here.
         </small>
+        <div class="email-alerts">
+            <span class="mr-3">Email:</span>
+            <div class="d-inline-block" v-if="emailAlerts.data && emailAlerts.data.length">
+                <div class="form-check d-inline-block mr-3" v-for="emailAlert in emailAlerts.data" :key="emailAlert.id">
+                    <input class="form-check-input" type="checkbox" :id="'emailAlert' + emailAlert.id" :value="emailAlert.id" v-model="selectedEmailAlertsArr">
+                    <label class="form-check-label" :for="'emailAlert' + emailAlert.id">{{ emailAlert.email }}</label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-link btn-sm mr-3" @click="showModal">+ Add Email</button>
+        </div>
+        <div class="slack-alerts">
+            <span class="mr-3">Slack Channels:</span>
+            <div class="d-inline-block" v-if="slackAlerts.data && slackAlerts.data.length">
+                <div class="form-check d-inline-block mr-3" v-for="slackAlert in slackAlerts.data" :key="slackAlert.id">
+                    <input class="form-check-input" type="checkbox" :id="'slackAlert' + slackAlert.id" :value="slackAlert.id" v-model="selectedSlackAlertsArr">
+                    <label class="form-check-label" :for="'slackAlert' + slackAlert.id">{{ slackAlert.slack_team }} #{{ slackAlert.slack_channel }}</label>
+                </div>
+            </div>
+            <a href="/alert/slack" class="btn btn-link btn-sm mr-3">+ Add Slack Channel</a>
+        </div>
 
         <portal to="default">
             <modal
@@ -39,7 +52,11 @@
 <script>
 export default {
     props: {
-        value: {
+        selectedEmailAlerts: {
+            type: Array,
+            required: true
+        },
+        selectedSlackAlerts: {
             type: Array,
             required: true
         }
@@ -48,12 +65,14 @@ export default {
     data() {
         return {
             emailAlerts: {},
-            selectedAlerts: [],
+            selectedEmailAlertsArr: [],
             showNewEmailModal: false,
             newEmailForm: new SparkForm({
                 team_id: null,
                 email: '',
             }),
+            slackAlerts: {},
+            selectedSlackAlertsArr: [],
         }
     },
 
@@ -64,12 +83,14 @@ export default {
     },
 
     created() {
-        this.selectedAlerts       = this.value;
-        this.newEmailForm.team_id = this.currentTeam.id;
+        this.selectedEmailAlertsArr = this.selectedEmailAlerts;
+        this.selectedSlackAlertsArr = this.selectedSlackAlerts;
+        this.newEmailForm.team_id   = this.currentTeam.id;
     },
 
     mounted() {
         this.getEmailAlerts();
+        this.getSlackAlerts();
     },
 
     methods: {
@@ -95,14 +116,29 @@ export default {
                     this.newEmailForm.email = '';
                     this.getEmailAlerts();
                     this.showNewEmailModal = false;
-                    this.selectedAlerts.push(response.data.id);
+                    this.selectedEmailAlertsArr.push(response.data.id);
                 });
-        }
+        },
+        getSlackAlerts() {
+            axios.get('/api/slack-alerts', {
+                params: {
+                    page: 1,
+                    perPage: 999,
+                    team_id: this.currentTeam.id,
+                }
+            })
+                .then(response => {
+                    this.slackAlerts = response.data;
+                });
+        },
     },
 
     watch: {
-        selectedAlerts(newVal) {
-            this.$emit('input', newVal);
+        selectedEmailAlertsArr(newVal) {
+            this.$emit('update:selectedEmailAlerts', newVal);
+        },
+        selectedSlackAlertsArr(newVal) {
+            this.$emit('update:selectedSlackAlerts', newVal);
         }
     }
 }
