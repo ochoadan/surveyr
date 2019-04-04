@@ -44,6 +44,8 @@
                 </a>
                 --}}
 
+                <div id="changelog"></div>
+
                 <ul class="navbar-nav ml-4">
                     <li class="nav-item dropdown">
                         <a href="#" class="d-block d-md-flex text-center nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"

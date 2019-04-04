@@ -60,5 +60,15 @@
     <!-- JavaScript -->
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="/js/sweetalert.min.js"></script>
+
+    @auth
+        <script>
+          var HW_config = {
+            selector: "#changelog",
+            account: "JlDVRJ"
+          };
+        </script>
+        <script async src="//cdn.headwayapp.co/widget.js"></script>
+    @endauth
 </body>
 </html>
