@@ -3,9 +3,10 @@
         <label class="mb-0">Send alerts to</label><br>
         <small class="d-block form-text text-muted mb-2">
             If a job doesn't run on schedule we'll send the alerts you specify here.
+            Alerts can be managed on the <a href="/alerts">Alerts page</a>.
         </small>
         <div class="email-alerts">
-            <span class="mr-3">Email:</span>
+            <label class="alert-type">Email</label>
             <div class="d-inline-block" v-if="emailAlerts.data && emailAlerts.data.length">
                 <div class="form-check d-inline-block mr-3" v-for="emailAlert in emailAlerts.data" :key="emailAlert.id">
                     <input class="form-check-input" type="checkbox" :id="'emailAlert' + emailAlert.id" :value="emailAlert.id" v-model="selectedEmailAlertsArr">
@@ -15,7 +16,7 @@
             <button type="button" class="btn btn-link btn-sm mr-3" @click="showModal">+ Add Email</button>
         </div>
         <div class="slack-alerts">
-            <span class="mr-3">Slack Channels:</span>
+            <label class="alert-type">Slack Channels</label>
             <div class="d-inline-block" v-if="slackAlerts.data && slackAlerts.data.length">
                 <div class="form-check d-inline-block mr-3" v-for="slackAlert in slackAlerts.data" :key="slackAlert.id">
                     <input class="form-check-input" type="checkbox" :id="'slackAlert' + slackAlert.id" :value="slackAlert.id" v-model="selectedSlackAlertsArr">
@@ -48,6 +49,26 @@
         </portal>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.email-alerts,
+.slack-alerts {
+    background: #ededf3;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+
+    label.alert-type {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.1rem;
+    }
+    a { margin-bottom: 0; }
+}
+</style>
 
 <script>
 export default {
