@@ -27,11 +27,11 @@
                         <tbody>
                             <tr v-for="alert in allAlerts" :key="alert.type + '-' + alert.id">
                                 <template v-if="alert.type === 'email'">
-                                    <td>Email</td>
+                                    <td><fa-icon icon="envelope" class="mr-1" /> Email</td>
                                     <td>{{ alert.email }}</td>
                                 </template>
                                 <template v-if="alert.type === 'slack'">
-                                    <td>Slack</td>
+                                    <td><fa-icon :icon="['fab', 'slack']" class="mr-1" /> Slack</td>
                                     <td>{{ alert.slack_team }} #{{ alert.slack_channel }}</td>
                                 </template>
                             </tr>

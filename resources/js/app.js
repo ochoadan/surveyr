@@ -18,9 +18,10 @@ require('./bootstrap');
 
 // FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSlack } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faEye);
+library.add(faEye, faEnvelope, faSlack);
 Vue.component('fa-icon', FontAwesomeIcon);
 
 // Portal Vue

@@ -3,7 +3,7 @@
         <div class="card card-default card-no-padding">
             <div class="card-header">
                 <a href="/alert/slack" class="btn btn-primary float-right">Add Slack Channel</a>
-                Slack Alerts
+                <fa-icon :icon="['fab', 'slack']" class="mr-1" /> Slack Alerts
             </div>
             <div class="card-body">
                 <div v-if="slackAlerts.data && slackAlerts.data.length">

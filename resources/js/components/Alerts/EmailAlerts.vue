@@ -4,6 +4,7 @@
             <div class="card-header">
                 <button class="btn btn-primary float-right" @click="showForm = true" :disabled="showForm">Create Email Alert</button>
                 Email Alerts
+                <fa-icon icon="envelope" class="mr-1" /> Email Alerts
             </div>
             <div class="card-body">
                 <form @submit.prevent="submit" v-if="showForm">
