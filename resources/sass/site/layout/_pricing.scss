@@ -6,48 +6,27 @@
     .beta-notice {
         color: #626CD5;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 60px;
     }
 }
 
-.pricing-table {
-    margin-bottom: 0;
+.pricing-plan {
+    padding: 2rem 1rem;
+    margin: 0 0.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 16px 48px #E7EBF6;
 
-    th, td {
-        text-align: center;
+    .pricing-plan-title {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: #5B6F82;
+        letter-spacing: 1px;
+        margin-top: 0;
     }
-
-    thead {
-        tr { border: 0; }
-        th {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-    }
-
-    tbody {
-        tr:last-of-type { border: 0; }
-
-        td strong {
-            color: #202B36;
-        }
-    }
-
-    tfoot {
-        tr { border: 0; }
-        td {
-            padding-top: 1.5rem;
-        }
-    }
-
     .pricing-price {
-        border: 0;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
 
-        td {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
         del {
             display: inline-block;
             margin-bottom: 2rem;
@@ -64,6 +43,15 @@
             margin-top: 1rem;
         }
     }
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
 }
 
 @include media( '>medium' ) {
@@ -74,6 +62,15 @@
             margin-bottom: 40px;
             padding-left: 72px;
             padding-right: 72px;
+        }
+
+        .pricing-plans {
+            display: flex;
+
+            .pricing-plan {
+                flex-grow: 1;
+                flex-basis: 0;
+            }
         }
     }
 }

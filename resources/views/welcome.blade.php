@@ -245,64 +245,26 @@
                         });
                         @endphp
                         <p class="beta-notice">While we're in beta, get 50% off your first three months of Surveyr! Limited time only.</p>
-                        <table class="pricing-table">
-                            <thead>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <th>{{ $plan['title'] }}</th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="pricing-price">
-                                    @foreach ($plans as $plan)
-                                        <td>
-                                            <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ number_format($plan['price']/2, 2) }}</span>/month
-                                            <span class="explainer">for first 3 months, full price after that</span>
-                                        </td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>30 day event log</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>Unlimited apps</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>Unlimited team members</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>Email support</td>
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>{{ $plan['trial'] }} day free trial</td>
-                                    @endforeach
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    @foreach ($plans as $plan)
-                                        <td>
-                                            <a href="{{ url('register?plan=' . $plan['id']) }}" class="button button-primary">Start Free Trial</a>
-                                        </td>
-                                    @endforeach
-                                </tr>
-                            </tfoot>
-                        </table>
+                        <div class="pricing-plans">
+                            @foreach ($plans as $plan)
+                                <div class="pricing-plan">
+                                    <h4 class="pricing-plan-title">{{ $plan['title'] }}</h4>
+                                    <div class="pricing-price">
+                                        <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ number_format($plan['price']/2, 2) }}</span>/month
+                                        <span class="explainer">for first 3 months, full price after that</span>
+                                    </div>
+                                    <ul class="pricing-features">
+                                        <li><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</li>
+                                        <li>30 day event log</li>
+                                        <li>Unlimited apps</li>
+                                        <li>Unlimited team members</li>
+                                        <li>Email support</li>
+                                        <li>{{ $plan['trial'] }} day free trial</li>
+                                    </ul>
+                                    <a href="{{ url('register?plan=' . $plan['id']) }}" class="button button-primary">Start Free Trial</a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </di>
                 <div class="container-sm">
