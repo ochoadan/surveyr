@@ -10,6 +10,8 @@ class SlackController extends Controller
 {
     public function createSlackAlert(Request $request)
     {
+        $this->authorize('create', SlackAlert::class);
+
         $team = $request->user()->currentTeam;
 
         $provider = new \AdamPaterson\OAuth2\Client\Provider\Slack([
