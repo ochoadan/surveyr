@@ -44,6 +44,7 @@ class AppController extends Controller
             'team_id'      => 'required|integer',
             'name'         => 'required|string',
             'email_alerts' => 'nullable|array',
+            'slack_alerts' => 'nullable|array',
         ]);
 
         $team = Team::findOrFail($data['team_id']);
@@ -56,6 +57,9 @@ class AppController extends Controller
 
         if (!empty($data['email_alerts'])) {
             $app->emailAlerts()->attach($data['email_alerts']);
+        }
+        if (!empty($data['slack_alerts'])) {
+            $app->slackAlerts()->attach($data['slack_alerts']);
         }
 
         return new AppResource($app);
@@ -90,14 +94,17 @@ class AppController extends Controller
         $data = $this->validate($request, [
             'name'         => 'nullable|string',
             'email_alerts' => 'nullable|array',
+            'slack_alerts' => 'nullable|array',
         ]);
 
         if (!empty($data['name'])) {
             $app->update(['name' => $data['name']]);
         }
-
         if (isset($data['email_alerts'])) {
             $app->emailAlerts()->sync($data['email_alerts']);
+        }
+        if (isset($data['slack_alerts'])) {
+            $app->slackAlerts()->sync($data['slack_alerts']);
         }
 
         return new AppResource($app);
@@ -119,6 +126,7 @@ class AppController extends Controller
         });
         $app->scheduleMonitors()->delete();
         $app->emailAlerts()->detach();
+        $app->slackAlerts()->detach();
         $app->delete();
 
         return new AppResource($app);
