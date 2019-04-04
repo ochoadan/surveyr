@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -14,6 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         \App\Alert\EmailAlert::class      => \App\Policies\EmailAlertPolicy::class,
+        \App\Alert\SlackAlert::class      => \App\Policies\SlackAlertPolicy::class,
         \App\App::class                   => \App\Policies\AppPolicy::class,
         \App\ScheduleMonitor::class       => \App\Policies\ScheduleMonitorPolicy::class,
         \App\ScheduleMonitorEvent::class  => \App\Policies\ScheduleMonitorEventPolicy::class,

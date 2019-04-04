@@ -16,7 +16,8 @@ Route::group([
     'middleware' => ['auth:api', 'teamSubscribed']
 ], function () {
     Route::apiResource('apps', 'AppController');
-    Route::apiResource('email-alerts', 'EmailAlertController');
     Route::apiResource('schedule-monitors', 'ScheduleMonitorController');
     Route::apiResource('schedule-monitor-events', 'ScheduleMonitorEventController');
+    Route::apiResource('email-alerts', 'EmailAlertController');
+    Route::apiResource('slack-alerts', 'SlackAlertController');
 });
