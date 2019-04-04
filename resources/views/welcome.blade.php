@@ -133,13 +133,23 @@
             </section>
 
             <section class="intro section">
-                <div class="container-sm">
+                <div class="container">
                     <div class="section-inner">
-                        <p>Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even customers</strong>.</p>
-
-                        <p>Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you an alert if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and growing your business.</p>
-
-                        <p>Buffer managed to generate <a href="https://open.buffer.com/cronjob-generates-4-million-year/" target="_blank">$4 million per year from a single cron job</a>. Imagine the impact it would have on their business if it stopped working!</p>
+                        <div class="row">
+                            <div class="col">
+                                <h3>You may be losing data or customers</h3>
+                                <p>Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even customers</strong>.</p>
+                            </div>
+                            <div class="col">
+                                <h3>Save time and money with Surveyr</h3>
+                                <p>Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you alerts if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and growing your business.</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Buffer managed to generate <a href="https://open.buffer.com/cronjob-generates-4-million-year/" target="_blank">$4 million per year from a single cron job</a>. Imagine the impact it would have on their business if it stopped working!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
