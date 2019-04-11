@@ -53,8 +53,6 @@ class SparkServiceProvider extends ServiceProvider
     {
         Spark::collectBillingAddress();
 
-
-        Spark::promotion('SURVEYR503MO');
         Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
         $plans = config('billing.plans');
