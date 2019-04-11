@@ -42,7 +42,6 @@
                                     </g>
                                 </g>
                             </svg>
-                            <span class="beta">beta</span>
                         </a>
                     </div>
                     <ul class="header-links mb-0">
@@ -236,7 +235,7 @@
                     <div class="section-inner">
                         <div class="text-center is-revealing">
                             <h2 class="section-title mt-0">Simple Pricing</h2>
-                            <p class="section-paragraph">We like to make things stupidly simple, including our pricing.</p>
+                            <p class="section-paragraph">Try Surveyr for free. No card required. Money back guarantee.</p>
                         </div>
                         @php
                         $plans = config('billing.plans');
@@ -249,8 +248,7 @@
                                 <div class="pricing-plan">
                                     <h4 class="pricing-plan-title">{{ $plan['title'] }}</h4>
                                     <div class="pricing-price">
-                                        <span><del>&dollar;{{ $plan['price'] }}</del><br>&dollar;{{ number_format($plan['price']/2, 2) }}</span>/month
-                                        <span class="explainer">for first 3 months, full price after that</span>
+                                        <span>&dollar;{{ $plan['price'] }}</span>/month
                                     </div>
                                     <ul class="pricing-features">
                                         <li><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</li>
@@ -258,9 +256,9 @@
                                         <li>Unlimited apps</li>
                                         <li>Unlimited team members</li>
                                         <li>Email support</li>
-                                        <li>{{ $plan['trial'] }} day free trial</li>
+                                        <li>10 day free trial</li>
                                     </ul>
-                                    <a href="{{ url('register?plan=' . $plan['id']) }}" class="button button-primary">Start Free Trial</a>
+                                    <a href="{{ url('register') }}" class="button button-primary">Sign Up Now <span>No card required</span></a>
                                 </div>
                             @endforeach
                         </div>

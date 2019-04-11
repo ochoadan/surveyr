@@ -46,6 +46,19 @@
             margin-bottom: 0.5rem;
         }
     }
+    .button {
+        display: inline-block;
+        line-height: 20px;
+        height: auto;
+        padding-left: 50px;
+        padding-right: 50px;
+
+        span {
+            display: block;
+            font-size: 11px;
+            opacity: 0.5;
+        }
+    }
 }
 
 @include media( '>medium' ) {
