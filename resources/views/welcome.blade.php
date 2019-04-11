@@ -268,7 +268,7 @@
                     <div class="section-inner" style="padding-top: 0;">
                         <div id="mbg" class="text-center">
                             <h3>100% No-Risk 30-Day Money Back Guarantee</h3>
-                            <p>If for any reason you are not happy with our product or service, simply let us know within 30 days of your purchase and we'll refund 100% of your money. No questions asked.</p>
+                            <p>If for any reason you are not happy with our product or service, simply let us know within 30 days of the end of your free trial and we'll refund 100% of your money. No questions asked.</p>
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                             </div>
                             <div class="faq-item">
                                 <h4>What happens when my 10 day free trial ends?</h4>
-                                <p class="text-sm">When your free trial ends your subscription will begin and your card will be charged the amount for your selected plan. Billing will continue until you cancel your subscription.</p>
+                                <p class="text-sm">When your free trial ends you will need to sign up for a subscription via the billing page. If you don't upgrade to a paid plan at this point your schedule cron jobs will no longer be monitored.</p>
                             </div>
                             <div class="faq-item">
                                 <h4>What happens if I go over my schedule monitor limit?</h4>
@@ -317,7 +317,7 @@
                     <div class="newsletter-inner section-inner">
                         <div class="newsletter-header text-center is-revealing">
                             <h2 class="section-title mt-0">Updates in your Inbox</h2>
-                            <p class="section-paragraph">Rather wait until we're out of beta?<br>Sign up to our newsletter for updates when we launch.</p>
+                            <p class="section-paragraph">Interested in getting Surveyr news and updates?<br>Sign up to our newsletter using the form below.</p>
                         </div>
                         <form action="https://surveyr.us16.list-manage.com/subscribe/post" method="get" class="footer-form newsletter-form field field-grouped is-revealing">
                             <input type="hidden" name="u" value="eb58963377353c297654599fb">
