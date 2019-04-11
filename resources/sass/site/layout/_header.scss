@@ -50,11 +50,6 @@
         width: 160px;
         height: 45px;
     }
-    .beta {
-        position: absolute;
-        top: 11px;
-        right: -50px;
-    }
 }
 
 @include media( '>medium' ) {

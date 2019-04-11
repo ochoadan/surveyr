@@ -244,7 +244,6 @@
                             return $plan['archived'];
                         });
                         @endphp
-                        <p class="beta-notice">While we're in beta, get 50% off your first three months of Surveyr! Limited time only.</p>
                         <div class="pricing-plans">
                             @foreach ($plans as $plan)
                                 <div class="pricing-plan">
