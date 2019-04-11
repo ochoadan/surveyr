@@ -53,9 +53,9 @@ class SparkServiceProvider extends ServiceProvider
     {
         Spark::collectBillingAddress();
 
-        Spark::useStripe();
 
         Spark::promotion('SURVEYR503MO');
+        Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
 
         $plans = config('billing.plans');
         foreach ($plans as $plan) {
@@ -65,7 +65,6 @@ class SparkServiceProvider extends ServiceProvider
 
             $sparkPlan = Spark::teamPlan($plan['title'], $plan['id'])
                 ->price($plan['price'])
-                ->trialDays($plan['trial'])
                 ->features([
                     $plan['schedule_monitor_limit'] . ' Schedule Monitors',
                     '30 day event log',
