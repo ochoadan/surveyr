@@ -16,12 +16,13 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\CreateStripePlans::class,
         \App\Console\Commands\DeleteOldEvents::class,
         \App\Console\Commands\RunAlertChecks::class,
+        \App\Console\Commands\SendTrialReminders::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
@@ -31,6 +32,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command('spark:kpi')->dailyAt('23:55');
+
+        $schedule->command('app:send-trial-reminders')->daily()->at('00:01');
 
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
