@@ -12,7 +12,7 @@ services:
       XDEBUG_HOST: "${XDEBUG_HOST}"
       WWWUSER: "${WWWUSER}"
     volumes:
-     - .:/var/www/html:delegated
+     - .:/var/www/html
     networks:
      - vessel-surveyr
   node:
@@ -24,7 +24,7 @@ services:
     image: surveyr/node
     user: node
     volumes:
-     - .:/var/www/html:delegated
+     - .:/var/www/html
     networks:
      - vessel-surveyr
   mysql:
@@ -37,7 +37,7 @@ services:
       MYSQL_USER: "${DB_USERNAME}"
       MYSQL_PASSWORD: "${DB_PASSWORD}"
     volumes:
-     - surveyrmysql:/var/lib/mysql:delegated
+     - surveyrmysql:/var/lib/mysql
      # - ./docker/mysql/conf.d:/etc/mysql/conf.d
      # - ./docker/mysql/logs:/var/log/mysql
     networks:
@@ -45,7 +45,7 @@ services:
   redis:
     image: redis:alpine
     volumes:
-     - surveyrredis:/data:delegated
+     - surveyrredis:/data
     networks:
      - vessel-surveyr
 networks:

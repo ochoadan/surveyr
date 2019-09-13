@@ -18,7 +18,7 @@ mix
     .sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/site/site.scss', 'public/css')
-    .copy('node_modules/sweetalert/dist/sweetalert.min.js', 'public/js/sweetalert.min.js')
+    .copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
     .sass('resources/sass/app-rtl.scss', 'public/css')
     .then(() => {
         exec('node_modules/rtlcss/bin/rtlcss.js public/css/app-rtl.css ./public/css/app-rtl.css');
@@ -33,8 +33,15 @@ mix
             alias: {
                 'vue$': mix.inProduction() ? 'vue/dist/vue.min' : 'vue/dist/vue.js'
             },
+            extensions: ['.vue', '.js', '.json'],
         },
         plugins: [
             new webpack.DefinePlugin({ 'process.env': { LATER_COV: false } }),
         ],
     });
+
+if (mix.inProduction()) {
+    mix.version();
+} else {
+    mix.sourceMaps();
+}

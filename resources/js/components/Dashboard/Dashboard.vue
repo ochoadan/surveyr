@@ -7,7 +7,7 @@
 <script>
 export default {
     components: {
-        'apps': require('./Apps.vue'),
+        'apps': require('./Apps.vue').default,
     }
 }
 </script>

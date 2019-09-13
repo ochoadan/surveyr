@@ -53,7 +53,7 @@ class SparkServiceProvider extends ServiceProvider
     {
         Spark::collectBillingAddress();
 
-        Spark::useStripe()->noCardUpFront()->teamTrialDays(10);
+        Spark::noCardUpFront()->teamTrialDays(10);
 
         $plans = config('billing.plans');
         foreach ($plans as $plan) {

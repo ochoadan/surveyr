@@ -8,8 +8,8 @@
 <script>
 export default {
     components: {
-        'email-alerts': require('./EmailAlerts.vue'),
-        'slack-alerts': require('./SlackAlerts.vue'),
+        'email-alerts': require('./EmailAlerts.vue').default,
+        'slack-alerts': require('./SlackAlerts.vue').default,
     }
 }
 </script>

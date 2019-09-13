@@ -11,7 +11,7 @@
     <title>@yield('title', config('app.name'))</title>
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Roboto:500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
     <!-- CSS -->
@@ -27,7 +27,7 @@
 
     <!-- Global Spark Object -->
     <script>
-        window.Spark = @json(array_merge(Spark::scriptVariables(), []));
+        window.Spark = <?php echo json_encode(array_merge(Spark::scriptVariables(), [])); ?>;
     </script>
 
     @include('analytics.google')

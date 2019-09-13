@@ -41,8 +41,8 @@ export default {
     },
 
     components: {
-        'schedule-monitors': require('./ScheduleMonitors.vue'),
-        'alerts': require('./Alerts.vue'),
+        'schedule-monitors': require('./ScheduleMonitors.vue').default,
+        'alerts': require('./Alerts.vue').default,
     }
 }
 </script>

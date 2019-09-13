@@ -8,14 +8,16 @@
             <div class="table-responsive">
                 <table class="table table-valign-middle mb-0">
                     <thead>
-                        <th class="th-fit"></th>
-                        <th>{{__('Name')}}</th>
-                        <th v-if="roles.length > 1">{{__('Role')}}</th>
-                        <th>&nbsp;</th>
+                        <tr>
+                            <th class="th-fit"></th>
+                            <th>{{__('Name')}}</th>
+                            <th v-if="roles.length > 1">{{__('Role')}}</th>
+                            <th>&nbsp;</th>
+                        </tr>
                     </thead>
 
                     <tbody>
-                        <tr v-for="member in team.users">
+                        <tr v-for="member in team.users" :key="member.id">
                             <!-- Photo -->
                             <td>
                                 <img :src="member.photo_url" class="spark-profile-photo" alt="{{__('Member Photo')}}" />

@@ -12,11 +12,11 @@
 require('./../spark-components/bootstrap');
 
 Vue.component('pagination', require('laravel-vue-pagination'));
-Vue.component('modal', require('./Util/Modal.vue'));
+Vue.component('modal', require('./Util/Modal.vue').default);
 
-Vue.component('send-alerts-to', require('./Util/SendAlertsTo.vue'));
+Vue.component('send-alerts-to', require('./Util/SendAlertsTo.vue').default);
 
-Vue.component('dashboard', require('./Dashboard/Dashboard.vue'));
-Vue.component('app', require('./App/App.vue'));
-Vue.component('schedule-monitor', require('./ScheduleMonitor/ScheduleMonitor.vue'));
-Vue.component('alerts', require('./Alerts/Alerts.vue'));
+Vue.component('dashboard', require('./Dashboard/Dashboard.vue').default);
+Vue.component('app', require('./App/App.vue').default);
+Vue.component('schedule-monitor', require('./ScheduleMonitor/ScheduleMonitor.vue').default);
+Vue.component('alerts', require('./Alerts/Alerts.vue').default);

@@ -72,7 +72,7 @@ export default {
     },
 
     components: {
-        'events': require('./Events.vue'),
+        'events': require('./Events.vue').default,
     }
 }
 </script>

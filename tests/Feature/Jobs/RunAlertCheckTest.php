@@ -13,7 +13,7 @@ class RunAlertCheckTest extends TestCase
      */
     protected $monitor;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

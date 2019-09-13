@@ -40,20 +40,7 @@ class EventServiceProvider extends ServiceProvider
 
         // Team Related Events...
         'Laravel\Spark\Events\Teams\TeamCreated' => [
-            'Laravel\Spark\Listeners\Teams\UpdateOwnerSubscriptionQuantity',
             'App\Listeners\CreateDefaultEmailAlert',
-        ],
-
-        'Laravel\Spark\Events\Teams\TeamDeleted' => [
-            'Laravel\Spark\Listeners\Teams\UpdateOwnerSubscriptionQuantity',
-        ],
-
-        'Laravel\Spark\Events\Teams\TeamMemberAdded' => [
-            'Laravel\Spark\Listeners\Teams\UpdateTeamSubscriptionQuantity',
-        ],
-
-        'Laravel\Spark\Events\Teams\TeamMemberRemoved' => [
-            'Laravel\Spark\Listeners\Teams\UpdateTeamSubscriptionQuantity',
         ],
 
         'Laravel\Spark\Events\Teams\Subscription\TeamSubscribed' => [
