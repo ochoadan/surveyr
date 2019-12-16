@@ -19,7 +19,7 @@ class BillingHelper
 
         $plan = $team->sparkPlan();
         if (!$plan) {
-            return false;
+            return $team->onGenericTrial();
         }
 
         $planData = config("billing.plans.{$plan->id}");
