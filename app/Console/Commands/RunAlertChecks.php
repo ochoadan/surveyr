@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Surveyr\Helpers\CronHelper;
 use App\Team;
 use App\Jobs\RunAlertCheck;
 use App\ScheduleMonitor;
-use Cron\CronExpression;
 use Illuminate\Console\Command;
 
 class RunAlertChecks extends Command
@@ -51,8 +51,7 @@ class RunAlertChecks extends Command
                         continue;
                     }
 
-                    $cron = CronExpression::factory($monitor->schedule);
-                    if ($cron->isDue('now', $monitor->timezone)) {
+                    if (CronHelper::monitorIsDue($monitor)) {
                         $this->line("Queuing check for monitor {$monitor->id}...");
                         RunAlertCheck::dispatch($monitor, now())
                                  ->delay(now()->addMinutes($monitor->grace_period))
