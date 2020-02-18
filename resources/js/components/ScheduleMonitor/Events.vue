@@ -17,13 +17,13 @@
                     <tbody>
                         <tr v-for="event in events.data" :key="event.id">
                             <td>
-                                {{ event.started_at }}
-                                <span class="text-muted ml-2">{{ fromNow(event.started_at) }}</span>
+                                {{ toLocal(event.started_at, scheduleMonitor.timezone) }}
+                                <span class="text-muted ml-2">{{ fromNow(event.started_at, scheduleMonitor.timezone) }}</span>
                             </td>
                             <td>
                                 <span v-if="event.finished_at">
-                                    {{ event.finished_at }}
-                                    <span class="text-muted ml-2">{{ fromNow(event.finished_at) }}</span>
+                                    {{ toLocal(event.finished_at, scheduleMonitor.timezone) }}
+                                    <span class="text-muted ml-2">{{ fromNow(event.finished_at, scheduleMonitor.timezone) }}</span>
                                 </span>
                             </td>
                             <td>{{ duration(event.duration) }}</td>

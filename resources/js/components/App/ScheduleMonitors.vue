@@ -141,7 +141,7 @@ SURVEYR_API_TOKEN={API_TOKEN}</code></pre>
                                 <span class="text-muted small">Next run: {{ humanNextSchedule(monitor.schedule) }} ({{ monitor.timezone }})</span>
                             </td>
                             <td>
-                                <span v-if="monitor.last_run_at" :title="monitor.last_run_at + ' ' + monitor.timezone">{{ fromNow(monitor.last_run_at) }}</span>
+                                <span v-if="monitor.last_run_at" :title="toLocal(monitor.last_run_at, monitor.timezone) + ' ' + monitor.timezone">{{ fromNow(monitor.last_run_at, monitor.timezone) }}</span>
                                 <span v-else>Never</span>
                             </td>
                             <td class="action-col text-right">

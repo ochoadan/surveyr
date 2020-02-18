@@ -32,7 +32,7 @@
             </span>
             <span class="ml-5">
                 <span class="text-muted">Last run:</span>
-                <span v-if="scheduleMonitor.last_run_at" :title="scheduleMonitor.last_run_at + ' ' + scheduleMonitor.timezone">{{ fromNow(scheduleMonitor.last_run_at) }}</span>
+                <span v-if="scheduleMonitor.last_run_at" :title="toLocal(scheduleMonitor.last_run_at, scheduleMonitor.timezone) + ' ' + scheduleMonitor.timezone">{{ fromNow(scheduleMonitor.last_run_at, scheduleMonitor.timezone) }}</span>
                 <span v-else>Never</span>
             </span>
             <span class="ml-5">
@@ -42,7 +42,7 @@
         </p>
 
         <div class="alert alert-danger mb-4" role="alert" v-if="scheduleMonitor.status == 'failing' && scheduleMonitor.last_run_at">
-            This schedule monitor has not recieved a ping since {{ scheduleMonitor.last_run_at }} {{ scheduleMonitor.timezone }} ({{ fromNow(scheduleMonitor.last_run_at) }}).
+            This schedule monitor has not recieved a ping since {{ scheduleMonitor.last_run_at }} {{ scheduleMonitor.timezone }} ({{ fromNow(scheduleMonitor.last_run_at, scheduleMonitor.timezone) }}).
         </div>
 
         <events :schedule-monitor="scheduleMonitor" />
