@@ -66,14 +66,14 @@ class CreateStripePlans extends Command
             if ($this->planExists($plan)) {
                 $this->line('Stripe plan ' . $plan->id . ' already exists');
             } else {
-                $name = Spark::$details['product'] . ' ' . $plan->name . ' (' . Cashier::usesCurrencySymbol() . $plan->price . ' ' . $plan->interval . ')';
+                $name = Spark::$details['product'] . ' ' . $plan->name . ' ($' . $plan->price . ' ' . $plan->interval . ')';
 
                 Stripe\Plan::create([
                    'id'                   => $plan->id,
                    'name'                 => $name,
                    'amount'               => $plan->price * 100,
                    'interval'             => str_replace('ly', '', $plan->interval),
-                   'currency'             => Cashier::usesCurrency(),
+                   'currency'             => 'USD',
                    'statement_descriptor' => Spark::$details['vendor'],
                    'trial_period_days'    => $plan->trialDays,
                 ]);
