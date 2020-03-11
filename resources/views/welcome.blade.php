@@ -262,9 +262,9 @@
                                     </div>
                                     <ul class="pricing-features">
                                         <li><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</li>
-                                        <li>30 day event log</li>
+                                        <li><strong>{{ $plan['team_member_limit'] ?: 'Unlimited' }}</strong> team member{{ $plan['team_member_limit'] === 1 ? '': 's' }}</li>
                                         <li>Unlimited apps</li>
-                                        <li>Unlimited team members</li>
+                                        <li>30 day event log</li>
                                         <li>Email support</li>
                                         <li>10 day free trial</li>
                                     </ul>

@@ -67,9 +67,13 @@ class SparkServiceProvider extends ServiceProvider
                     $plan['schedule_monitor_limit'] . ' Schedule Monitors',
                     '30 day event log',
                     'Unlimited apps',
-                    'Unlimited team members',
+                    ($plan['team_member_limit'] ?: 'Unlimited') . ' team members',
                     'Email support',
                 ]);
+
+            if ($plan['team_member_limit']) {
+                $sparkPlan->maxTeamMembers($plan['team_member_limit']);
+            }
 
             if ($plan['interval'] == 'yearly') {
                 $sparkPlan->yearly();
