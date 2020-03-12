@@ -6,393 +6,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    <title>@yield('title', 'Surveyr - Cron schedule monitoring for Laravel')</title>
+    <title>@yield('title', 'Surveyr - Cron monitoring for Laravel')</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:500" rel="stylesheet">
+    <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
     <link href="{{ mix('css/site.css') }}" rel="stylesheet">
 
     @include('analytics.google')
 </head>
-<body class="is-boxed">
-    <div class="body-wrap">
-        <header class="site-header">
-            <div class="container">
-                <div class="site-header-inner">
-                    <div class="brand header-brand">
-                        <a href="/">
-                            <svg width="1360px" height="351px" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
-                                        <tspan x="396" y="278">S</tspan>
-                                        <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
-                                        <tspan x="729.759375" y="278">r</tspan>
-                                        <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
-                                        <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
-                                        <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
-                                        <tspan x="1258.25586" y="278">r</tspan>
-                                    </text>
-                                    <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
-                                        <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
-                                        <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
-                                        <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
-                                        <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
+<body>
+    <div class="relative bg-gray-50 overflow-hidden">
+        <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
+            <div class="relative h-full max-w-screen-xl mx-auto">
+                <svg class="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2" width="404" height="784" fill="none" viewBox="0 0 404 784">
+                    <defs>
+                        <pattern id="svg-pattern-squares-1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                        </pattern>
+                    </defs>
+                    <rect width="404" height="784" fill="url(#svg-pattern-squares-1)" />
+                </svg>
+                <svg class="absolute left-full transform -translate-y-3/4 -translate-x-1/4 md:-translate-y-1/2 lg:-translate-x-1/2" width="404" height="784" fill="none" viewBox="0 0 404 784">
+                    <defs>
+                        <pattern id="svg-pattern-squares-2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                        </pattern>
+                    </defs>
+                    <rect width="404" height="784" fill="url(#svg-pattern-squares-2)" />
+                </svg>
+            </div>
+        </div>
+
+        <div x-data="{ open: false }" class="relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+            <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+                <nav class="relative flex items-center justify-between sm:h-10 md:justify-center">
+                    <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                        <div class="flex items-center justify-between w-full md:w-auto">
+                            <a href="/">
+                                <svg class="w-32" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
+                                            <tspan x="396" y="278">S</tspan>
+                                            <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
+                                            <tspan x="729.759375" y="278">r</tspan>
+                                            <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
+                                            <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
+                                            <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
+                                            <tspan x="1258.25586" y="278">r</tspan>
+                                        </text>
+                                        <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
+                                            <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
+                                            <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
+                                            <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
+                                            <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
+                                        </g>
+                                        <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
+                                            <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
+                                        </g>
                                     </g>
-                                    <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
-                                        <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
+                                </svg>
+                            </a>
+                            <div class="-mr-2 flex items-center md:hidden">
+                                <button @click="open = true" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="header-links mb-0">
-                        <li>
-                            <a href="/#features">Features</a>
-                            <a href="/#pricing">Pricing</a>
-                            <a href="/login">Login</a>
-                            <a href="/register">Sign Up</a>
-                        </li>
-                    </ul>
+                    <div class="hidden md:block">
+                        <a href="/#features" class="font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Features</a>
+                        <a href="/#pricing" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
+                        <a href="/#pricing" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Sign Up</a>
+                    </div>
+                    <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
+              <span class="inline-flex rounded-md shadow">
+                <a href="/login" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out">
+                  Log in
+                </a>
+              </span>
+                    </div>
+                </nav>
+            </div>
+
+            <div x-show="open" style="display: none;" class="absolute top-0 inset-x-0 p-2 md:hidden">
+                <div class="rounded-lg shadow-md transition transform origin-top-right" x-show="open" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+                    <div class="rounded-lg bg-white shadow-xs overflow-hidden">
+                        <div class="px-5 pt-4 flex items-center justify-between">
+                            <div>
+                                <svg class="w-32" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
+                                            <tspan x="396" y="278">S</tspan>
+                                            <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
+                                            <tspan x="729.759375" y="278">r</tspan>
+                                            <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
+                                            <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
+                                            <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
+                                            <tspan x="1258.25586" y="278">r</tspan>
+                                        </text>
+                                        <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
+                                            <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
+                                            <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
+                                            <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
+                                            <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
+                                        </g>
+                                        <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
+                                            <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="-mr-2">
+                                <button @click="open = false" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="px-2 pt-2 pb-3">
+                            <a href="/#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Features</a>
+                            <a href="/#pricing" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Pricing</a>
+                            <a href="/register" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Sign Up</a>
+                        </div>
+                        <div>
+                            <a href="/login" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </header>
 
-        <main>
-            <section class="hero text-center">
-                <div class="container-sm">
-                    <div class="hero-inner">
-                        <h1 class="hero-title h2-mobile mt-0 is-revealing">Cron schedule monitoring for Laravel</h1>
-                        <p class="hero-paragraph is-revealing">Get an instant alert if your Laravel scheduled cron job fails to run.</p>
-                        <div class="hero-browser">
-                            <div class="bubble-3 is-revealing">
-                                <svg width="427" height="286" viewBox="0 0 427 286" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <defs>
-                                        <path d="M213.5 286C331.413 286 427 190.413 427 72.5S304.221 16.45 186.309 16.45C68.396 16.45 0-45.414 0 72.5S95.587 286 213.5 286z" id="bubble-3-a"/>
-                                    </defs>
-                                    <g fill="none" fill-rule="evenodd">
-                                        <mask id="bubble-3-b" fill="#fff">
-                                            <use xlink:href="#bubble-3-a"/>
-                                        </mask>
-                                        <use fill="#4E8FF8" xlink:href="#bubble-3-a"/>
-                                        <path d="M64.5 129.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C-80.604-139.782-149-201.644-149-83.73c0 117.913 95.587 213.5 213.5 213.5z" fill="#1274ED" mask="url(#bubble-3-b)"/>
-                                        <path d="M381.5 501.77c117.913 0 213.5-95.588 213.5-213.5 0-117.914-122.779-56.052-240.691-56.052C236.396 232.218 168 170.356 168 288.27c0 117.913 95.587 213.5 213.5 213.5z" fill="#75ABF3" mask="url(#bubble-3-b)"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="bubble-4 is-revealing">
-                                <svg width="230" height="235" viewBox="0 0 230 235" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <defs>
-                                        <path d="M196.605 234.11C256.252 234.11 216 167.646 216 108 216 48.353 167.647 0 108 0S0 48.353 0 108s136.959 126.11 196.605 126.11z" id="bubble-4-a"/>
-                                    </defs>
-                                    <g fill="none" fill-rule="evenodd">
-                                        <mask id="bubble-4-b" fill="#fff">
-                                            <use xlink:href="#bubble-4-a"/>
-                                        </mask>
-                                        <use fill="#7CE8DD" xlink:href="#bubble-4-a"/>
-                                        <circle fill="#3BDDCC" mask="url(#bubble-4-b)" cx="30" cy="108" r="108"/>
-                                        <circle fill="#B1F1EA" opacity=".7" mask="url(#bubble-4-b)" cx="265" cy="88" r="108"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="hero-browser-inner is-revealing">
-                                <img src="/img/surveyr.png" alt="Surveyr">
-                            </div>
-                            <div class="bubble-1 is-revealing">
-                                <svg width="61" height="52" viewBox="0 0 61 52" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <defs>
-                                        <path d="M32 43.992c17.673 0 28.05 17.673 28.05 0S49.674 0 32 0C14.327 0 0 14.327 0 32c0 17.673 14.327 11.992 32 11.992z" id="bubble-1-a"/>
-                                    </defs>
-                                    <g fill="none" fill-rule="evenodd">
-                                        <mask id="bubble-1-b" fill="#fff">
-                                            <use xlink:href="#bubble-1-a"/>
-                                        </mask>
-                                        <use fill="#FF6D8B" xlink:href="#bubble-1-a"/>
-                                        <path d="M2 43.992c17.673 0 28.05 17.673 28.05 0S19.674 0 2 0c-17.673 0-32 14.327-32 32 0 17.673 14.327 11.992 32 11.992z" fill="#FF4F73" mask="url(#bubble-1-b)"/>
-                                        <path d="M74 30.992c17.673 0 28.05 17.673 28.05 0S91.674-13 74-13C56.327-13 42 1.327 42 19c0 17.673 14.327 11.992 32 11.992z" fill-opacity=".8" fill="#FFA3B5" mask="url(#bubble-1-b)"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="bubble-2 is-revealing">
-                                <svg width="179" height="126" viewBox="0 0 179 126" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <defs>
-                                        <path d="M104.697 125.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S0-28.44 0 12.593c0 41.034 63.663 113.068 104.697 113.068z" id="bubble-2-a"/>
-                                    </defs>
-                                    <g fill="none" fill-rule="evenodd">
-                                        <mask id="bubble-2-b" fill="#fff">
-                                            <use xlink:href="#bubble-2-a"/>
-                                        </mask>
-                                        <use fill="#838DEA" xlink:href="#bubble-2-a"/>
-                                        <path d="M202.697 211.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S98 57.56 98 98.593c0 41.034 63.663 113.068 104.697 113.068z" fill="#626CD5" mask="url(#bubble-2-b)"/>
-                                        <path d="M43.697 56.661c41.034 0 74.298-33.264 74.298-74.298s-43.231-7.425-84.265-7.425S-61-97.44-61-56.407C-61-15.373 2.663 56.661 43.697 56.661z" fill="#B1B6F1" opacity=".64" mask="url(#bubble-2-b)"/>
-                                    </g>
-                                </svg>
-                            </div>
+            <div class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
+                <div class="text-center">
+                    <h2 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+                        Cron monitoring
+                        <br class="xl:hidden" />
+                        <span class="text-indigo-600">for Laravel</span>
+                    </h2>
+                    <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                        Get an instant alert if your Laravel scheduled cron job fails to run.
+                    </p>
+                    <div class="mt-6 max-w-md mx-auto md:mt-12 md:max-w-3xl">
+                        <img src="/img/surveyr.png" alt="Surveyr" class="shadow-lg rounded-lg">
+                    </div>
+                    <div class="mt-8 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
+                        <div class="rounded-md shadow">
+                            <a href="/#pricing" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                                Sign Up
+                            </a>
+                        </div>
+                        <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                            <a href="/#features" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                                Features
+                            </a>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="intro section">
-                <div class="container">
-                    <div class="section-inner">
-                        <div class="row">
-                            <div class="col">
-                                <h3>You may be losing data or customers</h3>
-                                <p>Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even customers</strong>.</p>
-                            </div>
-                            <div class="col">
-                                <h3>Save time and money with Surveyr</h3>
-                                <p>Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you alerts if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and growing your business.</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p>Buffer managed to generate <a href="https://open.buffer.com/cronjob-generates-4-million-year/" target="_blank">$4 million per year from a single cron job</a>. Imagine the impact it would have on their business if it stopped working!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="features" class="features section">
-                <div class="container">
-                    <div class="features-inner section-inner has-bottom-divider">
-                        <div class="feature-row">
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" version="1.1" width="64px" height="64px">
-                                            <g id="surface1">
-                                            <path style=" " d="M 29.5625 2 C 28.179688 2 26.984375 2.933594 26.652344 4.273438 L 24.921875 11.164063 C 24.042969 11.464844 23.15625 11.835938 22.28125 12.277344 L 16.175781 8.609375 C 14.992188 7.902344 13.488281 8.089844 12.511719 9.0625 L 9.0625 12.511719 C 8.085938 13.484375 7.902344 14.992188 8.609375 16.175781 L 12.269531 22.28125 C 11.839844 23.148438 11.46875 24.039063 11.171875 24.925781 L 4.273438 26.652344 C 2.933594 26.984375 2 28.183594 2 29.5625 L 2 34.4375 C 2 35.820313 2.933594 37.015625 4.273438 37.347656 L 11.164063 39.078125 C 11.464844 39.960938 11.839844 40.851563 12.277344 41.71875 L 8.609375 47.824219 C 7.902344 49.007813 8.085938 50.511719 9.0625 51.488281 L 12.511719 54.9375 C 13.488281 55.914063 14.992188 56.097656 16.175781 55.390625 L 22.28125 51.730469 C 23.15625 52.164063 24.046875 52.535156 24.925781 52.828125 L 26.652344 59.730469 C 26.984375 61.066406 28.183594 62 29.5625 62 L 34.4375 62 C 35.820313 62 37.015625 61.066406 37.347656 59.730469 L 39.078125 52.835938 C 39.957031 52.535156 40.84375 52.164063 41.71875 51.722656 L 47.824219 55.390625 C 49.007813 56.097656 50.511719 55.910156 51.488281 54.9375 L 54.9375 51.488281 C 55.914063 50.515625 56.097656 49.007813 55.390625 47.824219 L 51.730469 41.71875 C 52.160156 40.851563 52.53125 39.960938 52.828125 39.074219 L 59.726563 37.347656 C 61.066406 37.015625 62 35.816406 62 34.4375 L 62 29.5625 C 62 28.183594 61.066406 26.984375 59.730469 26.652344 L 52.835938 24.921875 C 52.535156 24.039063 52.160156 23.148438 51.722656 22.28125 L 55.390625 16.175781 C 56.097656 14.992188 55.914063 13.488281 54.9375 12.511719 L 51.488281 9.0625 C 50.511719 8.085938 49.007813 7.902344 47.824219 8.609375 L 41.71875 12.269531 C 40.84375 11.835938 39.953125 11.464844 39.074219 11.171875 L 37.347656 4.273438 C 37.015625 2.933594 35.816406 2 34.4375 2 Z M 29.5625 4 L 34.4375 4 C 34.898438 4 35.296875 4.3125 35.40625 4.757813 L 37.132813 11.65625 C 37.296875 12.308594 37.78125 12.835938 38.433594 13.058594 C 39.226563 13.328125 40.03125 13.667969 40.828125 14.0625 C 41.445313 14.371094 42.160156 14.339844 42.746094 13.988281 L 48.855469 10.328125 C 49.25 10.089844 49.75 10.152344 50.074219 10.476563 L 53.523438 13.921875 C 53.847656 14.25 53.910156 14.753906 53.671875 15.144531 L 50.011719 21.25 C 49.660156 21.835938 49.632813 22.554688 49.9375 23.171875 C 50.332031 23.960938 50.667969 24.765625 50.941406 25.566406 C 51.164063 26.214844 51.691406 26.703125 52.34375 26.863281 L 59.238281 28.589844 C 59.6875 28.703125 60 29.101563 60 29.5625 L 60 34.4375 C 60 34.898438 59.6875 35.296875 59.242188 35.40625 L 52.34375 37.132813 C 51.691406 37.296875 51.164063 37.78125 50.941406 38.433594 C 50.671875 39.234375 50.332031 40.039063 49.9375 40.828125 C 49.632813 41.445313 49.660156 42.160156 50.011719 42.746094 L 53.675781 48.855469 C 53.910156 49.246094 53.847656 49.75 53.527344 50.074219 L 50.078125 53.523438 C 49.75 53.847656 49.246094 53.910156 48.855469 53.671875 L 42.75 50.011719 C 42.164063 49.660156 41.445313 49.632813 40.828125 49.9375 C 40.035156 50.332031 39.230469 50.667969 38.433594 50.941406 C 37.785156 51.164063 37.296875 51.691406 37.136719 52.34375 L 35.410156 59.238281 C 35.296875 59.6875 34.898438 60 34.4375 60 L 29.5625 60 C 29.101563 60 28.703125 59.6875 28.59375 59.242188 L 26.867188 52.34375 C 26.703125 51.691406 26.21875 51.164063 25.566406 50.941406 C 24.773438 50.671875 23.96875 50.332031 23.171875 49.9375 C 22.886719 49.796875 22.578125 49.726563 22.273438 49.726563 C 21.917969 49.726563 21.566406 49.820313 21.253906 50.011719 L 15.144531 53.671875 C 14.753906 53.910156 14.25 53.847656 13.925781 53.523438 L 10.476563 50.078125 C 10.152344 49.75 10.089844 49.246094 10.328125 48.855469 L 13.988281 42.75 C 14.339844 42.164063 14.367188 41.445313 14.0625 40.828125 C 13.667969 40.039063 13.332031 39.234375 13.058594 38.433594 C 12.835938 37.785156 12.308594 37.296875 11.65625 37.136719 L 4.757813 35.410156 C 4.3125 35.296875 4 34.898438 4 34.4375 L 4 29.5625 C 4 29.101563 4.3125 28.703125 4.757813 28.589844 L 11.65625 26.863281 C 12.308594 26.703125 12.835938 26.214844 13.058594 25.566406 C 13.328125 24.765625 13.667969 23.960938 14.0625 23.171875 C 14.367188 22.554688 14.339844 21.835938 13.988281 21.25 L 10.324219 15.144531 C 10.089844 14.753906 10.152344 14.25 10.472656 13.921875 L 13.921875 10.476563 C 14.246094 10.152344 14.75 10.089844 15.144531 10.328125 L 21.25 13.988281 C 21.835938 14.339844 22.554688 14.367188 23.171875 14.0625 C 23.964844 13.667969 24.769531 13.328125 25.566406 13.058594 C 26.214844 12.832031 26.703125 12.308594 26.863281 11.65625 L 28.589844 4.757813 C 28.703125 4.3125 29.101563 4 29.5625 4 Z M 33.875 18.125 C 33.339844 18.054688 32.828125 18.4375 32.753906 18.984375 C 32.679688 19.53125 33.0625 20.035156 33.609375 20.109375 C 34.328125 20.203125 35.039063 20.367188 35.730469 20.589844 C 35.832031 20.621094 35.933594 20.640625 36.035156 20.640625 C 36.457031 20.640625 36.851563 20.367188 36.988281 19.949219 C 37.160156 19.421875 36.871094 18.859375 36.347656 18.6875 C 35.542969 18.425781 34.714844 18.234375 33.875 18.125 Z M 29.042969 18.386719 C 28.914063 18.367188 28.78125 18.371094 28.644531 18.40625 C 22.378906 19.945313 18 25.535156 18 32 C 18 37.195313 20.851563 41.941406 25.449219 44.375 C 25.597656 44.457031 25.761719 44.492188 25.917969 44.492188 C 26.277344 44.492188 26.621094 44.300781 26.800781 43.960938 C 27.058594 43.472656 26.875 42.867188 26.386719 42.609375 C 22.449219 40.519531 20 36.453125 20 32 C 20 26.460938 23.75 21.667969 29.125 20.347656 C 29.660156 20.214844 29.988281 19.671875 29.855469 19.136719 C 29.757813 18.734375 29.429688 18.449219 29.042969 18.386719 Z M 41.191406 21.808594 C 40.9375 21.808594 40.679688 21.90625 40.484375 22.101563 L 39.070313 23.515625 C 38.679688 23.90625 38.679688 24.539063 39.070313 24.929688 C 39.265625 25.125 39.519531 25.222656 39.777344 25.222656 C 40.035156 25.222656 40.289063 25.125 40.484375 24.929688 L 41.898438 23.515625 C 42.289063 23.125 42.289063 22.492188 41.898438 22.101563 C 41.703125 21.90625 41.445313 21.808594 41.191406 21.808594 Z M 32 24 C 27.589844 24 24 27.589844 24 32 C 24 36.410156 27.589844 40 32 40 C 36.410156 40 40 36.410156 40 32 C 40 27.589844 36.410156 24 32 24 Z M 43.964844 25.921875 C 43.835938 25.921875 43.703125 25.945313 43.578125 26 L 41.734375 26.78125 C 41.226563 26.996094 40.988281 27.585938 41.203125 28.09375 C 41.367188 28.476563 41.738281 28.703125 42.125 28.703125 C 42.257813 28.703125 42.386719 28.675781 42.515625 28.625 L 44.359375 27.84375 C 44.867188 27.625 45.101563 27.039063 44.886719 26.53125 C 44.726563 26.148438 44.355469 25.917969 43.964844 25.921875 Z M 32 26 C 35.308594 26 38 28.691406 38 32 C 38 35.308594 35.308594 38 32 38 C 28.691406 38 26 35.308594 26 32 C 26 28.691406 28.691406 26 32 26 Z M 32 30 C 30.894531 30 30 30.894531 30 32 C 30 33.105469 30.894531 34 32 34 C 33.105469 34 34 33.105469 34 32 C 34 30.894531 33.105469 30 32 30 Z M 43 31 C 42.449219 31 42 31.445313 42 32 C 42 32.554688 42.449219 33 43 33 L 45 33 C 45.550781 33 46 32.554688 46 32 C 46 31.445313 45.550781 31 45 31 Z M 42.183594 35.121094 C 41.792969 35.128906 41.425781 35.363281 41.269531 35.746094 C 41.066406 36.257813 41.3125 36.84375 41.824219 37.046875 L 43.679688 37.796875 C 43.800781 37.847656 43.929688 37.871094 44.050781 37.871094 C 44.449219 37.871094 44.824219 37.632813 44.980469 37.246094 C 45.1875 36.730469 44.941406 36.148438 44.425781 35.941406 L 42.574219 35.191406 C 42.445313 35.140625 42.3125 35.117188 42.183594 35.121094 Z M 39.777344 38.777344 C 39.523438 38.777344 39.265625 38.875 39.070313 39.070313 C 38.679688 39.460938 38.679688 40.09375 39.070313 40.484375 L 40.484375 41.898438 C 40.679688 42.09375 40.933594 42.191406 41.191406 42.191406 C 41.449219 42.191406 41.703125 42.09375 41.898438 41.898438 C 42.289063 41.507813 42.289063 40.875 41.898438 40.484375 L 40.484375 39.070313 C 40.289063 38.875 40.03125 38.777344 39.777344 38.777344 Z M 36.296875 41.125 C 36.167969 41.125 36.035156 41.152344 35.90625 41.203125 C 35.398438 41.421875 35.160156 42.007813 35.375 42.515625 L 36.15625 44.359375 C 36.320313 44.738281 36.691406 44.96875 37.078125 44.96875 C 37.210938 44.96875 37.34375 44.941406 37.46875 44.890625 C 37.980469 44.671875 38.214844 44.085938 38 43.578125 L 37.21875 41.734375 C 37.058594 41.351563 36.6875 41.125 36.296875 41.125 Z M 32 42 C 31.449219 42 31 42.445313 31 43 L 31 45 C 31 45.554688 31.449219 46 32 46 C 32.550781 46 33 45.554688 33 45 L 33 43 C 33 42.445313 32.550781 42 32 42 Z "/>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">Painless Setup</h3>
-                                    <p class="text-sm">Use our Laravel package to quickly import your schedule monitors into Surveyr and handle sending pings to Surveyr. Get up and running in minutes not&nbsp;hours.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" version="1.1" width="64px" height="64px">
-                                            <g id="surface1">
-                                            <path style=" " d="M 17 10 C 8.730469 10 2 16.730469 2 25 L 2 46.183594 C 0.839844 46.597656 0 47.699219 0 49 C 0 50.652344 1.347656 52 3 52 L 22.382813 52 L 23.550781 54.34375 C 24.0625 55.363281 25.09375 56 26.234375 56 L 28 56 L 28 63 C 28 63.550781 28.445313 64 29 64 C 29.554688 64 30 63.550781 30 63 L 30 56 L 36 56 L 36 63 C 36 63.550781 36.445313 64 37 64 C 37.554688 64 38 63.550781 38 63 L 38 56 L 39.765625 56 C 40.90625 56 41.933594 55.363281 42.449219 54.34375 L 43.617188 52 L 61 52 C 62.652344 52 64 50.652344 64 49 C 64 47.699219 63.160156 46.597656 62 46.183594 L 62 36 C 63.101563 36 64 35.101563 64 34 L 64 26 C 64 24.898438 63.101563 24 62 24 L 61.960938 24 C 61.449219 16.191406 54.929688 10 47 10 Z M 17 12 C 24.167969 12 30 17.832031 30 25 L 30 46 L 4 46 L 4 25 C 4 17.832031 9.832031 12 17 12 Z M 24.453125 12 L 47 12 C 53.828125 12 59.449219 17.300781 59.960938 24 L 41.640625 24 C 40.910156 23.351563 39.980469 23 39 23 C 37.929688 23 36.929688 23.421875 36.171875 24.171875 C 35.421875 24.929688 35 25.929688 35 27 C 35 28.070313 35.421875 29.070313 36.171875 29.828125 C 36.929688 30.578125 37.929688 31 39 31 C 39.980469 31 40.910156 30.648438 41.640625 30 L 56.980469 30 L 57.859375 34.390625 C 58.039063 35.320313 58.871094 36 59.820313 36 L 60 36 L 60 46 L 32 46 L 32 25 C 32 19.441406 28.953125 14.589844 24.453125 12 Z M 13 24 C 12.445313 24 12 24.449219 12 25 C 12 25.550781 12.445313 26 13 26 L 21 26 C 21.554688 26 22 25.550781 22 25 C 22 24.449219 21.554688 24 21 24 Z M 39 25 C 39.53125 25 40.039063 25.210938 40.410156 25.589844 C 40.53125 25.710938 40.640625 25.851563 40.71875 26 C 40.910156 26.300781 41 26.640625 41 27 C 41 27.359375 40.910156 27.699219 40.71875 28 C 40.640625 28.148438 40.53125 28.289063 40.410156 28.410156 C 40.039063 28.789063 39.519531 28.980469 39 28.980469 C 38.480469 28.980469 37.960938 28.789063 37.589844 28.410156 C 37.363281 28.183594 37.214844 27.902344 37.113281 27.605469 C 37.09375 27.535156 37.054688 27.46875 37.042969 27.394531 C 37.023438 27.265625 37 27.136719 37 27 C 37 26.863281 37.023438 26.734375 37.039063 26.605469 C 37.054688 26.53125 37.089844 26.46875 37.113281 26.398438 C 37.210938 26.097656 37.363281 25.816406 37.589844 25.589844 C 37.960938 25.210938 38.46875 25 39 25 Z M 42.871094 26 L 62 26 L 62 34 L 59.820313 34 L 58.9375 29.609375 C 58.75 28.679688 57.929688 28 56.980469 28 L 42.871094 28 C 42.960938 27.679688 43 27.339844 43 27 C 43 26.660156 42.960938 26.320313 42.871094 26 Z M 36 40 C 35.445313 40 35 40.449219 35 41 L 35 43 C 35 43.550781 35.445313 44 36 44 C 36.554688 44 37 43.550781 37 43 L 37 41 C 37 40.449219 36.554688 40 36 40 Z M 41 40 C 40.445313 40 40 40.449219 40 41 L 40 43 C 40 43.550781 40.445313 44 41 44 C 41.554688 44 42 43.550781 42 43 L 42 41 C 42 40.449219 41.554688 40 41 40 Z M 46 40 C 45.445313 40 45 40.449219 45 41 L 45 43 C 45 43.550781 45.445313 44 46 44 C 46.554688 44 47 43.550781 47 43 L 47 41 C 47 40.449219 46.554688 40 46 40 Z M 51 40 C 50.445313 40 50 40.449219 50 41 L 50 43 C 50 43.550781 50.445313 44 51 44 C 51.554688 44 52 43.550781 52 43 L 52 41 C 52 40.449219 51.554688 40 51 40 Z M 56 40 C 55.445313 40 55 40.449219 55 41 L 55 43 C 55 43.550781 55.445313 44 56 44 C 56.554688 44 57 43.550781 57 43 L 57 41 C 57 40.449219 56.554688 40 56 40 Z M 3 48 L 61 48 C 61.550781 48 62 48.449219 62 49 C 62 49.550781 61.550781 50 61 50 L 3 50 C 2.449219 50 2 49.550781 2 49 C 2 48.449219 2.449219 48 3 48 Z M 24.617188 52 L 41.382813 52 L 40.65625 53.449219 C 40.488281 53.789063 40.144531 54 39.765625 54 L 26.234375 54 C 25.855469 54 25.511719 53.789063 25.34375 53.449219 Z "/>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">Email &amp; Slack Alerts</h3>
-                                    <p class="text-sm">Get alerted as soon as a problem occurs so you can diagnose and resolve it as quickly. Configure email alerts, Slack alerts or&nbsp;both.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" version="1.1" width="64px" height="64px">
-                                            <g id="surface1">
-                                            <path style=" " d="M 25 0 C 11.214844 0 0 11.214844 0 25 C 0 38.785156 11.214844 50 25 50 C 30.515625 50 35.613281 48.203125 39.75 45.167969 C 39.75 45.167969 42.527344 47.886719 42.660156 47.933594 C 42.660156 47.957031 42.65625 47.976563 42.65625 48 C 42.65625 49.335938 43.175781 50.59375 44.121094 51.535156 L 54.464844 61.878906 C 55.441406 62.855469 56.71875 63.339844 58 63.339844 C 59.28125 63.339844 60.5625 62.855469 61.535156 61.878906 L 61.878906 61.53125 C 62.824219 60.589844 63.34375 59.335938 63.34375 58 C 63.34375 56.664063 62.824219 55.40625 61.878906 54.464844 L 51.535156 44.121094 C 50.542969 43.128906 49.238281 42.648438 47.9375 42.667969 C 47.886719 42.53125 45.167969 39.75 45.167969 39.75 C 48.203125 35.613281 50 30.515625 50 25 C 50 11.214844 38.785156 0 25 0 Z M 25 2 C 37.683594 2 48 12.316406 48 25 C 48 37.683594 37.683594 48 25 48 C 12.316406 48 2 37.683594 2 25 C 2 12.316406 12.316406 2 25 2 Z M 25 6 C 19.925781 6 15.152344 7.976563 11.5625 11.5625 C 4.15625 18.972656 4.15625 31.027344 11.5625 38.433594 C 15.152344 42.023438 19.925781 44 25 44 C 30.074219 44 34.847656 42.023438 38.4375 38.4375 C 45.84375 31.027344 45.84375 18.972656 38.4375 11.5625 C 34.847656 7.976563 30.074219 6 25 6 Z M 25 8 C 29.539063 8 33.808594 9.769531 37.019531 12.980469 C 43.648438 19.605469 43.648438 30.394531 37.019531 37.019531 C 33.808594 40.230469 29.539063 42 25 42 C 20.460938 42 16.191406 40.230469 12.980469 37.019531 C 6.351563 30.394531 6.351563 19.609375 12.980469 12.980469 C 16.191406 9.769531 20.460938 8 25 8 Z M 24.808594 11 C 21.171875 11.042969 17.703125 12.496094 15.097656 15.097656 C 14.707031 15.492188 14.707031 16.121094 15.097656 16.515625 C 15.292969 16.707031 15.550781 16.808594 15.808594 16.808594 C 16.0625 16.808594 16.320313 16.707031 16.515625 16.515625 C 19.0625 13.964844 22.582031 12.703125 26.179688 13.058594 C 26.730469 13.105469 27.21875 12.710938 27.273438 12.160156 C 27.328125 11.609375 26.925781 11.121094 26.375 11.066406 C 25.851563 11.015625 25.328125 10.992188 24.808594 11 Z M 31.859375 12.875 C 31.476563 12.820313 31.074219 12.996094 30.859375 13.351563 C 30.574219 13.824219 30.726563 14.4375 31.203125 14.722656 C 32.023438 15.222656 32.792969 15.824219 33.484375 16.515625 C 33.679688 16.710938 33.933594 16.808594 34.191406 16.808594 C 34.449219 16.808594 34.703125 16.710938 34.902344 16.515625 C 35.289063 16.125 35.289063 15.492188 34.902344 15.101563 C 34.09375 14.296875 33.195313 13.59375 32.234375 13.011719 C 32.117188 12.941406 31.988281 12.894531 31.859375 12.875 Z M 11 24 C 10.449219 24 10 24.445313 10 25 C 10 25.554688 10.449219 26 11 26 L 13 26 C 13.550781 26 14 25.554688 14 25 C 14 24.445313 13.550781 24 13 24 Z M 37 24 C 36.449219 24 36 24.445313 36 25 C 36 25.554688 36.449219 26 37 26 L 39 26 C 39.550781 26 40 25.554688 40 25 C 40 24.445313 39.550781 24 39 24 Z M 13.890625 28.496094 C 13.761719 28.492188 13.625 28.515625 13.5 28.566406 L 11.644531 29.316406 C 11.132813 29.523438 10.886719 30.105469 11.09375 30.617188 C 11.25 31.007813 11.625 31.246094 12.019531 31.246094 C 12.144531 31.246094 12.273438 31.222656 12.394531 31.171875 L 14.25 30.421875 C 14.761719 30.214844 15.007813 29.632813 14.800781 29.121094 C 14.644531 28.738281 14.28125 28.5 13.890625 28.496094 Z M 36.046875 28.6875 C 35.65625 28.6875 35.285156 28.917969 35.125 29.296875 C 34.910156 29.808594 35.144531 30.394531 35.65625 30.609375 L 37.496094 31.390625 C 37.621094 31.445313 37.753906 31.46875 37.886719 31.46875 C 38.277344 31.46875 38.644531 31.242188 38.808594 30.859375 C 39.023438 30.351563 38.785156 29.765625 38.277344 29.550781 L 36.4375 28.769531 C 36.308594 28.714844 36.175781 28.6875 36.046875 28.6875 Z M 16.515625 32.484375 C 16.257813 32.484375 16.003906 32.582031 15.808594 32.777344 L 14.394531 34.191406 C 14.003906 34.582031 14.003906 35.214844 14.394531 35.605469 C 14.589844 35.800781 14.84375 35.898438 15.101563 35.898438 C 15.359375 35.898438 15.613281 35.800781 15.808594 35.605469 L 17.222656 34.191406 C 17.613281 33.800781 17.613281 33.167969 17.222656 32.777344 C 17.027344 32.582031 16.769531 32.484375 16.515625 32.484375 Z M 33.484375 32.484375 C 33.230469 32.484375 32.972656 32.582031 32.777344 32.777344 C 32.386719 33.167969 32.386719 33.800781 32.777344 34.191406 L 34.191406 35.605469 C 34.386719 35.800781 34.640625 35.898438 34.898438 35.898438 C 35.15625 35.898438 35.410156 35.800781 35.605469 35.605469 C 35.996094 35.214844 35.996094 34.582031 35.605469 34.191406 L 34.191406 32.777344 C 33.996094 32.582031 33.738281 32.484375 33.484375 32.484375 Z M 20.3125 35.046875 C 19.921875 35.046875 19.550781 35.273438 19.390625 35.65625 L 18.609375 37.496094 C 18.394531 38.003906 18.632813 38.59375 19.140625 38.808594 C 19.269531 38.863281 19.398438 38.886719 19.53125 38.886719 C 19.917969 38.886719 20.289063 38.65625 20.453125 38.277344 L 21.234375 36.4375 C 21.449219 35.929688 21.210938 35.339844 20.703125 35.125 C 20.574219 35.070313 20.441406 35.046875 20.3125 35.046875 Z M 29.511719 35.125 C 29.382813 35.125 29.246094 35.148438 29.121094 35.199219 C 28.605469 35.40625 28.359375 35.988281 28.566406 36.5 L 29.316406 38.355469 C 29.472656 38.746094 29.847656 38.980469 30.246094 38.980469 C 30.371094 38.980469 30.496094 38.957031 30.621094 38.90625 C 31.132813 38.699219 31.378906 38.117188 31.171875 37.605469 L 30.421875 35.75 C 30.265625 35.367188 29.902344 35.132813 29.511719 35.125 Z M 25 36 C 24.449219 36 24 36.445313 24 37 L 24 39 C 24 39.554688 24.449219 40 25 40 C 25.550781 40 26 39.554688 26 39 L 26 37 C 26 36.445313 25.550781 36 25 36 Z M 43.910156 41.324219 L 45.785156 43.203125 C 45.3125 43.4375 44.859375 43.730469 44.464844 44.125 L 44.121094 44.464844 C 43.730469 44.855469 43.4375 45.304688 43.199219 45.78125 L 41.324219 43.910156 C 42.25 43.113281 43.113281 42.25 43.910156 41.324219 Z M 48 44.65625 C 48.769531 44.65625 49.539063 44.949219 50.125 45.535156 L 60.46875 55.878906 C 61.035156 56.445313 61.34375 57.199219 61.34375 58 C 61.34375 58.800781 61.03125 59.554688 60.464844 60.121094 L 60.121094 60.464844 C 58.949219 61.632813 57.050781 61.632813 55.878906 60.464844 L 45.535156 50.121094 C 44.96875 49.554688 44.65625 48.800781 44.65625 48 C 44.65625 47.199219 44.96875 46.445313 45.535156 45.878906 L 45.878906 45.535156 C 46.464844 44.949219 47.234375 44.65625 48 44.65625 Z "/>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">View Cron Output</h3>
-                                    <p class="text-sm">See exactly what your scheduled cron jobs are outputting to keep an eye on performance or to help debug issues when they&nbsp;arise.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-row">
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" version="1.1" width="64px" height="64px">
-                                            <g id="surface1">
-                                            <path style=" " d="M 31 4 C 15.011719 4 2 17.007813 2 33 C 2 48.992188 15.011719 62 31 62 C 46.988281 62 60 48.992188 60 33 C 60 28.355469 58.867188 23.769531 56.746094 19.671875 L 62.707031 13.707031 C 63.097656 13.316406 63.097656 12.683594 62.707031 12.292969 L 58.707031 8.292969 C 58.316406 7.902344 57.683594 7.902344 57.292969 8.292969 L 52.226563 13.359375 C 52.179688 13.234375 52.109375 13.117188 52.015625 13.015625 C 46.484375 7.203125 39.019531 4 31 4 Z M 31 6 C 38.46875 6 45.417969 8.980469 50.5625 14.394531 C 50.675781 14.511719 50.808594 14.585938 50.949219 14.636719 L 47.984375 17.601563 C 47.9375 17.484375 47.875 17.371094 47.78125 17.269531 C 47.613281 17.089844 47.441406 16.914063 47.265625 16.738281 C 46.605469 16.078125 45.902344 15.457031 45.171875 14.882813 C 44.734375 14.542969 44.105469 14.617188 43.765625 15.050781 C 43.425781 15.488281 43.5 16.113281 43.9375 16.453125 C 44.605469 16.976563 45.246094 17.550781 45.847656 18.152344 C 46.007813 18.3125 46.167969 18.476563 46.320313 18.640625 C 46.429688 18.753906 46.5625 18.832031 46.703125 18.886719 L 31 34.585938 L 20.707031 24.292969 C 20.316406 23.902344 19.683594 23.902344 19.292969 24.292969 L 15.292969 28.292969 C 14.902344 28.683594 14.902344 29.316406 15.292969 29.707031 L 30.292969 44.707031 C 30.488281 44.902344 30.742188 45 31 45 C 31.257813 45 31.511719 44.902344 31.707031 44.707031 L 50.691406 25.722656 C 50.757813 25.902344 50.820313 26.082031 50.882813 26.265625 C 50.984375 26.5625 51.078125 26.863281 51.164063 27.167969 C 51.199219 27.296875 51.246094 27.425781 51.28125 27.554688 C 51.398438 28.007813 51.503906 28.464844 51.59375 28.921875 C 51.609375 29 51.621094 29.078125 51.636719 29.15625 C 52.457031 33.640625 51.78125 38.292969 49.769531 42.359375 C 49.667969 42.5625 49.566406 42.769531 49.457031 42.972656 C 49.292969 43.28125 49.117188 43.589844 48.9375 43.890625 C 48.769531 44.167969 48.59375 44.433594 48.414063 44.699219 C 48.257813 44.929688 48.109375 45.167969 47.941406 45.394531 C 47.597656 45.871094 47.234375 46.324219 46.851563 46.765625 C 46.714844 46.921875 46.566406 47.070313 46.425781 47.222656 C 40.472656 53.667969 30.84375 55.941406 22.40625 52.160156 C 19.886719 51.03125 17.714844 49.453125 15.90625 47.578125 C 15.65625 47.320313 15.421875 47.050781 15.1875 46.78125 C 14.949219 46.507813 14.710938 46.234375 14.488281 45.953125 C 14.316406 45.734375 14.160156 45.507813 14 45.285156 C 13.742188 44.933594 13.492188 44.582031 13.261719 44.214844 C 13.15625 44.050781 13.0625 43.878906 12.964844 43.710938 C 12.710938 43.285156 12.464844 42.855469 12.242188 42.410156 C 12.175781 42.273438 12.117188 42.132813 12.050781 41.996094 C 11.828125 41.527344 11.613281 41.050781 11.425781 40.566406 C 11.363281 40.40625 11.3125 40.238281 11.253906 40.078125 C 11.09375 39.621094 10.933594 39.160156 10.800781 38.691406 C 10.730469 38.441406 10.679688 38.183594 10.617188 37.929688 C 10.523438 37.550781 10.433594 37.175781 10.359375 36.792969 C 10.292969 36.414063 10.246094 36.035156 10.199219 35.65625 C 10.164063 35.390625 10.121094 35.125 10.097656 34.859375 C 10.054688 34.382813 10.039063 33.902344 10.03125 33.421875 C 10.023438 33.242188 10.015625 33.066406 10.015625 32.890625 C 10.019531 32.371094 10.050781 31.855469 10.089844 31.339844 C 10.101563 31.183594 10.105469 31.03125 10.121094 30.875 C 10.171875 30.386719 10.246094 29.894531 10.332031 29.40625 C 10.363281 29.214844 10.394531 29.019531 10.433594 28.828125 C 10.515625 28.402344 10.628906 27.988281 10.738281 27.566406 C 10.8125 27.300781 10.878906 27.035156 10.960938 26.769531 C 11.066406 26.421875 11.191406 26.082031 11.316406 25.742188 C 11.441406 25.410156 11.566406 25.074219 11.707031 24.746094 C 11.855469 24.394531 12.019531 24.050781 12.1875 23.707031 C 12.296875 23.484375 12.40625 23.253906 12.523438 23.035156 C 12.746094 22.617188 12.992188 22.210938 13.25 21.808594 C 13.335938 21.667969 13.414063 21.523438 13.503906 21.386719 C 13.859375 20.851563 14.242188 20.332031 14.652344 19.828125 C 14.75 19.703125 14.859375 19.589844 14.960938 19.46875 C 15.285156 19.085938 15.621094 18.710938 15.972656 18.34375 C 16.203125 18.113281 16.433594 17.882813 16.671875 17.660156 C 16.773438 17.566406 16.875 17.464844 16.980469 17.371094 C 17.34375 17.046875 17.71875 16.734375 18.101563 16.433594 C 18.230469 16.332031 18.367188 16.238281 18.5 16.140625 C 18.761719 15.945313 19.03125 15.753906 19.300781 15.574219 C 19.484375 15.449219 19.667969 15.328125 19.855469 15.214844 C 20.085938 15.070313 20.320313 14.933594 20.554688 14.796875 C 20.964844 14.5625 21.382813 14.339844 21.808594 14.136719 C 21.964844 14.058594 22.117188 13.976563 22.273438 13.90625 C 22.570313 13.769531 22.867188 13.648438 23.167969 13.527344 C 23.292969 13.476563 23.417969 13.429688 23.546875 13.378906 C 23.871094 13.257813 24.199219 13.132813 24.53125 13.027344 C 24.539063 13.023438 24.542969 13.023438 24.550781 13.023438 C 25.320313 12.777344 26.101563 12.570313 26.894531 12.410156 L 26.925781 12.40625 C 27.296875 12.332031 27.671875 12.269531 28.046875 12.21875 C 28.125 12.207031 28.203125 12.195313 28.28125 12.1875 C 29.335938 12.046875 30.40625 11.992188 31.476563 12.015625 C 31.691406 12.019531 31.902344 12.023438 32.117188 12.035156 C 32.378906 12.050781 32.640625 12.066406 32.90625 12.089844 C 33.261719 12.121094 33.621094 12.167969 33.984375 12.21875 C 34.101563 12.234375 34.222656 12.246094 34.339844 12.265625 C 34.886719 12.351563 35.398438 11.980469 35.484375 11.4375 L 35.484375 11.433594 C 35.574219 10.886719 35.203125 10.375 34.65625 10.285156 C 34.53125 10.265625 34.40625 10.261719 34.28125 10.242188 C 33.882813 10.183594 33.480469 10.136719 33.078125 10.097656 C 32.800781 10.074219 32.527344 10.058594 32.25 10.042969 C 31.992188 10.027344 31.738281 10.019531 31.484375 10.015625 C 30.355469 9.992188 29.238281 10.054688 28.136719 10.191406 C 27.988281 10.210938 27.84375 10.230469 27.699219 10.25 C 27.332031 10.304688 26.96875 10.363281 26.605469 10.4375 C 26.492188 10.457031 26.382813 10.484375 26.269531 10.507813 C 25.597656 10.652344 24.929688 10.820313 24.277344 11.023438 C 24.132813 11.066406 23.992188 11.105469 23.847656 11.152344 C 23.546875 11.253906 23.25 11.363281 22.949219 11.472656 C 22.726563 11.558594 22.503906 11.644531 22.285156 11.734375 C 22.027344 11.839844 21.765625 11.945313 21.511719 12.0625 C 21.066406 12.265625 20.621094 12.480469 20.1875 12.710938 C 20.042969 12.789063 19.902344 12.875 19.757813 12.953125 C 19.40625 13.152344 19.058594 13.355469 18.71875 13.570313 C 18.570313 13.664063 18.421875 13.761719 18.273438 13.859375 C 17.898438 14.109375 17.53125 14.371094 17.171875 14.640625 C 17.089844 14.703125 17.003906 14.761719 16.921875 14.824219 C 16.472656 15.171875 16.035156 15.539063 15.609375 15.921875 C 15.539063 15.984375 15.476563 16.046875 15.40625 16.109375 C 15.183594 16.316406 14.957031 16.523438 14.738281 16.738281 C 14.660156 16.816406 14.59375 16.902344 14.515625 16.984375 C 14.164063 17.347656 13.824219 17.730469 13.492188 18.121094 C 13.355469 18.277344 13.210938 18.433594 13.082031 18.59375 C 12.648438 19.132813 12.234375 19.691406 11.847656 20.269531 C 11.734375 20.445313 11.636719 20.621094 11.53125 20.796875 C 11.265625 21.21875 11.007813 21.640625 10.769531 22.082031 C 10.636719 22.332031 10.515625 22.585938 10.390625 22.839844 C 10.269531 23.089844 10.132813 23.332031 10.015625 23.589844 C 9.925781 23.792969 9.847656 23.996094 9.765625 24.199219 C 9.730469 24.277344 9.695313 24.355469 9.664063 24.4375 C 9.402344 25.089844 9.171875 25.75 8.972656 26.414063 C 8.964844 26.433594 8.960938 26.453125 8.953125 26.472656 C 8.097656 29.363281 7.839844 32.316406 8.117188 35.195313 C 8.121094 35.203125 8.121094 35.210938 8.125 35.21875 C 8.191406 35.910156 8.289063 36.59375 8.417969 37.269531 C 8.433594 37.363281 8.457031 37.457031 8.476563 37.550781 C 8.59375 38.148438 8.738281 38.734375 8.90625 39.320313 C 8.953125 39.492188 9.007813 39.660156 9.058594 39.828125 C 9.21875 40.34375 9.394531 40.851563 9.589844 41.351563 C 9.671875 41.566406 9.757813 41.777344 9.851563 41.988281 C 10.046875 42.457031 10.261719 42.917969 10.488281 43.371094 C 10.597656 43.585938 10.707031 43.796875 10.824219 44.003906 C 11.074219 44.472656 11.347656 44.925781 11.628906 45.375 C 11.738281 45.546875 11.847656 45.714844 11.960938 45.878906 C 12.296875 46.378906 12.652344 46.859375 13.027344 47.332031 C 13.109375 47.433594 13.1875 47.539063 13.273438 47.640625 C 13.710938 48.171875 14.175781 48.6875 14.664063 49.179688 C 14.691406 49.207031 14.714844 49.238281 14.738281 49.265625 C 14.746094 49.269531 14.753906 49.269531 14.757813 49.273438 C 16.679688 51.195313 18.96875 52.808594 21.59375 53.984375 C 24.640625 55.351563 27.828125 56 30.96875 56 C 37.042969 56 42.933594 53.578125 47.257813 49.269531 C 47.261719 49.265625 47.265625 49.265625 47.265625 49.261719 C 47.347656 49.183594 47.414063 49.097656 47.492188 49.015625 C 47.8125 48.691406 48.128906 48.355469 48.429688 48.003906 C 48.5 47.925781 48.558594 47.839844 48.625 47.761719 C 48.9375 47.390625 49.238281 47.011719 49.527344 46.621094 C 49.558594 46.574219 49.589844 46.53125 49.621094 46.484375 C 50.527344 45.234375 51.332031 43.878906 51.988281 42.410156 C 53.917969 38.109375 54.453125 33.351563 53.605469 28.792969 C 53.589844 28.703125 53.574219 28.617188 53.558594 28.53125 C 53.457031 28.03125 53.347656 27.53125 53.214844 27.035156 C 53.179688 26.894531 53.128906 26.757813 53.089844 26.613281 C 52.992188 26.28125 52.890625 25.945313 52.78125 25.613281 C 52.707031 25.402344 52.632813 25.191406 52.554688 24.980469 C 52.453125 24.710938 52.34375 24.445313 52.234375 24.179688 L 55.265625 21.152344 C 57.050781 24.824219 58 28.886719 58 33 C 58 47.886719 45.886719 60 31 60 C 16.113281 60 4 47.886719 4 33 C 4 18.113281 16.113281 6 31 6 Z M 58 10.414063 L 60.585938 13 L 31 42.585938 L 17.414063 29 L 20 26.414063 L 30.292969 36.707031 C 30.683594 37.097656 31.316406 37.097656 31.707031 36.707031 Z M 38.65625 11.386719 C 38.269531 11.402344 37.910156 11.648438 37.765625 12.035156 C 37.570313 12.554688 37.832031 13.128906 38.351563 13.324219 C 39.066406 13.589844 39.769531 13.898438 40.453125 14.238281 C 40.597656 14.3125 40.75 14.347656 40.902344 14.347656 C 41.265625 14.347656 41.617188 14.148438 41.796875 13.796875 C 42.042969 13.304688 41.84375 12.703125 41.351563 12.453125 C 40.609375 12.078125 39.832031 11.742188 39.050781 11.449219 C 38.921875 11.402344 38.789063 11.382813 38.65625 11.386719 Z "/>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">Confirmation Emails</h3>
-                                    <p class="text-sm">Once your schedule monitor has been successfully set up and pinged for the first time, we send you a confirmation email to let you know we're monitoring&nbsp;it.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64" version="1.1" width="64px" height="64px">
-                                            <g id="surface1">
-                                            <path style=" " d="M 31 2 C 15.007813 2 2 15.007813 2 31 C 2 46.992188 15.007813 60 31 60 C 46.992188 60 60 46.992188 60 31 C 60 15.007813 46.992188 2 31 2 Z M 31 4 C 45.886719 4 58 16.113281 58 31 C 58 45.886719 45.886719 58 31 58 C 16.113281 58 4 45.886719 4 31 C 4 16.113281 16.113281 4 31 4 Z M 31 8 C 18.316406 8 8 18.316406 8 31 C 8 43.683594 18.316406 54 31 54 C 43.683594 54 54 43.683594 54 31 C 54 23.894531 50.792969 17.300781 45.199219 12.90625 C 44.765625 12.566406 44.140625 12.640625 43.796875 13.074219 C 43.457031 13.507813 43.53125 14.136719 43.964844 14.480469 C 49.070313 18.492188 52 24.515625 52 31 C 52 42.578125 42.578125 52 31 52 C 19.421875 52 10 42.578125 10 31 C 10 19.421875 19.421875 10 31 10 C 32.027344 10 33.058594 10.074219 34.0625 10.222656 C 34.613281 10.304688 35.121094 9.925781 35.199219 9.378906 C 35.277344 8.832031 34.902344 8.324219 34.355469 8.242188 C 33.253906 8.082031 32.125 8 31 8 Z M 38.53125 9.34375 C 38.144531 9.363281 37.785156 9.609375 37.640625 10 C 37.453125 10.515625 37.71875 11.089844 38.238281 11.28125 C 39.019531 11.566406 39.796875 11.910156 40.546875 12.292969 C 40.695313 12.367188 40.851563 12.402344 41.003906 12.402344 C 41.367188 12.402344 41.71875 12.203125 41.894531 11.855469 C 42.144531 11.363281 41.949219 10.761719 41.457031 10.511719 C 40.636719 10.089844 39.785156 9.71875 38.925781 9.402344 C 38.796875 9.355469 38.664063 9.335938 38.53125 9.34375 Z M 31 14 C 30.449219 14 30 14.449219 30 15 L 30 17 C 30 17.550781 30.449219 18 31 18 C 31.550781 18 32 17.550781 32 17 L 32 15 C 32 14.449219 31.550781 14 31 14 Z M 36.980469 15.167969 C 36.589844 15.171875 36.222656 15.40625 36.066406 15.792969 L 35.316406 17.644531 C 35.109375 18.15625 35.355469 18.742188 35.871094 18.949219 C 35.992188 18.996094 36.121094 19.019531 36.246094 19.019531 C 36.640625 19.019531 37.015625 18.785156 37.171875 18.394531 L 37.921875 16.539063 C 38.128906 16.027344 37.878906 15.445313 37.367188 15.238281 C 37.238281 15.1875 37.109375 15.164063 36.980469 15.167969 Z M 42.097656 18.488281 C 41.839844 18.496094 41.589844 18.597656 41.394531 18.796875 L 40.003906 20.234375 C 39.621094 20.632813 39.632813 21.265625 40.03125 21.648438 C 40.222656 21.835938 40.472656 21.929688 40.722656 21.929688 C 40.988281 21.929688 41.246094 21.824219 41.441406 21.625 L 42.832031 20.1875 C 43.21875 19.789063 43.207031 19.15625 42.8125 18.769531 C 42.613281 18.578125 42.355469 18.484375 42.097656 18.488281 Z M 31 20 C 30.449219 20 30 20.449219 30 21 L 30 29.277344 C 29.40625 29.625 29 30.261719 29 31 C 29 32.101563 29.898438 33 31 33 C 31.179688 33 31.347656 32.96875 31.511719 32.925781 L 37.792969 39.207031 C 37.988281 39.402344 38.242188 39.5 38.5 39.5 C 38.757813 39.5 39.011719 39.402344 39.207031 39.207031 C 39.597656 38.816406 39.597656 38.183594 39.207031 37.792969 L 32.925781 31.511719 C 32.96875 31.347656 33 31.179688 33 31 C 33 30.261719 32.59375 29.625 32 29.277344 L 32 21 C 32 20.449219 31.550781 20 31 20 Z M 45.597656 23.492188 C 45.46875 23.496094 45.335938 23.523438 45.210938 23.578125 L 43.382813 24.390625 C 42.878906 24.617188 42.652344 25.207031 42.875 25.714844 C 43.042969 26.085938 43.40625 26.308594 43.789063 26.308594 C 43.925781 26.308594 44.0625 26.277344 44.195313 26.21875 L 46.023438 25.40625 C 46.527344 25.179688 46.753906 24.589844 46.53125 24.085938 C 46.359375 23.707031 45.988281 23.484375 45.597656 23.492188 Z M 15 30 C 14.449219 30 14 30.449219 14 31 C 14 31.550781 14.449219 32 15 32 L 17 32 C 17.550781 32 18 31.550781 18 31 C 18 30.449219 17.550781 30 17 30 Z M 45 30 C 44.449219 30 44 30.449219 44 31 C 44 31.550781 44.449219 32 45 32 L 47 32 C 47.550781 32 48 31.550781 48 31 C 48 30.449219 47.550781 30 47 30 Z M 43.964844 35.246094 C 43.574219 35.25 43.207031 35.484375 43.050781 35.871094 C 42.847656 36.382813 43.09375 36.964844 43.605469 37.171875 L 45.460938 37.921875 C 45.582031 37.972656 45.710938 37.996094 45.832031 37.996094 C 46.230469 37.996094 46.605469 37.757813 46.761719 37.367188 C 46.96875 36.855469 46.722656 36.273438 46.207031 36.066406 L 44.355469 35.316406 C 44.226563 35.265625 44.09375 35.242188 43.964844 35.246094 Z M 41.054688 39.722656 C 40.800781 39.730469 40.542969 39.832031 40.351563 40.03125 C 40.199219 40.1875 40.128906 40.386719 40.097656 40.585938 C 39.929688 40.953125 39.988281 41.402344 40.292969 41.707031 L 41.605469 43.019531 C 41.800781 43.214844 42.054688 43.3125 42.3125 43.3125 C 42.570313 43.3125 42.824219 43.214844 43.019531 43.019531 C 43.054688 42.984375 43.074219 42.933594 43.105469 42.894531 C 43.144531 42.863281 43.191406 42.847656 43.230469 42.808594 C 43.613281 42.410156 43.601563 41.777344 43.203125 41.394531 L 41.765625 40.003906 C 41.566406 39.8125 41.308594 39.71875 41.054688 39.722656 Z M 31 44 C 30.449219 44 30 44.449219 30 45 L 30 47 C 30 47.550781 30.449219 48 31 48 C 31.550781 48 32 47.550781 32 47 L 32 45 C 32 44.449219 31.550781 44 31 44 Z "/>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">Full Cron Support</h3>
-                                    <p class="text-sm">Surveyr supports any cron schedule including up-to-the-minute monitoring. We even display human readable versions of cron schedules to make your life&nbsp;easier.</p>
-                                </div>
-                            </div>
-                            <div class="feature">
-                                <div class="feature-content">
-                                    <div class="feature-icon feature-color-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64px" height="64px">
-                                            <path d="M 32 2 C 29.43 2.011 26.907453 2.701 24.689453 4 C 20.999453 4.14 18.42 6.7603906 18 10.900391 C 17.815 12.765391 17.859859 14.646 18.130859 16.5 C 18.184859 16.831 18.214703 17.165 18.220703 17.5 C 18.220703 17.687 18.190859 17.873547 18.130859 18.060547 C 17.982859 18.064547 17.833453 18.083141 17.689453 18.119141 C 16.039453 18.559141 15.349844 20.970469 16.089844 23.730469 C 16.629844 25.730469 17.750703 27.230469 18.970703 27.730469 C 19.593703 29.588469 20.449531 31.358 21.519531 33 L 21.517578 33.001953 C 21.570799 33.109796 21.655662 33.240098 21.736328 33.367188 L 8.2929688 39.388672 C 4.4699688 41.197672 2 45.100125 2 49.328125 L 2 57 C 2 58.654 3.346 60 5 60 L 59 60 C 60.654 60 62 58.654 62 57 L 62 49.328125 C 62 45.100125 59.531453 41.197906 55.689453 39.378906 L 42.240234 33.355469 C 42.328999 33.223563 42.480469 33 42.480469 33 C 43.539469 31.357 44.386 29.586469 45 27.730469 C 46.23 27.270469 47.350859 25.730469 47.880859 23.730469 C 48.620859 20.980469 47.879297 18.569141 46.279297 18.119141 C 46.138297 18.083141 45.994609 18.064547 45.849609 18.060547 C 45.677609 16.881547 45.369688 15.726141 44.929688 14.619141 L 44.929688 14.509766 C 45.403687 14.566766 45.868547 14.687141 46.310547 14.869141 C 46.820547 15.081141 47.405188 14.840078 47.617188 14.330078 C 47.696188 14.140078 47.713922 13.930469 47.669922 13.730469 C 45.999922 6.4104687 40.56 2 33 2 L 32 2 z M 32 4 L 33 4 C 39.07 4 43.45 7.1000781 45.25 12.580078 C 44.577 12.449078 43.879609 12.625547 43.349609 13.060547 C 42.773609 13.687547 42.657547 14.609375 43.060547 15.359375 C 43.593547 16.653375 43.898937 18.031687 43.960938 19.429688 C 43.988937 19.981687 44.458766 20.406906 45.009766 20.378906 C 45.183766 20.369906 45.352047 20.315703 45.498047 20.220703 C 45.578047 20.160703 45.671531 20.118609 45.769531 20.099609 C 46.010531 20.179609 46.449219 21.4 45.949219 23.25 C 45.449219 25.1 44.510703 25.869141 44.220703 25.869141 C 43.761703 25.851141 43.348703 26.148844 43.220703 26.589844 C 41.590703 32.259844 37.18 38 32 38 C 26.82 38 22.410703 32.259609 20.720703 26.599609 C 20.597703 26.176609 20.210531 25.884859 19.769531 25.880859 L 19.75 25.880859 C 19.46 25.880859 18.509531 25.099766 18.019531 23.259766 C 17.529531 21.419766 17.969219 20.169375 18.199219 20.109375 C 18.298219 20.126375 18.391703 20.168469 18.470703 20.230469 C 18.938703 20.523469 19.554656 20.382063 19.847656 19.914062 C 19.938656 19.768062 19.991 19.601688 20 19.429688 C 20.024 18.913688 20.080922 18.399625 20.169922 17.890625 C 20.221922 17.342625 20.194844 16.79 20.089844 16.25 C 19.850844 14.543 19.821 12.813609 20 11.099609 C 20.31 7.9096094 22.19 6 25 6 C 25.216 6 25.426609 5.9307812 25.599609 5.8007812 C 27.522609 4.6137813 29.74 3.99 32 4 z M 26.171875 10.125 C 25.582197 10.178984 25.024687 10.493281 24.679688 11.019531 L 23.080078 13.449219 C 22.784078 13.915219 22.922672 14.534078 23.388672 14.830078 C 23.843672 15.119078 24.446 14.995781 24.75 14.550781 L 26.349609 12.119141 L 27.919922 12.880859 C 30.783922 14.270859 33.925375 14.995 37.109375 15 L 39.660156 15 C 40.212156 15 40.660156 14.552 40.660156 14 C 40.660156 13.448 40.212156 13 39.660156 13 L 37.109375 13 C 34.226375 12.996 31.382062 12.339078 28.789062 11.080078 L 27.230469 10.320312 C 26.891094 10.154563 26.525682 10.092609 26.171875 10.125 z M 22.974609 35.001953 C 25.399749 37.936294 28.529301 40 32 40 C 35.47276 40 38.603538 37.93277 41.029297 35.003906 L 54.851562 41.195312 C 57.978562 42.676312 60 45.868125 60 49.328125 L 60 57 C 60 57.551 59.551 58 59 58 L 5 58 C 4.449 58 4 57.551 4 57 L 4 49.328125 C 4 45.871125 6.0166719 42.682219 9.1386719 41.199219 L 22.974609 35.001953 z M 7 52 C 6.448 52 6 52.448 6 53 L 6 55 C 6 55.552 6.448 56 7 56 C 7.552 56 8 55.552 8 55 L 8 53 C 8 52.448 7.552 52 7 52 z M 12 52 C 11.448 52 11 52.448 11 53 L 11 55 C 11 55.552 11.448 56 12 56 C 12.552 56 13 55.552 13 55 L 13 53 C 13 52.448 12.552 52 12 52 z M 17 52 C 16.448 52 16 52.448 16 53 L 16 55 C 16 55.552 16.448 56 17 56 C 17.552 56 18 55.552 18 55 L 18 53 C 18 52.448 17.552 52 17 52 z M 22 52 C 21.448 52 21 52.448 21 53 L 21 55 C 21 55.552 21.448 56 22 56 C 22.552 56 23 55.552 23 55 L 23 53 C 23 52.448 22.552 52 22 52 z M 27 52 C 26.448 52 26 52.448 26 53 L 26 55 C 26 55.552 26.448 56 27 56 C 27.552 56 28 55.552 28 55 L 28 53 C 28 52.448 27.552 52 27 52 z M 32 52 C 31.448 52 31 52.448 31 53 L 31 55 C 31 55.552 31.448 56 32 56 C 32.552 56 33 55.552 33 55 L 33 53 C 33 52.448 32.552 52 32 52 z M 37 52 C 36.448 52 36 52.448 36 53 L 36 55 C 36 55.552 36.448 56 37 56 C 37.552 56 38 55.552 38 55 L 38 53 C 38 52.448 37.552 52 37 52 z M 42 52 C 41.448 52 41 52.448 41 53 L 41 55 C 41 55.552 41.448 56 42 56 C 42.552 56 43 55.552 43 55 L 43 53 C 43 52.448 42.552 52 42 52 z M 47 52 C 46.448 52 46 52.448 46 53 L 46 55 C 46 55.552 46.448 56 47 56 C 47.552 56 48 55.552 48 55 L 48 53 C 48 52.448 47.552 52 47 52 z M 52 52 C 51.448 52 51 52.448 51 53 L 51 55 C 51 55.552 51.448 56 52 56 C 52.552 56 53 55.552 53 55 L 53 53 C 53 52.448 52.552 52 52 52 z M 57 52 C 56.448 52 56 52.448 56 53 L 56 55 C 56 55.552 56.448 56 57 56 C 57.552 56 58 55.552 58 55 L 58 53 C 58 52.448 57.552 52 57 52 z"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="feature-title">Team Collaboration</h3>
-                                    <p class="text-sm">Invite your team members so that they can manage their own apps and schedule monitors under a single team account and have access to the correct information when they need it.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="pricing" class="pricing section">
-                <div class="container">
-                    <div class="section-inner">
-                        <div class="text-center is-revealing">
-                            <h2 class="section-title mt-0">Simple Pricing</h2>
-                            <p class="section-paragraph">Try Surveyr for free. No card required. Money back guarantee.</p>
-                        </div>
-                        @php
-                        $plans = config('billing.plans');
-                        $plans = collect($plans)->reject(function($plan) {
-                            return $plan['archived'];
-                        });
-                        @endphp
-                        <div class="pricing-plans">
-                            @foreach ($plans as $plan)
-                                <div class="pricing-plan">
-                                    <h4 class="pricing-plan-title">{{ $plan['title'] }}</h4>
-                                    <div class="pricing-price">
-                                        <span>&dollar;{{ $plan['price'] }}</span>/month
-                                    </div>
-                                    <ul class="pricing-features">
-                                        <li><strong>{{ $plan['schedule_monitor_limit'] }}</strong> schedule monitors</li>
-                                        <li><strong>{{ $plan['team_member_limit'] ?: 'Unlimited' }}</strong> team member{{ $plan['team_member_limit'] === 1 ? '': 's' }}</li>
-                                        <li>Unlimited apps</li>
-                                        <li>30 day event log</li>
-                                        <li>Email support</li>
-                                        <li>10 day free trial</li>
-                                    </ul>
-                                    <a href="{{ url('register') }}" class="button button-primary">Sign Up Now <span>No card required</span></a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </di>
-                <div class="container-sm">
-                    <div class="section-inner" style="padding-top: 0;">
-                        <div id="mbg" class="text-center">
-                            <h3>100% No-Risk 30-Day Money Back Guarantee</h3>
-                            <p>If for any reason you are not happy with our product or service, simply let us know within 30 days of the end of your free trial and we'll refund 100% of your money. No questions asked.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" class="faq section">
-                <div class="container">
-                    <div class="section-inner has-bottom-divider">
-                        <div class="text-center is-revealing">
-                            <h2 class="section-title mt-0">FAQ</h2>
-                        </div>
-                        <div class="faq-row">
-                            <div class="faq-item">
-                                <h4>What is a schedule monitor?</h4>
-                                <p class="text-sm">A schedule monitor is a monitor for a single scheduled cron job. For example, in Laravel each <code>$schedule->command()</code> you have will require an individual schedule monitor.</p>
-                            </div>
-                            <div class="faq-item">
-                                <h4>What happens when my 10 day free trial ends?</h4>
-                                <p class="text-sm">When your free trial ends you will need to sign up for a subscription via the billing page. If you don't upgrade to a paid plan at this point your schedule cron jobs will no longer be monitored.</p>
-                            </div>
-                            <div class="faq-item">
-                                <h4>What happens if I go over my schedule monitor limit?</h4>
-                                <p class="text-sm">When you reach the limit of schedule monitors for your plan you will no longer be able to create new schedule monitors. To create new schedule monitors you will need to upgrade to a higher plan.</p>
-                            </div>
-                        </div>
-                        <div class="faq-row">
-                            <div class="faq-item">
-                                <h4>Will your package slow down or break my app?</h4>
-                                <p class="text-sm">Our Laravel package is designed to put minimal extra load on your scheduled jobs and will not affect your jobs even if pings to our service fail.</p>
-                            </div>
-                            <div class="faq-item">
-                                <h4>Can I upgrade my plan?</h4>
-                                <p class="text-sm">You can upgrade your plan at any time via the billing page. Upgrades will be prorated and you won't be charged until the beginning of the next billing cycle.</p>
-                            </div>
-                            <div class="faq-item">
-                                <h4>Can I cancel my subscription?</h4>
-                                <p class="text-sm">You can cancel your subscripiton at any time via the billing page. When the current billing cycle ends your schedule cron jobs will no longer be monitored and your card will stop being billed.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="newsletter section">
-                <div class="container-sm">
-                    <div class="newsletter-inner section-inner">
-                        <div class="newsletter-header text-center is-revealing">
-                            <h2 class="section-title mt-0">Updates in your Inbox</h2>
-                            <p class="section-paragraph">Interested in getting Surveyr news and updates?<br>Sign up to our newsletter using the form below.</p>
-                        </div>
-                        <form action="https://surveyr.us16.list-manage.com/subscribe/post" method="get" class="footer-form newsletter-form field field-grouped is-revealing">
-                            <input type="hidden" name="u" value="eb58963377353c297654599fb">
-                            <input type="hidden" name="id" value="7cfc776e42">
-                            <div class="control control-expanded">
-                                <input class="input" type="email" name="EMAIL" placeholder="Your email address&hellip;" required>
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button button-primary button-block button-shadow">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="site-footer text-light">
-            <div class="container">
-                <div class="site-footer-inner">
-                    <div class="brand footer-brand">
-                        <a href="/">
-                            <svg width="1360px" height="351px" viewBox="0 0 1360 351" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <text id="Surveyr" font-family="Roboto-Regular, Roboto" font-size="300" font-weight="normal" letter-spacing="-4.4000001" fill="#202B36">
-                                        <tspan x="396" y="278">S</tspan>
-                                        <tspan x="569.578516" y="278" letter-spacing="-5.19999981">u</tspan>
-                                        <tspan x="729.759375" y="278">r</tspan>
-                                        <tspan x="831.273047" y="278" letter-spacing="-8.19999981">v</tspan>
-                                        <tspan x="966.48125" y="278" letter-spacing="-3.20000005">e</tspan>
-                                        <tspan x="1120.3125" y="278" letter-spacing="-4">y</tspan>
-                                        <tspan x="1258.25586" y="278">r</tspan>
-                                    </text>
-                                    <g id="iconfinder_calendar_1814093" transform="translate(0.000000, 16.000000)" fill="#1274ED" fill-rule="nonzero">
-                                        <path d="M286.696833,320 L31.8552036,320 C14.479638,320 0,305.498783 0,288.097324 L0,53.9026764 C0,36.5012165 11.5837104,22 26.7873303,22 L42.7149321,22 L42.7149321,43.026764 L26.7873303,43.026764 C24.6153846,43.026764 21.719457,47.377129 21.719457,53.9026764 L21.719457,288.097324 C21.719457,293.89781 26.7873303,298.973236 32.5791855,298.973236 L287.420814,298.973236 C293.21267,298.973236 298.280543,293.89781 298.280543,288.097324 L298.280543,53.9026764 C298.280543,47.377129 294.660633,43.026764 293.21267,43.026764 L277.285068,43.026764 L277.285068,22 L293.21267,22 C307.692308,22 320,36.5012165 320,53.9026764 L320,288.097324 C318.552036,305.498783 304.072398,320 286.696833,320" id="Fill-133"></path>
-                                        <path d="M75,64 C69.1333333,64 64,58.9662921 64,53.2134831 L64,10.7865169 C64,5.03370787 69.1333333,0 75,0 C80.8666667,0 86,5.03370787 86,10.7865169 L86,53.2134831 C85.2666667,58.9662921 80.8666667,64 75,64" id="Fill-134"></path>
-                                        <path d="M245,64 C239.133333,64 234,58.9662921 234,53.2134831 L234,10.7865169 C234,5.03370787 239.133333,0 245,0 C250.866667,0 256,5.03370787 256,10.7865169 L256,53.2134831 C256,58.9662921 250.866667,64 245,64" id="Fill-135"></path>
-                                        <polygon id="Fill-136" points="106 22 212 22 212 44 106 44"></polygon>
-                                    </g>
-                                    <g id="iconfinder_Tick_Mark_1398911" transform="translate(82.000000, 128.000000)" fill="#1274ED" fill-rule="nonzero">
-                                        <polygon id="Path" points="132.555794 0 53.1076803 79.2860246 23.413719 49.6640116 0 73.051412 53.0771937 126 59.9366816 119.187545 59.9366816 119.187545 156 23.3569877"></polygon>
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </div>
-                    <ul class="footer-links list-reset">
-                        <li>
-                            <a href="{{ url('/terms') }}">Terms</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/privacy') }}">Privacy</a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/surveyrio">Twitter</a>
-                        </li>
-                        <li>
-                            <a href='ma&#105;lto&#58;suppor%&#55;&#52;&#64;sur%76e&#121;r%2Ei&#37;6F'>Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="footer-social-links list-reset">
-                    </ul>
-                    <div class="footer-copyright">&copy; {{ date('Y') }} - Surveyr is a project by&nbsp;<a href="https://dev7studios.co">Dev7studios</div>
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
 </body>
 </html>

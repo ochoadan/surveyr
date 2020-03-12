@@ -2,6 +2,7 @@ let mix = require('laravel-mix');
 let exec = require('child_process').exec;
 let path = require('path');
 const webpack = require('webpack');
+const tailwindcss = require('tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -17,7 +18,11 @@ const webpack = require('webpack');
 mix
     .sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/site/site.scss', 'public/css')
+    .sass('resources/sass/site.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [ tailwindcss('./tailwind.config.js') ],
+    })
     .copy('node_modules/sweetalert2/dist/sweetalert2.min.js', 'public/js/sweetalert.min.js')
     .sass('resources/sass/app-rtl.scss', 'public/css')
     .then(() => {
