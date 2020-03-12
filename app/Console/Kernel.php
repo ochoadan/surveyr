@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command('spark:kpi')->dailyAt('23:55');
 
-        $schedule->command('app:send-trial-reminders')->daily()->at('00:01');
+        $schedule->command('app:send-trial-reminders')->daily()->at('00:01')->monitor();
 
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
