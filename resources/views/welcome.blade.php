@@ -8,7 +8,7 @@
 
     <title>@yield('title', 'Surveyr - Cron monitoring for Laravel')</title>
 
-    <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link href="{{ mix('css/site.css') }}" rel="stylesheet">
 
     @include('analytics.google')
@@ -165,6 +165,512 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="features" class="overflow-hidden">
+        <div class="relative max-w-screen-xl mx-auto py-16 md:py-32 px-4 sm:px-6 lg:px-8">
+            <div class="relative lg:grid lg:grid-cols-3 lg:col-gap-12">
+                <div class="lg:col-span-1">
+                    <h3 class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+                        Are you losing data or customers?
+                    </h3>
+                    <p class="mt-8 text-base leading-6 text-gray-500">
+                        Scheduled cron jobs often form the backbone of a Laravel application, usually carrying out critical tasks on behalf of your customers. Yet, often these jobs are hard to monitor as they run in the background. No system is 100% resilient and downtime is inevitable. If these jobs stop working for any reason, <strong>you may lose data and even&nbsp;customers</strong>.
+                    </p>
+                    <p class="mt-4 text-base leading-6 text-gray-500">
+                        Surveyr saves you time and money by monitoring your scheduled jobs in Laravel and sending you alerts if a job stops working for whatever reason. This means you can stop worrying about cron jobs and focus your energy on building your Laravel app and <strong>growing your&nbsp;business</strong>.
+                    </p>
+                </div>
+                <div class="mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0">
+                    <div>
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">Painless Setup</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                Use our Laravel package to quickly import your schedule monitors into Surveyr and handle sending pings to Surveyr. Get up and running in minutes not hours.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">Email &amp; Slack Alerts</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                Get alerted as soon as a problem occurs so you can diagnose and resolve it as quickly. Configure email alerts, Slack alerts or both.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">View Cron Output</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                See exactly what your scheduled cron jobs are outputting to keep an eye on performance or to help debug issues when they arise.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">Confirmation Emails</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                Once your schedule monitor has been successfully set up and pinged for the first time, we send you a confirmation email to let you know we're monitoring it.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">Full Cron Support</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                Surveyr supports any cron schedule including up-to-the-minute monitoring. We even display human readable versions of cron schedules to make your life easier.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-10 sm:mt-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <div class="mt-5">
+                            <h5 class="text-lg leading-6 font-medium text-gray-900">Team Collaboration</h5>
+                            <p class="mt-2 text-base leading-6 text-gray-500">
+                                Invite your team members so that they can manage their own apps and schedule monitors under a single team account and have access to the correct information when they need it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pricing" class="bg-gray-900">
+        <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
+            <div class="text-center">
+                <h2 class="mt- text-3xl leading-9 font-extrabold text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none">
+                    Simple Pricing
+                </h2>
+                <p class="mt-3 max-w-4xl mx-auto text-xl leading-7 text-gray-300 sm:mt-5 sm:text-2xl sm:leading-8">
+                    Try Surveyr for free. No card required. Money back guarantee.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-16 bg-white pb-16 lg:mt-20 lg:pb-24">
+            <div class="relative z-0">
+                <div class="absolute inset-0 h-5/6 bg-gray-900 lg:h-2/3"></div>
+                <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="relative lg:grid lg:grid-cols-7">
+                        <div class="mx-auto max-w-md lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
+                            <div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-l-lg">
+                                <div class="flex-1 flex flex-col">
+                                    <div class="bg-white px-6 py-10">
+                                        <div>
+                                            <h2 class="text-center text-2xl leading-8 font-medium text-gray-900">
+                                                Solo
+                                            </h2>
+                                            <div class="mt-4 flex items-center justify-center">
+                                              <span class="px-3 flex items-start text-6xl leading-none tracking-tight text-gray-900">
+                                                <span class="mt-2 mr-2 text-4xl font-medium">
+                                                  $
+                                                </span>
+                                                <span class="font-extrabold">
+                                                  5
+                                                </span>
+                                              </span>
+                                                <span class="text-xl leading-7 font-medium text-gray-400">
+                                                /month
+                                              </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
+                                        <ul>
+                                            <li class="flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    <strong>5</strong> schedule monitors
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    <strong>1</strong> team member
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    Unlimited apps
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    30 day event log
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    Email support
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <div class="mt-8">
+                                            <div class="rounded-lg shadow-md">
+                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
+                                                    Start your 10 day trial
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4">
+                            <div class="relative z-10 rounded-lg shadow-xl">
+                                <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-indigo-600"></div>
+                                <div class="absolute inset-x-0 top-0 transform translate-y-px">
+                                    <div class="flex justify-center transform -translate-y-1/2">
+                                      <span class="inline-flex rounded-full bg-indigo-600 px-4 py-1 text-sm leading-5 font-semibold tracking-wider uppercase text-white">
+                                        Most popular
+                                      </span>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
+                                    <div>
+                                        <h2 class="text-center text-3xl leading-9 font-semibold text-gray-900 sm:-mx-6">
+                                            Startup
+                                        </h2>
+                                        <div class="mt-4 flex items-center justify-center">
+                                        <span class="px-3 flex items-start text-6xl leading-none tracking-tight text-gray-900 sm:text-6xl">
+                                          <span class="mt-2 mr-2 text-4xl font-medium">
+                                            $
+                                          </span>
+                                          <span class="font-extrabold">
+                                            29
+                                          </span>
+                                        </span>
+                                        <span class="text-2xl leading-8 font-medium text-gray-400">
+                                          /month
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50 sm:px-10 sm:py-10">
+                                    <ul>
+                                        <li class="flex items-start">
+                                            <div class="flex-shrink-0">
+                                                <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </div>
+                                            <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                <strong>30</strong> schedule monitors
+                                            </p>
+                                        </li>
+                                        <li class="mt-4 flex items-start">
+                                            <div class="flex-shrink-0">
+                                                <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </div>
+                                            <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                <strong>5</strong> team members
+                                            </p>
+                                        </li>
+                                        <li class="mt-4 flex items-start">
+                                            <div class="flex-shrink-0">
+                                                <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </div>
+                                            <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                Unlimited apps
+                                            </p>
+                                        </li>
+                                        <li class="mt-4 flex items-start">
+                                            <div class="flex-shrink-0">
+                                                <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </div>
+                                            <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                30 day event log
+                                            </p>
+                                        </li>
+                                        <li class="mt-4 flex items-start">
+                                            <div class="flex-shrink-0">
+                                                <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </div>
+                                            <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                Email support
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-10">
+                                        <div class="rounded-lg shadow-md">
+                                            <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150">
+                                                Start your 10 day trial
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10 mx-auto max-w-md lg:m-0 lg:max-w-none lg:col-start-6 lg:col-end-8 lg:row-start-2 lg:row-end-3">
+                            <div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden lg:rounded-none lg:rounded-r-lg">
+                                <div class="flex-1 flex flex-col">
+                                    <div class="bg-white px-6 py-10">
+                                        <div>
+                                            <h2 class="text-center text-2xl leading-8 font-medium text-gray-900">
+                                                Business
+                                            </h2>
+                                            <div class="mt-4 flex items-center justify-center">
+                                              <span class="px-3 flex items-start text-6xl leading-none tracking-tight text-gray-900">
+                                                <span class="mt-2 mr-2 text-4xl font-medium">
+                                                  $
+                                                </span>
+                                                <span class="font-extrabold">
+                                                  99
+                                                </span>
+                                              </span>
+                                              <span class="text-xl leading-7 font-medium text-gray-400">
+                                                /month
+                                              </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
+                                        <ul>
+                                            <li class="flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    <strong>200</strong> schedule monitors
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    <strong>Unlimited</strong> team members
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    Unlimited apps
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    30 day event log
+                                                </p>
+                                            </li>
+                                            <li class="mt-4 flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <p class="ml-3 text-base leading-6 font-medium text-gray-500">
+                                                    Email support
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <div class="mt-8">
+                                            <div class="rounded-lg shadow-md">
+                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
+                                                    Start your 10 day trial
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-16 md:mt-24 text-center px-4 sm:px-6 lg:px-8">
+                <h3 class="text-xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
+                    100% No-Risk 30-Day Money Back&nbsp;Guarantee
+                </h3>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-md md:mt-5 md:text-lg md:max-w-4xl">
+                    If for any reason you are not happy with our product or service, simply let us know within 30 days of the end of your free trial and we'll refund 100% of your money. No questions asked.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq" class="bg-gray-50">
+        <div class="max-w-screen-xl mx-auto pt-12 pb-16 sm:pt-16 sm:pb-20 px-4 sm:px-6 lg:pt-20 lg:pb-28 lg:px-8">
+            <h2 class="text-3xl leading-9 font-extrabold text-gray-900">
+                Frequently Asked Questions
+            </h2>
+            <div class="mt-6 border-t-2 border-gray-200 pt-10">
+                <dl class="md:grid md:grid-cols-2 md:gap-8">
+                    <div>
+                        <div>
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                What is a schedule monitor?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    A schedule monitor is a monitor for a single scheduled cron job. For example, in Laravel each <code>$schedule->command()</code> you have will require an individual schedule monitor.
+                                </p>
+                            </dd>
+                        </div>
+                        <div class="mt-12">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                What happens when my 10 day free trial ends?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    When your free trial ends you will need to sign up for a subscription via the billing page. If you don't upgrade to a paid plan at this point your schedule cron jobs will no longer be monitored.
+                                </p>
+                            </dd>
+                        </div>
+                        <div class="mt-12">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                What happens if I go over my schedule monitor limit?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    When you reach the limit of schedule monitors for your plan you will no longer be able to create new schedule monitors. To create new schedule monitors you will need to upgrade to a higher plan.
+                                </p>
+                            </dd>
+                        </div>
+                    </div>
+                    <div class="mt-12 md:mt-0">
+                        <div>
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Will your package slow down or break my app?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    Our Laravel package is designed to put minimal extra load on your scheduled jobs and will not affect your jobs even if pings to our service fail.
+                                </p>
+                            </dd>
+                        </div>
+                        <div class="mt-12">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Can I upgrade my plan?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    You can upgrade your plan at any time via the billing page. Upgrades will be prorated and you won't be charged until the beginning of the next billing cycle.
+                                </p>
+                            </dd>
+                        </div>
+                        <div class="mt-12">
+                            <dt class="text-lg leading-6 font-medium text-gray-900">
+                                Can I cancel my subscription?
+                            </dt>
+                            <dd class="mt-2">
+                                <p class="text-base leading-6 text-gray-500">
+                                    You can cancel your subscripiton at any time via the billing page. When the current billing cycle ends your schedule cron jobs will no longer be monitored and your card will stop being billed.
+                                </p>
+                            </dd>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+                <div class="px-5 py-2">
+                    <a href="/privacy" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                        Privacy
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="/terms" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                        Terms
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="https://twitter.com/surveyrio" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                        Twitter
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="ma&#105;lto&#58;suppor%&#55;&#52;&#64;sur%76e&#121;r%2Ei&#37;6F" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                        Support
+                    </a>
+                </div>
+            </nav>
+            <div class="mt-8">
+                <p class="text-center text-base leading-6 text-gray-400">
+                    &copy; {{ date('Y') }} - Surveyr is a project by <a href="https://dev7studios.co/">Dev7studios</a>
+                </p>
             </div>
         </div>
     </div>
