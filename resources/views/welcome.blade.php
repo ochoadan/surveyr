@@ -269,7 +269,7 @@
         </div>
     </div>
 
-    <div id="pricing" class="bg-blue-900">
+    <div id="pricing" class="bg-surveyr-blue-dark">
         <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
             <div class="text-center">
                 <h2 class="mt- text-3xl leading-9 font-extrabold text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none">
@@ -283,7 +283,7 @@
 
         <div class="mt-16 bg-white pb-16 lg:mt-20 lg:pb-24">
             <div class="relative z-0">
-                <div class="absolute inset-0 h-5/6 bg-blue-900 lg:h-2/3"></div>
+                <div class="absolute inset-0 h-5/6 bg-surveyr-blue-dark lg:h-2/3"></div>
                 <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="relative lg:grid lg:grid-cols-7">
                         <div class="mx-auto max-w-md lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
