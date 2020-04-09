@@ -14,7 +14,7 @@
     @include('analytics.google')
 </head>
 <body>
-    <div class="relative bg-gray-50 overflow-hidden">
+    <div class="relative bg-surveyr-bg overflow-hidden">
         <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
             <div class="relative h-full max-w-screen-xl mx-auto">
                 <svg class="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2" width="404" height="784" fill="none" viewBox="0 0 404 784">
@@ -80,11 +80,11 @@
                         <a href="/#pricing" class="ml-10 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition duration-150 ease-in-out">Sign Up</a>
                     </div>
                     <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
-              <span class="inline-flex rounded-md shadow">
-                <a href="/login" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out">
-                  Log in
-                </a>
-              </span>
+                      <span class="inline-flex rounded-md shadow">
+                        <a href="/login" class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-surveyr-blue bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-surveyr-bg active:text-blue-700 transition duration-150 ease-in-out">
+                          Log in
+                        </a>
+                      </span>
                     </div>
                 </nav>
             </div>
@@ -126,12 +126,12 @@
                             </div>
                         </div>
                         <div class="px-2 pt-2 pb-3">
-                            <a href="/#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Features</a>
-                            <a href="/#pricing" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Pricing</a>
-                            <a href="/register" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition duration-150 ease-in-out">Sign Up</a>
+                            <a href="/#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-surveyr-bg focus:outline-none focus:text-gray-900 focus:bg-surveyr-bg transition duration-150 ease-in-out">Features</a>
+                            <a href="/#pricing" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-surveyr-bg focus:outline-none focus:text-gray-900 focus:bg-surveyr-bg transition duration-150 ease-in-out">Pricing</a>
+                            <a href="/register" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-surveyr-bg focus:outline-none focus:text-gray-900 focus:bg-surveyr-bg transition duration-150 ease-in-out">Sign Up</a>
                         </div>
                         <div>
-                            <a href="/login" class="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none focus:bg-gray-100 focus:text-indigo-700 transition duration-150 ease-in-out">
+                            <a href="/login" class="block w-full px-5 py-3 text-center font-medium text-surveyr-blue bg-surveyr-bg hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:bg-gray-100 focus:text-blue-700 transition duration-150 ease-in-out">
                                 Log in
                             </a>
                         </div>
@@ -144,7 +144,7 @@
                     <h2 class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
                         Cron monitoring
                         <br class="xl:hidden" />
-                        <span class="text-indigo-600">for Laravel</span>
+                        <span class="text-surveyr-blue">for Laravel</span>
                     </h2>
                     <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                         Get an instant alert if your Laravel scheduled cron job fails to run.
@@ -154,12 +154,12 @@
                     </div>
                     <div class="mt-8 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
                         <div class="rounded-md shadow">
-                            <a href="/#pricing" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            <a href="/#pricing" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-surveyr-blue hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                                 Sign Up
                             </a>
                         </div>
                         <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                            <a href="/#features" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                            <a href="/#features" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-surveyr-blue bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline-blue transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                                 Features
                             </a>
                         </div>
@@ -185,7 +185,7 @@
                 </div>
                 <div class="mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0">
                     <div>
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <div class="mt-10 sm:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
@@ -212,7 +212,7 @@
                         </div>
                     </div>
                     <div class="mt-10 sm:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                     <div class="mt-10 sm:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
@@ -239,7 +239,7 @@
                         </div>
                     </div>
                     <div class="mt-10 sm:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
@@ -252,7 +252,7 @@
                         </div>
                     </div>
                     <div class="mt-10 sm:mt-0">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-surveyr-blue text-white">
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                             </svg>
@@ -269,7 +269,7 @@
         </div>
     </div>
 
-    <div id="pricing" class="bg-gray-900">
+    <div id="pricing" class="bg-blue-900">
         <div class="pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
             <div class="text-center">
                 <h2 class="mt- text-3xl leading-9 font-extrabold text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none">
@@ -283,7 +283,7 @@
 
         <div class="mt-16 bg-white pb-16 lg:mt-20 lg:pb-24">
             <div class="relative z-0">
-                <div class="absolute inset-0 h-5/6 bg-gray-900 lg:h-2/3"></div>
+                <div class="absolute inset-0 h-5/6 bg-blue-900 lg:h-2/3"></div>
                 <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="relative lg:grid lg:grid-cols-7">
                         <div class="mx-auto max-w-md lg:mx-0 lg:max-w-none lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3">
@@ -309,7 +309,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
+                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-surveyr-bg sm:p-10 lg:p-6 xl:p-10">
                                         <ul>
                                             <li class="flex items-start">
                                                 <div class="flex-shrink-0">
@@ -364,7 +364,7 @@
                                         </ul>
                                         <div class="mt-8">
                                             <div class="rounded-lg shadow-md">
-                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
+                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-surveyr-blue hover:text-blue-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
                                                     Start your 10 day trial
                                                 </a>
                                             </div>
@@ -375,10 +375,10 @@
                         </div>
                         <div class="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4">
                             <div class="relative z-10 rounded-lg shadow-xl">
-                                <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-indigo-600"></div>
+                                <div class="pointer-events-none absolute inset-0 rounded-lg border-2 border-surveyr-blue"></div>
                                 <div class="absolute inset-x-0 top-0 transform translate-y-px">
                                     <div class="flex justify-center transform -translate-y-1/2">
-                                      <span class="inline-flex rounded-full bg-indigo-600 px-4 py-1 text-sm leading-5 font-semibold tracking-wider uppercase text-white">
+                                      <span class="inline-flex rounded-full bg-surveyr-blue px-4 py-1 text-sm leading-5 font-semibold tracking-wider uppercase text-white">
                                         Most popular
                                       </span>
                                     </div>
@@ -403,7 +403,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-gray-50 sm:px-10 sm:py-10">
+                                <div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6 bg-surveyr-bg sm:px-10 sm:py-10">
                                     <ul>
                                         <li class="flex items-start">
                                             <div class="flex-shrink-0">
@@ -458,7 +458,7 @@
                                     </ul>
                                     <div class="mt-10">
                                         <div class="rounded-lg shadow-md">
-                                            <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-indigo-600 px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150">
+                                            <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-surveyr-blue px-6 py-4 text-xl leading-6 font-medium text-white hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150">
                                                 Start your 10 day trial
                                             </a>
                                         </div>
@@ -489,7 +489,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10">
+                                    <div class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-surveyr-bg sm:p-10 lg:p-6 xl:p-10">
                                         <ul>
                                             <li class="flex items-start">
                                                 <div class="flex-shrink-0">
@@ -544,7 +544,7 @@
                                         </ul>
                                         <div class="mt-8">
                                             <div class="rounded-lg shadow-md">
-                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
+                                                <a href="/register" class="block w-full text-center rounded-lg border border-transparent bg-white px-6 py-3 text-base leading-6 font-medium text-surveyr-blue hover:text-blue-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150">
                                                     Start your 10 day trial
                                                 </a>
                                             </div>
@@ -567,7 +567,7 @@
         </div>
     </div>
 
-    <div id="faq" class="bg-gray-50">
+    <div id="faq" class="bg-surveyr-bg">
         <div class="max-w-screen-xl mx-auto pt-12 pb-16 sm:pt-16 sm:pb-20 px-4 sm:px-6 lg:pt-20 lg:pb-28 lg:px-8">
             <h2 class="text-3xl leading-9 font-extrabold text-gray-900">
                 Frequently Asked Questions
