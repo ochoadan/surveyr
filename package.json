@@ -17,7 +17,8 @@
         "cross-env": "^5.1",
         "dinero.js": "^1.6.0",
         "jquery": "^3.2",
-        "laravel-mix": "^4.0.7",
+        "laravel-mix": "^5.0.4",
+        "laravel-mix-purgecss": "^5.0.0-rc.1",
         "laravel-vue-pagination": "^2.2.0",
         "lodash": "^4.17.4",
         "moment": "^2.10.6",
@@ -35,5 +36,6 @@
         "urijs": "^1.17.0",
         "vue": "2.*",
         "vue-template-compiler": "^2.6.10"
-    }
+    },
+    "devDependencies": {}
 }

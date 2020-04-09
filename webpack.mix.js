@@ -3,6 +3,7 @@ let exec = require('child_process').exec;
 let path = require('path');
 const webpack = require('webpack');
 const tailwindcss = require('tailwindcss');
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ const tailwindcss = require('tailwindcss');
 mix
     .sass('resources/sass/app.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/site.scss', 'public/css')
+    .sass('resources/sass/site.scss', 'public/css').purgeCss()
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
