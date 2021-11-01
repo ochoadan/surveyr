@@ -14,7 +14,12 @@ class CronHelper
      */
     final public static function monitorIsDue(ScheduleMonitor $monitor, $currentTime = 'now')
     {
-        $cron = CronExpression::factory($monitor->schedule);
+        try {
+            $cron = CronExpression::factory($monitor->schedule);
+        } catch (\Exception $e) {
+            return false;
+        }
+
         return $cron->isDue($currentTime, $monitor->timezone);
     }
 }
