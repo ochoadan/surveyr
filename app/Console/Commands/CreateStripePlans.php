@@ -69,13 +69,15 @@ class CreateStripePlans extends Command
                 $name = Spark::$details['product'] . ' ' . $plan->name . ' ($' . $plan->price . ' ' . $plan->interval . ')';
 
                 Stripe\Plan::create([
-                   'id'                   => $plan->id,
-                   'name'                 => $name,
-                   'amount'               => $plan->price * 100,
-                   'interval'             => str_replace('ly', '', $plan->interval),
-                   'currency'             => 'USD',
-                   'statement_descriptor' => Spark::$details['vendor'],
-                   'trial_period_days'    => $plan->trialDays,
+                    'id'                   => $plan->id,
+                    'amount'               => $plan->price * 100,
+                    'interval'             => str_replace('ly', '', $plan->interval),
+                    'currency'             => 'USD',
+                    'trial_period_days'    => $plan->trialDays,
+                    'product' => [
+                        'name' => $name,
+                        'statement_descriptor' => Spark::$details['vendor'],
+                    ],
                 ]);
                 $this->info('Stripe plan created: ' . $plan->id);
             }
