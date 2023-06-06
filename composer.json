@@ -18,15 +18,17 @@
         "adam-paterson/oauth2-slack": "^1.1",
         "barryvdh/laravel-cors": "^0.11.3",
         "dev7studios/surveyr-laravel": "^0.1.4",
+        "doctrine/dbal": "^2.6",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/cashier": "~10.0",
+        "laravel/cashier": "~11.0",
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/horizon": "^3.0",
-        "laravel/spark-aurelius": "~9.0",
+        "laravel/spark-aurelius": "~10.0",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "php-http/message-factory": "^1.1",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
         "shipping-docker/vessel": "^4.0",
@@ -43,7 +45,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {
