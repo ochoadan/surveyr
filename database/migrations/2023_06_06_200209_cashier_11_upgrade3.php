@@ -37,6 +37,7 @@ class Cashier11Upgrade3 extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('team_subscriptions');
+        Schema::dropIfExists('team_subscription_items');
     }
 }

@@ -669,7 +669,7 @@
             </nav>
             <div class="mt-8">
                 <p class="text-center text-base leading-6 text-gray-400">
-                    &copy; {{ date('Y') }} - Surveyr is a project by <a href="https://dev7studios.co/">Dev7studios</a>
+                    &copy; {{ date('Y') }} - <a href="https://www.halfnine.com">HalfNine</a> LLC. All rights reserved.
                 </p>
             </div>
         </div>

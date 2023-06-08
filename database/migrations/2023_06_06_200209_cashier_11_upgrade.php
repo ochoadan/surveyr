@@ -26,6 +26,6 @@ class Cashier11Upgrade extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('subscriptions');
     }
 }
