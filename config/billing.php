@@ -39,7 +39,7 @@ return [
         // Active Plans
 
         'surveyr-solo-5-monthly'      => [
-            'id'                     => 'price_1NGiEKFIrRBnyYm2DdgV3XwU',
+            'id'                     => 'surveyr-startup-29-monthly',
             'title'                  => 'Solo',
             'price'                  => 5,
             'trial'                  => 10,
@@ -49,7 +49,7 @@ return [
             'team_member_limit'      => 1,
         ],
         'surveyr-startup-29-monthly'  => [
-            'id'                     => 'price_1NGiDfFIrRBnyYm2UgQcoOYY',
+            'id'                     => 'surveyr-startup-29-monthly',
             'title'                  => 'Startup',
             'price'                  => 29,
             'trial'                  => 10,
@@ -59,7 +59,7 @@ return [
             'team_member_limit'      => 5,
         ],
         'surveyr-business-99-monthly' => [
-            'id'                     => 'price_1NGi8NFIrRBnyYm2O0PW5TrI',
+            'id'                     => 'surveyr-startup-29-monthly',
             'title'                  => 'Business',
             'price'                  => 99,
             'trial'                  => 10,
