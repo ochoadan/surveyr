@@ -13,11 +13,6 @@ class Cashier11Upgrade3 extends Migration
      */
     public function up()
     {
-        Schema::table('team_subscriptions', function (Blueprint $table) {
-            $table->string('stripe_plan')->nullable()->change();
-            $table->integer('quantity')->nullable()->change();
-        });
-
         Schema::create('team_subscription_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('subscription_id');
@@ -37,7 +32,6 @@ class Cashier11Upgrade3 extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team_subscriptions');
         Schema::dropIfExists('team_subscription_items');
     }
 }
