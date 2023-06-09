@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Cashier11Upgrade3 extends Migration
+class Cashier11Upgrade4 extends Migration
 {
     /**
      * Run the migrations.
