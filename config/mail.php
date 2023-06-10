@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'support@surveyr.io'),
-        'name' => env('MAIL_FROM_NAME', 'Surveyr'),
+        'address' => env('MAIL_FROM_ADDRESS', 'system@alerts.surveyr.io'),
+        'name' => env('MAIL_FROM_NAME', 'Surveyr Alerts'),
     ],
 
     /*
