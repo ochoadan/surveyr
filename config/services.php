@@ -20,8 +20,9 @@ return [
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN', 'surveyr.io'),
-        'secret' => env('MAILGUN_SECRET', 'key-3xv3wnk9grseh6z2wito40sh4z2jdao2'),
+        'secret' => env('MAILGUN_SECRET', '76ff1beb7a8951658ed246eccd3c2899-5d9bd83c-2f0de58f'),
     ],
+    // 'secret' => env('MAILGUN_SECRET', 'key-3xv3wnk9grseh6z2wito40sh4z2jdao2'),
 
     'ses' => [
         'key'    => env('SES_KEY'),
