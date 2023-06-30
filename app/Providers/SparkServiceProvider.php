@@ -14,10 +14,10 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $details = [
-        'vendor'   => 'Dev7studios Ltd',
+        'vendor'   => 'HalfNine LLC',
         'product'  => 'Surveyr',
-        'street'   => '4 Duffus Place',
-        'location' => 'Elgin, UK, IV30 5PB',
+        'street'   => '',
+        'location' => 'St. Cloud, FL, 34772',
         'phone'    => '',
     ];
 
@@ -34,7 +34,7 @@ class SparkServiceProvider extends ServiceProvider
      * @var array
      */
     protected $developers = [
-        'gilbert@pellegrom.me',
+        'dan@halfnine.com',
     ];
 
     /**
